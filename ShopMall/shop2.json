@@ -1,0 +1,88 @@
+{
+    "id": 2,
+    "name": "Microsoft",
+    "detail": "We sell iPhones, iPads, Macs",
+    "navBarColor": "4791ff",
+    "cellColor": "33CEFF",
+    "tableCellHeight": 200,
+    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image2.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft_log.jpg",
+    "productNameFontSize": 14,
+    "productCatalogImageAttributes": {
+        "rightAnchorConstant": 10,
+        "centerYConstant": 0,
+        "width": 250,
+        "height": 100
+    },
+    "productCellAttributes": {
+        "leftAnchorConstant": 30,
+        "topAnchorConstant": 5,
+        "width": 120,
+        "height": 40
+    },
+    "productVariationCellAttributes": {
+        "rightAnchorConstant": 20,
+        "bottomAnchorConstant": 10,
+        "width": 200,
+        "height": 20
+    },
+    "productVariationAttributes": {
+        "centerXConstant": 1,
+        "centerYConstant": 1,
+        "width": 200,
+        "height": 400
+    },
+    "products": [
+                 {
+                 "id": 1,
+                 "name": "Microsoft Software Products",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-software-image.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft software product1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-p2.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "Microsoft software product2",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Microsoft-software-p1.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 2,
+                 "name": "Microsoft Surface",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Surface-Pro-Image.png",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft surface product1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-surface-p1.jpg"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft surface product2",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-surface-p2.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 3,
+                 "name": "Microsoft Windows",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Microsoft-software-p1.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft Windows product 1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsft-windows-8.jpg"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft Windows product 1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-surface-p1.jpg"
+                                       }
+                                       ]
+                 }
+                 ]
+}

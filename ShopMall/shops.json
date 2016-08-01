@@ -1,0 +1,23 @@
+[
+  {
+  "id": 1,
+  "name": "Apple Store 1",
+  "detail": "We sell iPhones, iPads, Macs",
+  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Apple-cover.jpg",
+  "productNameFontSize": 20
+  },
+  {
+  "id": 2,
+  "name": "Microsoft",
+  "detail": "Who wants a Surface Book?",
+  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-image.jpg",
+  "productNameFontSize": 20
+  },
+  {
+  "id": 3,
+  "name": "Best Buys",
+  "detail": "Electrones, TVs, Music we got em",
+  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy-image.jpg",
+  "productNameFontSize": 20
+  }
+]

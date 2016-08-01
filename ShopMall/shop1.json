@@ -1,0 +1,88 @@
+{
+    "id": 1,
+    "name": "Apple",
+    "detail": "We sell iPhones, iPads, Macs",
+    "navBarColor": "f5820b",
+    "cellColor": "DDE5E5",
+    "tableCellHeight": 300,
+    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
+    "productNameFontSize": 20,
+    "productCatalogImageAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 0,
+        "width": 300,
+        "height": 200
+    },
+    "productCellAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 120,
+        "width": 200,
+        "height": 50
+    },
+    "productVariationCellAttributes": {
+        "rightAnchorConstant": 20,
+        "bottomAnchorConstant": 10,
+        "width": 100,
+        "height": 50
+    },
+    "productVariationAttributes": {
+        "centerXConstant": 20,
+        "centerYConstant": 10,
+        "width": 100,
+        "height": 20
+    },
+    "products": [
+                 {
+                 "id": 1,
+                 "name": "iPhone 6s Plus",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iPhone Rose Gold 32GB",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_rose.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "iPhone White 128GB",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_white.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 2,
+                 "name": "iPad Air 2",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad-catalog.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iPad 32GB WIFI Model",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "iPad 32GB LTE Verizon",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 3,
+                 "name": "iWatch",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch-catalog.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iWatch Custom Made for You!",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch1.png"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "What time is it??",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch2.jpg"
+                                       }
+                                       ]
+                 }
+                 ]
+}

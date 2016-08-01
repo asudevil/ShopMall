@@ -1,0 +1,71 @@
+{
+    "id": 3,
+    "name": "Best Buys",
+    "detail": "We sell iPhones, iPads, Macs",
+    "navBarColor": "da47ff",
+    "cellColor": "0816A2",
+    "tableCellHeight": 100,
+    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-basket.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy_logo.png",
+    "productNameFontSize": 18,
+    "productCatalogImageAttributes": {
+        "leftAnchorConstant": 20,
+        "centerYConstant": 0,
+        "width": 200,
+        "height": 100
+    },
+    "productCellAttributes": {
+        "rightAnchorConstant": 14,
+        "bottomAnchorConstant": 20,
+        "width": 200,
+        "height": 40
+    },
+    "productVariationCellAttributes": {
+        "leftAnchorConstant": 20,
+        "bottomAnchorConstant": 20,
+        "width": 200,
+        "height": 20
+    },
+    "productVariationAttributes": {
+        "rightAnchorConstant": 20,
+        "bottomAnchorConstant": 10,
+        "width": 100,
+        "height": 50
+    },
+    "products": [
+                 {
+                 "id": 1,
+                 "name": "iPhone 6s Plus",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iPhone Rose Gold 32GB",
+                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/iphone_rose.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "iPhone White 128GB",
+                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/iphone_white.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 2,
+                 "name": "iPad Air 2",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad-catalog.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iPad 32GB WIFI Model",
+                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/ipad_white.jpg"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "iPad 32GB LTE Verizon",
+                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/ipad_white.jpg"
+                                       }
+                                       ]
+                 }
+                 ]
+}
