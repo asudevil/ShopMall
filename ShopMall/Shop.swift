@@ -17,6 +17,7 @@ class Shop: NSObject {
     var navBarColor: String?
     var cellColor: String?
     var tableCellHeight: CGFloat?
+    var numberOfColumns: Int?
     var cartImage: String?
     var logoImage: String?
     var products: [Product]?
@@ -24,6 +25,7 @@ class Shop: NSObject {
     var productCellAttributes: Attributes?
     var productCatalogImageAttributes: Attributes?
     var productVariationCellAttributes: Attributes?
+    var productVariationCellImageAttributes: Attributes?
     var productVariationAttributes: Attributes?
     
     init(dictionary: [String: AnyObject]) {
@@ -35,6 +37,7 @@ class Shop: NSObject {
         navBarColor = dictionary["navBarColor"] as? String
         cellColor = dictionary["cellColor"] as? String
         tableCellHeight = dictionary["tableCellHeight"] as? CGFloat
+        numberOfColumns = dictionary["numberOfColumns"] as? Int
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
@@ -53,6 +56,11 @@ class Shop: NSObject {
         if let productVariationCellAttributesDictionary = dictionary["productVariationCellAttributes"] as? [String: AnyObject] {
             productVariationCellAttributes = Attributes(dictionary: productVariationCellAttributesDictionary)
         }
+        
+        if let productVariationCellImageAttributesDictionary = dictionary["productVariationCellImageAttributes"] as? [String: AnyObject] {
+            productVariationCellImageAttributes = Attributes(dictionary: productVariationCellImageAttributesDictionary)
+        }
+
         
         if let productVariationAttributesDictionary = dictionary["productVariationAttributes"] as? [String: AnyObject] {
             productVariationAttributes = Attributes(dictionary: productVariationAttributesDictionary)

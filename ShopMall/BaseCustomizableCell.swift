@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCustomizableCell: UITableViewCell {
+class BaseCustomizableCell: UICollectionViewCell {
     
     var hasSetupConstraints = false
 }

@@ -1,22 +1,22 @@
 //
-//  ShopController.swift
+//  ShopVC.swift
 //  ShopMall
 //
-//  Created by Brian Voong on 7/21/16.
+//  Created by admin on 8/2/16.
 //  Copyright © 2016 letsbuildthatapp. All rights reserved.
 //
 
 import UIKit
 
-class ShopController: UITableViewController {
-    
+class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+
     var shop: Shop?
     let cellId = "cellId"
     
     var navBarColorSelected = "#dddddd"
     var cartImageView = UIImageView()
     var cartImageURL = String()
-
+    
     var shopId: String? {
         didSet {
             if let id = shopId {
@@ -27,7 +27,7 @@ class ShopController: UITableViewController {
                         self.navBarColorSelected = navBarColor
                     }
                     self.setupNavBarWithUser(shop)
-                    self.tableView.reloadData()
+                    self.collectionView!.reloadData()
                 })
             }
         }
@@ -36,7 +36,9 @@ class ShopController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(ProductCell.self, forCellReuseIdentifier: cellId)
+        collectionView?.registerClass(ProductCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.backgroundColor = UIColor.whiteColor()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,54 +46,62 @@ class ShopController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shop?.products?.count ?? 0
     }
-    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! ProductCell
-//        
-//        if !cell.hasSetupConstraints {
-//            if let attributes = shop?.productCellAttributes {
-//                cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
-//            }
-//            if let attributes = shop?.productCatalogImageAttributes {
-//                cell.setupConstraintsForView(cell.catalogImageView, attributes: attributes)
-//            }
-//            if let cellColor = shop?.cellColor {
-//                cell.backgroundColor = UIColor.hexStringToUIColor(cellColor)
-//            }
-//            cell.hasSetupConstraints = true
-//        }
-//        
-//        if let product = shop?.products?[indexPath.row] {
-//            cell.nameLabel.text = product.name
-//            if let nameFontSize = shop?.productNameFontSize {
-//                cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
-//                cell.nameLabel.numberOfLines = 0
-//            }
-//            if let catalogImageURL = product.catalogImageUrl {
-//                cell.catalogImageView.loadImageUsingCacheWithUrlString(catalogImageURL)
-//            }
-//        }
-//        return cell
-//    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProductCell
         
-        if let cellHeight = shop?.tableCellHeight {
-            return cellHeight
+        if !cell.hasSetupConstraints {
+            if let attributes = shop?.productCellAttributes {
+                cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
+            }
+            if let attributes = shop?.productCatalogImageAttributes {
+                cell.setupConstraintsForView(cell.catalogImageView, attributes: attributes)
+            }
+            if let cellColor = shop?.cellColor {
+                cell.backgroundColor = UIColor.hexStringToUIColor(cellColor)
+            }
+            cell.hasSetupConstraints = true
         }
         
-        return 230
+        if let product = shop?.products?[indexPath.row] {
+            cell.nameLabel.text = product.name
+            if let nameFontSize = shop?.productNameFontSize {
+                cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+                cell.nameLabel.numberOfLines = 0
+            }
+            if let catalogImageURL = product.catalogImageUrl {
+                cell.catalogImageView.loadImageUsingCacheWithUrlString(catalogImageURL)
+            }
+        }
+        return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        if let cellHeight = shop?.tableCellHeight {
+            return CGSizeMake(view.frame.width, cellHeight)
+        }
+        return CGSizeMake(view.frame.width, 230)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         let product = shop?.products?[indexPath.row]
-        let productController = ProductController()
+        let layout = UICollectionViewFlowLayout()
+        let productController = ProductVC(collectionViewLayout: layout)
         productController.shop = shop
         productController.product = product
         navigationController?.pushViewController(productController, animated: true)
+        
+//        let shop = shops?[indexPath.row]
+//        let layout = UICollectionViewFlowLayout()
+//        let shopController = ShopVC(collectionViewLayout: layout)
+//        shopController.shopId = shop?.id?.stringValue
+//        
+//        navigationController?.pushViewController(shopController, animated: true)
     }
     
     func setupNavBarWithUser(shop: Shop) {
@@ -119,7 +129,7 @@ class ShopController: UITableViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(ShopController.imageTapped(_:)))
         logoImage.userInteractionEnabled = true
         logoImage.addGestureRecognizer(tapGestureRecognizer)
-
+        
         logoImage.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 70).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
         logoImage.widthAnchor.constraintEqualToConstant(30).active = true
@@ -132,9 +142,9 @@ class ShopController: UITableViewController {
         btnName.translatesAutoresizingMaskIntoConstraints = false
         
         print("Setting navbar items")
-       // btnName.setImage(cartImageView.image, forState: .Normal)
+        // btnName.setImage(cartImageView.image, forState: .Normal)
         
-    //??? How do I set this image to downloaded image from shops.json
+        //??? How do I set this image to downloaded image from shops.json
         let btnImage = UIImage(named: "default-cart")
         btnName.setImage(btnImage, forState: .Normal)
         btnName.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
@@ -149,5 +159,5 @@ class ShopController: UITableViewController {
     {
         print("Image tapped")
     }
-}
 
+}

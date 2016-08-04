@@ -42,5 +42,4 @@ class ProductVariationController: UIViewController {
             view.setupConstraintsForView(productImageView, attributes: attributes)
         }
     }
-    
 }

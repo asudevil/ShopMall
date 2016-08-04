@@ -11,6 +11,8 @@
 		84132D281D4341FC00D4376D /* ShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84132D271D4341FC00D4376D /* ShopCell.swift */; };
 		84132D2A1D4353EE00D4376D /* VisualFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84132D291D4353EE00D4376D /* VisualFormatExtension.swift */; };
 		849C3FDD1D4C2B7B00B1BCB5 /* titleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */; };
+		84CB1C0E1D5182D700EFC83F /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1C0D1D5182D700EFC83F /* ProductVC.swift */; };
+		84CB1C101D518D2500EFC83F /* ShopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB1C0F1D518D2500EFC83F /* ShopVC.swift */; };
 		C789C8B71D41BC8100CC713D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789C8B61D41BC8100CC713D /* AppDelegate.swift */; };
 		C789C8B91D41BC8100CC713D /* MallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789C8B81D41BC8100CC713D /* MallController.swift */; };
 		C789C8BC1D41BC8100CC713D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C789C8BA1D41BC8100CC713D /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		84132D271D4341FC00D4376D /* ShopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCell.swift; sourceTree = "<group>"; };
 		84132D291D4353EE00D4376D /* VisualFormatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualFormatExtension.swift; sourceTree = "<group>"; };
 		849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = titleViewCell.swift; sourceTree = "<group>"; };
+		84CB1C0D1D5182D700EFC83F /* ProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
+		84CB1C0F1D518D2500EFC83F /* ShopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
 		C789C8B31D41BC8100CC713D /* ShopMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C789C8B61D41BC8100CC713D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C789C8B81D41BC8100CC713D /* MallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MallController.swift; sourceTree = "<group>"; };
@@ -139,9 +143,11 @@
 			isa = PBXGroup;
 			children = (
 				84132D251D433CCD00D4376D /* CollectionViewController.swift */,
+				84CB1C0F1D518D2500EFC83F /* ShopVC.swift */,
+				84CB1C0D1D5182D700EFC83F /* ProductVC.swift */,
+				C789C8DB1D41D38300CC713D /* ProductVariationController.swift */,
 				C789C8CF1D41C45800CC713D /* ShopController.swift */,
 				C789C8D71D41CF9000CC713D /* ProductController.swift */,
-				C789C8DB1D41D38300CC713D /* ProductVariationController.swift */,
 				C789C8B81D41BC8100CC713D /* MallController.swift */,
 			);
 			name = Controller;
@@ -162,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				C789C8E01D41D7CD00CC713D /* BaseCustomizableCell.swift */,
-				C789C8DE1D41D62300CC713D /* ProductCell.swift */,
 				84132D271D4341FC00D4376D /* ShopCell.swift */,
+				C789C8DE1D41D62300CC713D /* ProductCell.swift */,
 				C789C8E41D41DD1E00CC713D /* ProductVariationCell.swift */,
 				849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */,
 			);
@@ -260,6 +266,8 @@
 				84132D261D433CCD00D4376D /* CollectionViewController.swift in Sources */,
 				C789C8CC1D41BFF400CC713D /* Shop.swift in Sources */,
 				C789C8D01D41C45800CC713D /* ShopController.swift in Sources */,
+				84CB1C0E1D5182D700EFC83F /* ProductVC.swift in Sources */,
+				84CB1C101D518D2500EFC83F /* ShopVC.swift in Sources */,
 				C789C8D81D41CF9000CC713D /* ProductController.swift in Sources */,
 				C789C8D61D41CBA000CC713D /* Product.swift in Sources */,
 				C789C8E91D41E8BD00CC713D /* UIView+Attributes.swift in Sources */,

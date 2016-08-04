@@ -63,9 +63,16 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let shop = shops?[indexPath.row]
-        let shopController = ShopController()
+        let layout = UICollectionViewFlowLayout()
+        let shopController = ShopVC(collectionViewLayout: layout)
         shopController.shopId = shop?.id?.stringValue
+        
         navigationController?.pushViewController(shopController, animated: true)
+        
+//        let layout = UICollectionViewFlowLayout()
+//        let appDetailController = AppDetailController(collectionViewLayout: layout)
+//        appDetailController.app = app
+//        navigationController?.pushViewController(appDetailController, animated: true)
         
     }
     

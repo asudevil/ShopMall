@@ -10,6 +10,8 @@ import UIKit
 
 class ProductController: UITableViewController {
     
+    var numberOfColumns = 1
+    
     var product: Product? {
         didSet {
             self.tableView.reloadData()
@@ -34,23 +36,28 @@ class ProductController: UITableViewController {
         return product?.productVariations?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! ProductVariationCell
-        
-        if !cell.hasSetupConstraints {
-            if let attributes = shop?.productVariationCellAttributes {
-                cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
-                print("Attributes set")
-            }
-            cell.hasSetupConstraints = true
-        }
-        
-        if let productVariation = product?.productVariations?[indexPath.row] {
-            cell.nameLabel.text = productVariation.name
-        }
-        
-        return cell
-    }
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! ProductVariationCell
+//        
+//        if !cell.hasSetupConstraints {
+//            if let attributes = shop?.productVariationCellAttributes {
+//                cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
+//            }
+//            if let imageAttributes = shop?.productVariationCellImageAttributes {
+//                cell.setupConstraintsForView(cell.catalogImageView, attributes: imageAttributes)
+//            }
+//            cell.hasSetupConstraints = true
+//        }
+//        
+//        if let productVariation = product?.productVariations?[indexPath.row] {
+//            cell.nameLabel.text = productVariation.name
+//            if let imgUrl = productVariation.imageUrl {
+//                cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
+//            }
+//        }
+//        
+//        return cell
+//    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150

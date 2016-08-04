@@ -2,7 +2,7 @@
     "id": 3,
     "name": "Best Buys",
     "detail": "We sell iPhones, iPads, Macs",
-    "navBarColor": "da47ff",
+    "navBarColor": "FAF308",
     "cellColor": "0816A2",
     "tableCellHeight": 100,
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-basket.png",
@@ -41,12 +41,12 @@
                                        {
                                        "id": 1,
                                        "name": "iPhone Rose Gold 32GB",
-                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/iphone_rose.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_rose.jpg"
                                        },
                                        {
                                        "id": 2,
                                        "name": "iPhone White 128GB",
-                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/iphone_white.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_white.jpg"
                                        }
                                        ]
                  },
@@ -58,12 +58,97 @@
                                        {
                                        "id": 1,
                                        "name": "iPad 32GB WIFI Model",
-                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/ipad_white.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
                                        },
                                        {
-                                       "id": 1,
+                                       "id": 2,
                                        "name": "iPad 32GB LTE Verizon",
-                                       "imageUrl": "https:\/\/s3-us-west-2.amazonaws.com\/youtubeassets\/ipad_white.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 3,
+                 "name": "Televisions",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/TV-Image.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "LG Television",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/TV-LG.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "iPad 32GB LTE Verizon",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/TV-2.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 4,
+                 "name": "Sound Systems",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Sound-System.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iPad 32GB WIFI Model",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Sound-System-Fender.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "iPad 32GB LTE Verizon",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/sound-home-theater.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 5,
+                 "name": "Appliances",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliance.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Whirlpool",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Appliance-Whirlpool.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "Electric Stove",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliacne-stove.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 6,
+                 "name": "Appliances",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliance.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Whirlpool",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Appliance-Whirlpool.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "Electric Stove",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliacne-stove.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 7,
+                 "name": "Appliances",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliance.jpg",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Whirlpool",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Appliance-Whirlpool.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "Electric Stove",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/appliacne-stove.jpg"
                                        }
                                        ]
                  }

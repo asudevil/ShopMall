@@ -38,7 +38,6 @@ extension UIImageView {
                     imageCache.setObject(downloadedImage, forKey: urlString)
                     
                     self.image = downloadedImage
-                    print("Setting image for URL: \(urlString)")
                 }
             })
             
@@ -71,7 +70,6 @@ extension UIImageView {
                     imageCache.setObject(downloadedImage, forKey: urlString)
                     
                     self.image = downloadedImage
-                    print("Setting image for URL: \(urlString)")
                 }
             })
             
