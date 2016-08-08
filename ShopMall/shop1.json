@@ -9,51 +9,75 @@
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
     "productNameFontSize": 20,
-    "productCatalogImageAttributes": {
+    "headerField": 1,
+    "catalogImageAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,
         "width": 400,
         "height": 300
     },
-    "productCellAttributes": {
+    "catalogNameAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 120,
         "width": 200,
         "height": 50
     },
-    
-    "productVariationCellImageAttributes": {
+    "productCellImageAttributes": {
         "rightAnchorConstant": 50,
-        "bottomAnchorConstant": 5,
+        "bottomAnchorConstant": 60,
         "width": 300,
-        "height": 100
+        "height": 120
     },
-    "productVariationCellAttributes": {
-        "rightAnchorConstant": 50,
-        "bottomAnchorConstant": 5,
+    "productCellNameAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 20,
         "width": 200,
         "height": 50
     },
-    "productVariationAttributes": {
-        "centerXConstant": 20,
-        "centerYConstant": 10,
+    "itemPriceAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 0,
         "width": 200,
+        "height": 50
+    },
+    "itemDetailsImageAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": -100,
+        "width": 320,
+        "height": 200
+    },
+    "itemDescriptionAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 50,
+        "width": 250,
         "height": 100
+    },
+    "itemDetailPriceAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 160,
+        "width": 200,
+        "height": 50
     },
     "products": [
                  {
                  "id": 1,
                  "name": "iPhones",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
+                 "itemPrice":"$299.95",
                  "productVariations": [
                                        {
                                        "id": 1,
                                        "name": "iPhone Rose Gold 32GB",
+                                       "itemDescription": "Here's your new iPhone 6s. Handy Features. Easy To Use · Attractive Design. Long Battery Life",
+                                       "itemDetailPrice": "299.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_rose.jpg"
                                        },
                                        {
                                        "id": 2,
                                        "name": "iPhone White 128GB",
+                                       "itemDescription": "Unlocked cell phones are compatible with GSM carriers like",
+                                       "itemDetailPrice": "299.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_white.jpg"
                                        }
                                        ]
@@ -62,15 +86,21 @@
                  "id": 2,
                  "name": "iPads",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad-catalog.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
+                 "itemPrice":"$399.95",
                  "productVariations": [
                                        {
                                        "id": 1,
                                        "name": "iPad 32GB WIFI Model",
+                                       "itemDescription": "Amazing looking Ipad with a whoping 32GB.   Long Battery Life",
+                                       "itemDetailPrice": "399.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
                                        },
                                        {
                                        "id": 1,
                                        "name": "iPad 32GB LTE Verizon",
+                                       "itemDescription": "A white Ipad with 32GB  LTE Verizon.   Long Battery Life.  Very good deal!",
+                                       "itemDetailPrice": "399.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
                                        }
                                        ]
@@ -79,15 +109,21 @@
                  "id": 3,
                  "name": "iWatch",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch-catalog.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
+                 "itemPrice":"$499.99",
                  "productVariations": [
                                        {
                                        "id": 1,
-                                       "name": "iWatch Custom Made for You!",
+                                       "name": "iWatch!",
+                                       "itemDescription": "Very beautiful iWatch custom made for you",
+                                       "itemDetailPrice": "499.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch1.png"
                                        },
                                        {
                                        "id": 1,
                                        "name": "What time is it??",
+                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
+                                       "itemDetailPrice": "499.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch2.jpg"
                                        }
                                        ]

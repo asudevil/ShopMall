@@ -4,8 +4,16 @@
   "name": "Apple Store 1",
   "detail": "We sell iPhones, iPads, Macs",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Apple-cover.jpg",
-  "productNameFontSize": 20
+  "productNameFontSize": 20,
+  "headerField": 1
   },
+ {
+ "id": 4,
+ "name": "Touch of Modern",
+ "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
+ "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
+ "productNameFontSize": 20
+ },
   {
   "id": 2,
   "name": "Microsoft",

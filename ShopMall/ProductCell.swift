@@ -15,6 +15,11 @@ class ProductCell: BaseCustomizableCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    var itemPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     var catalogImageView: UIImageView = {
         let image = UIImageView()
@@ -43,6 +48,7 @@ class ProductCell: BaseCustomizableCell {
         addSubview(nameLabel)
         addSubview(catalogImageView)
         addSubview(dividerLineView)
+        addSubview(itemPrice)
         
     }
 }

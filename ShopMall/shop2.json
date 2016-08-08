@@ -4,29 +4,35 @@
     "detail": "We sell iPhones, iPads, Macs",
     "navBarColor": "4791ff",
     "cellColor": "33CEFF",
-    "tableCellHeight": 200,
+    "tableCellHeight": 150,
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image2.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft_log.jpg",
     "productNameFontSize": 14,
-    "productCatalogImageAttributes": {
+    "catalogImageAttributes": {
         "rightAnchorConstant": 10,
         "centerYConstant": 0,
-        "width": 250,
+        "width": 200,
         "height": 100
     },
-    "productCellAttributes": {
+    "catalogNameAttributes": {
         "leftAnchorConstant": 30,
-        "topAnchorConstant": 5,
+        "topAnchorConstant": 0,
         "width": 120,
         "height": 40
     },
-    "productVariationCellAttributes": {
-        "rightAnchorConstant": 20,
-        "bottomAnchorConstant": 10,
-        "width": 200,
+    "productCellNameAttributes": {
+        "leftAnchorConstant": 20,
+        "bottomAnchorConstant": 0,
+        "width": 300,
         "height": 20
     },
-    "productVariationAttributes": {
+    "itemPriceAttributes": {
+        "rightAnchorConstant": 20,
+        "bottomAnchorConstant": 20,
+        "width": 70,
+        "height": 50
+    },
+    "itemDetailsImageAttributes": {
         "centerXConstant": 1,
         "centerYConstant": 1,
         "width": 200,
@@ -37,6 +43,7 @@
                  "id": 1,
                  "name": "Microsoft Software Products",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-software-image.jpg",
+                 "itemPrice":"$199.99",
                  "productVariations": [
                                        {
                                        "id": 1,
@@ -54,6 +61,7 @@
                  "id": 2,
                  "name": "Microsoft Surface",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Surface-Pro-Image.png",
+                 "itemPrice":"$99.99",
                  "productVariations": [
                                        {
                                        "id": 1,
@@ -71,6 +79,26 @@
                  "id": 3,
                  "name": "Microsoft Windows",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Microsoft-software-p1.jpg",
+                 "itemPrice":"$299.95",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft Windows product 1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsft-windows-8.jpg"
+                                       },
+                                       {
+                                       "id": 1,
+                                       "name": "Microsoft Windows product 1",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-surface-p1.jpg"
+                                       }
+                                       ]
+                 }
+                 ,
+                 {
+                 "id": 4,
+                 "name": "Microsoft Windows",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Microsoft-software-p1.jpg",
+                 "itemPrice":"$49.95",
                  "productVariations": [
                                        {
                                        "id": 1,

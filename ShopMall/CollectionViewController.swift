@@ -46,7 +46,7 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ShopCell
-    
+        
         let shop = shops?[indexPath.row]
         cell.nameLabel.text = shop?.name
         if let nameFontSize = shop?.productNameFontSize {
@@ -66,14 +66,10 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         let layout = UICollectionViewFlowLayout()
         let shopController = ShopVC(collectionViewLayout: layout)
         shopController.shopId = shop?.id?.stringValue
-        
+        if let headerOrNot = shop?.headerField?.stringValue {
+            shopController.header = headerOrNot
+        }
         navigationController?.pushViewController(shopController, animated: true)
-        
-//        let layout = UICollectionViewFlowLayout()
-//        let appDetailController = AppDetailController(collectionViewLayout: layout)
-//        appDetailController.app = app
-//        navigationController?.pushViewController(appDetailController, animated: true)
-        
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

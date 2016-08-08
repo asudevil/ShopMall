@@ -16,7 +16,18 @@ class ProductVariationController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+    var itemDetails: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    var itemDetailPriceLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     var productVariation: ProductVariation? {
         didSet {
             if let productImageUrl = productVariation?.imageUrl {
@@ -24,6 +35,12 @@ class ProductVariationController: UIViewController {
             }
             if let navBarTitle = productVariation?.name {
                 navigationItem.title = navBarTitle
+            }
+            if let itemDesc = productVariation?.itemDescription {
+                itemDetails.text = itemDesc
+            }
+            if let itemPrice = productVariation?.itemDetailPrice {
+                itemDetailPriceLabel.text = itemPrice
             }
         }
     }
@@ -36,10 +53,17 @@ class ProductVariationController: UIViewController {
         view.layer.masksToBounds = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
-                
         view.addSubview(productImageView)
-        if let attributes = shop?.productVariationAttributes {
+        view.addSubview(itemDetails)
+        view.addSubview(itemDetailPriceLabel)
+        if let attributes = shop?.itemDetailsImageAttributes {
             view.setupConstraintsForView(productImageView, attributes: attributes)
+        }
+        if let itemDescAttributes = shop?.itemDescriptionAttributes {
+            view.setupConstraintsForView(itemDetails, attributes: itemDescAttributes)
+        }
+        if let itemDetailPriceAttributes = shop?.itemDetailPriceAttributes {
+            view.setupConstraintsForView(itemDetailPriceLabel, attributes: itemDetailPriceAttributes)
         }
     }
 }

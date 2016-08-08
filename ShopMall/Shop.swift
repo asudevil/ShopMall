@@ -22,11 +22,15 @@ class Shop: NSObject {
     var logoImage: String?
     var products: [Product]?
     var productNameFontSize: NSNumber?
-    var productCellAttributes: Attributes?
-    var productCatalogImageAttributes: Attributes?
-    var productVariationCellAttributes: Attributes?
-    var productVariationCellImageAttributes: Attributes?
-    var productVariationAttributes: Attributes?
+    var headerField: NSNumber?
+    var catalogNameAttributes: Attributes?
+    var catalogImageAttributes: Attributes?
+    var productCellNameAttributes: Attributes?
+    var productCellImageAttributes: Attributes?
+    var itemPriceAttributes: Attributes?
+    var itemDetailsImageAttributes: Attributes?
+    var itemDescriptionAttributes: Attributes?
+    var itemDetailPriceAttributes: Attributes?
     
     init(dictionary: [String: AnyObject]) {
         super.init()
@@ -41,29 +45,39 @@ class Shop: NSObject {
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
+        headerField = dictionary["headerField"] as? NSNumber
         
         if let productDictionaries = dictionary["products"] as? [[String: AnyObject]] {
             products = productDictionaries.map({return Product(dictionary: $0)})
         }
         
-        if let productCellAttributesDictionary = dictionary["productCellAttributes"] as? [String: AnyObject] {
-            productCellAttributes = Attributes(dictionary: productCellAttributesDictionary)
+        if let catalogNameAttributesDictionary = dictionary["catalogNameAttributes"] as? [String: AnyObject] {
+            catalogNameAttributes = Attributes(dictionary: catalogNameAttributesDictionary)
         }
-        if let productCatalogImageAttributesDictionary = dictionary["productCatalogImageAttributes"] as? [String: AnyObject] {
-            productCatalogImageAttributes = Attributes(dictionary: productCatalogImageAttributesDictionary)
-        }
-        
-        if let productVariationCellAttributesDictionary = dictionary["productVariationCellAttributes"] as? [String: AnyObject] {
-            productVariationCellAttributes = Attributes(dictionary: productVariationCellAttributesDictionary)
+        if let catalogImageAttributesDictionary = dictionary["catalogImageAttributes"] as? [String: AnyObject] {
+            catalogImageAttributes = Attributes(dictionary: catalogImageAttributesDictionary)
         }
         
-        if let productVariationCellImageAttributesDictionary = dictionary["productVariationCellImageAttributes"] as? [String: AnyObject] {
-            productVariationCellImageAttributes = Attributes(dictionary: productVariationCellImageAttributesDictionary)
+        if let productCellNameAttributesDictionary = dictionary["productCellNameAttributes"] as? [String: AnyObject] {
+            productCellNameAttributes = Attributes(dictionary: productCellNameAttributesDictionary)
+        }
+        if let itemPriceAttributesDictionary = dictionary["itemPriceAttributes"] as? [String: AnyObject] {
+            itemPriceAttributes = Attributes(dictionary: itemPriceAttributesDictionary)
+        }
+        
+        if let productCellImageAttributesDictionary = dictionary["productCellImageAttributes"] as? [String: AnyObject] {
+            productCellImageAttributes = Attributes(dictionary: productCellImageAttributesDictionary)
         }
 
         
-        if let productVariationAttributesDictionary = dictionary["productVariationAttributes"] as? [String: AnyObject] {
-            productVariationAttributes = Attributes(dictionary: productVariationAttributesDictionary)
+        if let itemDetailsImageAttributesDictionary = dictionary["itemDetailsImageAttributes"] as? [String: AnyObject] {
+            itemDetailsImageAttributes = Attributes(dictionary: itemDetailsImageAttributesDictionary)
+        }
+        if let itemDescriptionAttributesDictionary = dictionary["itemDescriptionAttributes"] as? [String: AnyObject] {
+            itemDescriptionAttributes = Attributes(dictionary: itemDescriptionAttributesDictionary)
+        }
+        if let itemDetailPriceAttributesDictionary = dictionary["itemDetailPriceAttributes"] as? [String: AnyObject] {
+            itemDetailPriceAttributes = Attributes(dictionary: itemDetailPriceAttributesDictionary)
         }
     }
     

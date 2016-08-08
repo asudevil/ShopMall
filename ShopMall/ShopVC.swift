@@ -10,10 +10,13 @@ import UIKit
 
 class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var shop: Shop?
-    let cellId = "cellId"
+    private let cellId = "cellId"
+    private let headerId = "headerId"
     
+    var shop: Shop?
+
     var navBarColorSelected = "#dddddd"
+    var header = "0"
     var cartImageView = UIImageView()
     var cartImageURL = String()
     
@@ -37,6 +40,8 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         
         collectionView?.registerClass(ProductCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.registerClass(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+
         collectionView?.backgroundColor = UIColor.whiteColor()
 
     }
@@ -53,10 +58,10 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProductCell
         
         if !cell.hasSetupConstraints {
-            if let attributes = shop?.productCellAttributes {
+            if let attributes = shop?.catalogNameAttributes {
                 cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
             }
-            if let attributes = shop?.productCatalogImageAttributes {
+            if let attributes = shop?.catalogImageAttributes {
                 cell.setupConstraintsForView(cell.catalogImageView, attributes: attributes)
             }
             if let cellColor = shop?.cellColor {
@@ -78,7 +83,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         if let cellHeight = shop?.tableCellHeight {
@@ -95,13 +99,22 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         productController.shop = shop
         productController.product = product
         navigationController?.pushViewController(productController, animated: true)
+    }
+    
+    
+    //Header (Search or scrow bar or tab bar)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if header == "0" {
+            return CGSizeMake(view.frame.width, 0)
+        }
+        return CGSizeMake(view.frame.width, 50)
+    }
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerId, forIndexPath: indexPath) as! Header
         
-//        let shop = shops?[indexPath.row]
-//        let layout = UICollectionViewFlowLayout()
-//        let shopController = ShopVC(collectionViewLayout: layout)
-//        shopController.shopId = shop?.id?.stringValue
-//        
-//        navigationController?.pushViewController(shopController, animated: true)
+      //  header.appCategory = featuredApps?.bannerCategory
+        
+        return header
     }
     
     func setupNavBarWithUser(shop: Shop) {
@@ -123,12 +136,8 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         logoImage.clipsToBounds = true
         
         if let logoImageUrl = shop.logoImage {
-            print("Loading logo for \(logoImageUrl)")
             logoImage.loadImageUsingCacheWithUrlString(logoImageUrl)
         }
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(ShopController.imageTapped(_:)))
-        logoImage.userInteractionEnabled = true
-        logoImage.addGestureRecognizer(tapGestureRecognizer)
         
         logoImage.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 70).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
@@ -141,23 +150,15 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         titleView.addSubview(btnName)
         btnName.translatesAutoresizingMaskIntoConstraints = false
         
-        print("Setting navbar items")
         // btnName.setImage(cartImageView.image, forState: .Normal)
         
         //??? How do I set this image to downloaded image from shops.json
         let btnImage = UIImage(named: "default-cart")
         btnName.setImage(btnImage, forState: .Normal)
         btnName.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
-        
         btnName.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 150).active = true
         btnName.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
         btnName.widthAnchor.constraintEqualToConstant(30).active = true
         btnName.heightAnchor.constraintEqualToConstant(30).active = true
     }
-    
-    func imageTapped(img: AnyObject)
-    {
-        print("Image tapped")
-    }
-
 }
