@@ -12,9 +12,9 @@ class Product: NSObject {
     
     var id: NSNumber?
     var name: String?
-    var detail: String?
     var logoImage: String?
     var catalogImageUrl: String?
+    var catalogDetail: String?
     var itemPrice: String?
     var productVariations: [ProductVariation]?
     
@@ -22,9 +22,9 @@ class Product: NSObject {
         super.init()
         id = dictionary["id"] as? NSNumber
         name = dictionary["name"] as? String
-        detail = dictionary["detail"] as? String
         logoImage = dictionary["logoImage"] as? String
         catalogImageUrl = dictionary["catalogImageUrl"] as? String
+        catalogDetail = dictionary["catalogDetail"] as? String
         itemPrice = dictionary["itemPrice"] as? String
         
         if let variationDictionaries = dictionary["productVariations"] as? [[String: AnyObject]] {

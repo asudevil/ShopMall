@@ -61,8 +61,14 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             if let attributes = shop?.catalogNameAttributes {
                 cell.setupConstraintsForView(cell.nameLabel, attributes: attributes)
             }
+            if let attributes = shop?.catalogDetailAttributes {
+                cell.setupConstraintsForView(cell.catalogDetail, attributes: attributes)
+            }
             if let attributes = shop?.catalogImageAttributes {
                 cell.setupConstraintsForView(cell.catalogImageView, attributes: attributes)
+            }
+            if let container1Attributes = shop?.catalogContainer1Attributes {
+                cell.setupConstraintsForView(cell.container1, attributes: container1Attributes)
             }
             if let cellColor = shop?.cellColor {
                 cell.backgroundColor = UIColor.hexStringToUIColor(cellColor)
@@ -74,10 +80,26 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             cell.nameLabel.text = product.name
             if let nameFontSize = shop?.productNameFontSize {
                 cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
-                cell.nameLabel.numberOfLines = 0
+            }
+            cell.nameLabel.numberOfLines = 0
+            
+            cell.bringSubviewToFront(cell.nameLabel)
+            
+            if let cellTextColor = shop?.catalogTextColor {
+                cell.nameLabel.textColor = UIColor.hexStringToUIColor(cellTextColor)
+            }
+            if let container1Color = shop?.catalogContainer1Color {
+                if let container1Alpha = shop?.catalogContainer1Alpha {
+                    cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color).colorWithAlphaComponent(container1Alpha)
+                }else {
+                    cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color)
+                }
             }
             if let catalogImageURL = product.catalogImageUrl {
                 cell.catalogImageView.loadImageUsingCacheWithUrlString(catalogImageURL)
+            }
+            if let catalogDetail = product.catalogDetail {
+                cell.catalogDetail.text = catalogDetail
             }
         }
         return cell
@@ -107,7 +129,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         if header == "0" {
             return CGSizeMake(view.frame.width, 0)
         }
-        return CGSizeMake(view.frame.width, 50)
+        return CGSizeMake(view.frame.width, 40)
     }
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerId, forIndexPath: indexPath) as! Header
@@ -115,6 +137,12 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
       //  header.appCategory = featuredApps?.bannerCategory
         
         return header
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        if let cellSpacing = shop?.cellSpacing {
+            return cellSpacing
+        }
+        return 5
     }
     
     func setupNavBarWithUser(shop: Shop) {
@@ -139,7 +167,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             logoImage.loadImageUsingCacheWithUrlString(logoImageUrl)
         }
         
-        logoImage.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 70).active = true
+        logoImage.centerXAnchor.constraintEqualToAnchor(titleLabel.centerXAnchor).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
         logoImage.widthAnchor.constraintEqualToConstant(30).active = true
         logoImage.heightAnchor.constraintEqualToConstant(30).active = true

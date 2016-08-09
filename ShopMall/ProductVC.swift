@@ -21,7 +21,6 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
                     setupNavBarWithUser(navBarTitle, logoImageURL: storeLogoURL)
                 }
             }
-            
         }
     }
     
@@ -64,8 +63,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         }
         if let productPrice = product?.itemPrice {
             cell.itemPrice.text = productPrice
-        }
-        
+        }        
         return cell
     }
     

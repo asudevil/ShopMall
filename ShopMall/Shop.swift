@@ -17,14 +17,20 @@ class Shop: NSObject {
     var navBarColor: String?
     var cellColor: String?
     var tableCellHeight: CGFloat?
+    var cellSpacing: CGFloat?
     var numberOfColumns: Int?
     var cartImage: String?
     var logoImage: String?
     var products: [Product]?
     var productNameFontSize: NSNumber?
+    var catalogTextColor: String?
+    var catalogContainer1Color: String?
+    var catalogContainer1Alpha: CGFloat?
     var headerField: NSNumber?
     var catalogNameAttributes: Attributes?
+    var catalogDetailAttributes: Attributes?
     var catalogImageAttributes: Attributes?
+    var catalogContainer1Attributes: Attributes?
     var productCellNameAttributes: Attributes?
     var productCellImageAttributes: Attributes?
     var itemPriceAttributes: Attributes?
@@ -40,7 +46,11 @@ class Shop: NSObject {
         appImageUrl = dictionary["appImageUrl"] as? String
         navBarColor = dictionary["navBarColor"] as? String
         cellColor = dictionary["cellColor"] as? String
+        catalogTextColor = dictionary["catalogTextColor"] as? String
+        catalogContainer1Color = dictionary["catalogContainer1Color"] as? String
+        catalogContainer1Alpha = dictionary["catalogContainer1Alpha"] as? CGFloat
         tableCellHeight = dictionary["tableCellHeight"] as? CGFloat
+        cellSpacing = dictionary["cellSpacing"] as? CGFloat
         numberOfColumns = dictionary["numberOfColumns"] as? Int
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
@@ -54,8 +64,14 @@ class Shop: NSObject {
         if let catalogNameAttributesDictionary = dictionary["catalogNameAttributes"] as? [String: AnyObject] {
             catalogNameAttributes = Attributes(dictionary: catalogNameAttributesDictionary)
         }
+        if let catalogDetailAttributesDictionary = dictionary["catalogDetailAttributes"] as? [String: AnyObject] {
+            catalogDetailAttributes = Attributes(dictionary: catalogDetailAttributesDictionary)
+        }
         if let catalogImageAttributesDictionary = dictionary["catalogImageAttributes"] as? [String: AnyObject] {
             catalogImageAttributes = Attributes(dictionary: catalogImageAttributesDictionary)
+        }
+        if let catalogContainer1AttributesDictionary = dictionary["catalogContainer1Attributes"] as? [String: AnyObject] {
+            catalogContainer1Attributes = Attributes(dictionary: catalogContainer1AttributesDictionary)
         }
         
         if let productCellNameAttributesDictionary = dictionary["productCellNameAttributes"] as? [String: AnyObject] {

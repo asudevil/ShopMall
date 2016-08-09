@@ -4,17 +4,15 @@
     "detail": "We sell iPhones, iPads, Macs",
     "navBarColor": "f5820b",
     "cellColor": "DDE5E5",
-    "tableCellHeight": 400,
+    "tableCellHeight": 300,
     "numberOfColumns": 2,
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
-    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
     "productNameFontSize": 20,
-    "headerField": 1,
     "catalogImageAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,
         "width": 400,
-        "height": 300
+        "height": 250
     },
     "catalogNameAttributes": {
         "centerXConstant": 0,
@@ -70,14 +68,14 @@
                                        "id": 1,
                                        "name": "iPhone Rose Gold 32GB",
                                        "itemDescription": "Here's your new iPhone 6s. Handy Features. Easy To Use · Attractive Design. Long Battery Life",
-                                       "itemDetailPrice": "299.95",
+                                       "itemDetailPrice": "399.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_rose.jpg"
                                        },
                                        {
                                        "id": 2,
                                        "name": "iPhone White 128GB",
                                        "itemDescription": "Unlocked cell phones are compatible with GSM carriers like",
-                                       "itemDetailPrice": "299.95",
+                                       "itemDetailPrice": "499.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_white.jpg"
                                        }
                                        ]

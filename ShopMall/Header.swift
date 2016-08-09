@@ -47,9 +47,9 @@ class Header: UICollectionViewCell {
         headerContainerView.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
         headerContainerView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
         
-        searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 20).active = true
+        searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 10).active = true
         searchTextField.topAnchor.constraintEqualToAnchor(headerContainerView.topAnchor, constant: 5).active = true
-        searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -20).active = true
+        searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -10).active = true
         searchTextField.bottomAnchor.constraintEqualToAnchor(headerContainerView.bottomAnchor, constant: -5).active = true
 
     }

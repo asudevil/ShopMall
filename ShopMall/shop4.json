@@ -1,0 +1,184 @@
+{
+    "id": 1,
+    "detail": "We sell iPhones, iPads, Macs",
+    "navBarColor": "000000",
+    "cellColor": "000000",
+    "tableCellHeight": 300,
+    "cellSpacing": 1,
+    "numberOfColumns": 2,
+    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
+    "productNameFontSize": 16,
+    "catalogTextColor": "FFFFFF",
+    "catalogContainer1Color": "191919",
+    "catalogContainer1Alpha": 0.4,
+    "catalogImageAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 0,
+        "width": 450,
+        "height": 350
+    },
+    "catalogNameAttributes": {
+        "leftAnchorConstant": 20,
+        "bottomAnchorConstant": 20,
+        "width": 200,
+        "height": 30
+    },
+    "catalogDetailAttributes": {
+        "leftAnchorConstant": 20,
+        "bottomAnchorConstant": 10,
+        "width": 200,
+        "height": 20
+    },
+    "catalogContainer1Attributes": {
+        "centerXConstant": 0,
+        "bottomAnchorConstant": 0,
+        "width": 350,
+        "height": 50
+    },
+    "productCellImageAttributes": {
+        "rightAnchorConstant": 50,
+        "bottomAnchorConstant": 60,
+        "width": 300,
+        "height": 120
+    },
+    "productCellNameAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 20,
+        "width": 200,
+        "height": 50
+    },
+    "itemPriceAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 0,
+        "width": 200,
+        "height": 50
+    },
+    "itemDetailsImageAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": -100,
+        "width": 320,
+        "height": 200
+    },
+    "itemDescriptionAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 50,
+        "width": 250,
+        "height": 100
+    },
+    "itemDetailPriceAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 160,
+        "width": 200,
+        "height": 50
+    },
+    "products": [
+                 {
+                 "id": 1,
+                 "name": "Watches",
+                 "catalogDetail": "Watchmaking's Gold Standard",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch-catalog.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
+                 "itemPrice":"$299.95",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Eone Bradley Watch",
+                                       "itemDescription": "Old World charm and modern technology describe this exquisite Eone Bradley Watch.",
+                                       "itemDetailPrice": "299.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch1.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "GUCCI Watch",
+                                       "itemDescription": "Beautiful GUCCI premium leather watch",
+                                       "itemDetailPrice": "1399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "EDOX Watch",
+                                       "itemDescription": "Produced precision timepieces with passion, ingenuity and meticulous attention to detail.",
+                                       "itemDetailPrice": "1399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch3.jpg"
+                                       },
+                                       {
+                                       "id": 4,
+                                       "name": "Apple iWatch",
+                                       "itemDescription": "The ultimate apple iWatch for the apple fans.",
+                                       "itemDetailPrice": "299.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch2.jpg"
+                                       },
+                                       {
+                                       "id": 5,
+                                       "name": "Kisai Maru Watch",
+                                       "itemDescription": "Kisai Maru Watch with chrome trimmings yup thats right.",
+                                       "itemDetailPrice": "1399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch4.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 2,
+                 "name": "Speakers",
+                 "catalogDetail": "Sound of Modern Lifestyle",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers-cover.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
+                 "itemPrice":"$499.99",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "iWatch!",
+                                       "itemDescription": "Very beautiful iWatch custom made for you",
+                                       "itemDetailPrice": "499.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers1.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "What time is it??",
+                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
+                                       "itemDetailPrice": "499.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "What time is it??",
+                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
+                                       "itemDetailPrice": "499.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers3.jpg"
+                                       }
+                                       ]
+                 },
+                 {
+                 "id": 3,
+                 "name": "Furniture",
+                 "catalogDetail": "Slick Smooth Relaxation",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture-catalog.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
+                 "itemPrice":"$399.95",
+                 "productVariations": [
+                                       {
+                                       "id": 1,
+                                       "name": "Ultramodern furniture",
+                                       "itemDescription": "Amazing looking furniture.  More description goes right over here",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture1.jpg"
+                                       },
+                                       {
+                                       "id": 2,
+                                       "name": "Couch",
+                                       "itemDescription": "Comfortable couch for the modern lifestyle.  Very good deal!",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "Slick Furniture",
+                                       "itemDescription": "Slick looking wooden furniture",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture3.jpg"
+                                       }
+                                       ]
+                 }
+                 ]
+}

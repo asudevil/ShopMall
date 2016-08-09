@@ -12,20 +12,23 @@
  "name": "Touch of Modern",
  "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
- "productNameFontSize": 20
+ "productNameFontSize": 20,
+ "headerField": 0
  },
   {
   "id": 2,
   "name": "Microsoft",
   "detail": "Who wants a Surface Book?",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-image.jpg",
-  "productNameFontSize": 20
+  "productNameFontSize": 20,
+  "headerField": 1
   },
   {
   "id": 3,
   "name": "Best Buys",
   "detail": "Electrones, TVs, Music we got em",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy-image.jpg",
-  "productNameFontSize": 20
+  "productNameFontSize": 20,
+  "headerField": 0
   }
 ]
