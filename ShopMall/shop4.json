@@ -37,19 +37,19 @@
         "height": 50
     },
     "productCellImageAttributes": {
-        "rightAnchorConstant": 50,
-        "bottomAnchorConstant": 60,
-        "width": 300,
-        "height": 120
+        "centerXConstant": 0,
+        "topAnchorConstant": 5,
+        "width": 150,
+        "height": 150
     },
     "productCellNameAttributes": {
-        "rightAnchorConstant": 100,
-        "bottomAnchorConstant": 20,
+        "leftAnchorConstant": 10,
+        "bottomAnchorConstant": 30,
         "width": 200,
-        "height": 50
+        "height": 40
     },
     "itemPriceAttributes": {
-        "rightAnchorConstant": 100,
+        "leftAnchorConstant": 10,
         "bottomAnchorConstant": 0,
         "width": 200,
         "height": 50
@@ -80,6 +80,8 @@
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/watch-catalog.jpg",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
                  "itemPrice":"$299.95",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
                                        "id": 1,
@@ -124,26 +126,28 @@
                  "catalogDetail": "Sound of Modern Lifestyle",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers-cover.jpg",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
-                 "itemPrice":"$499.99",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
+                 "itemPrice":"$699.99",
                  "productVariations": [
                                        {
                                        "id": 1,
-                                       "name": "iWatch!",
-                                       "itemDescription": "Very beautiful iWatch custom made for you",
-                                       "itemDetailPrice": "499.95",
+                                       "name": "OM/ONE Levitating Speaker",
+                                       "itemDescription": "OM/ONE Levitating Speaker // Jet Black.  Very loud!",
+                                       "itemDetailPrice": "299.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers1.jpg"
                                        },
                                        {
                                        "id": 2,
-                                       "name": "What time is it??",
-                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
+                                       "name": "Sound of modern wooden speaker",
+                                       "itemDescription": "I have no idea what this is.  Looks like an speaker to me.",
                                        "itemDetailPrice": "499.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers2.jpg"
                                        },
                                        {
                                        "id": 3,
-                                       "name": "What time is it??",
-                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
+                                       "name": "Bass Boosting Speaker",
+                                       "itemDescription": "Wireless Bass Boosting LED 2.1 Speaker + Sub-Woofer Control.",
                                        "itemDetailPrice": "499.95",
                                        "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/speakers3.jpg"
                                        }
@@ -156,6 +160,8 @@
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture-catalog.jpg",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
                  "itemPrice":"$399.95",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
                                        "id": 1,

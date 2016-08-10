@@ -15,6 +15,8 @@ class Product: NSObject {
     var logoImage: String?
     var catalogImageUrl: String?
     var catalogDetail: String?
+    var backgroudColor: String?
+    var catalogFrameDivider: CGFloat?
     var itemPrice: String?
     var productVariations: [ProductVariation]?
     
@@ -25,6 +27,8 @@ class Product: NSObject {
         logoImage = dictionary["logoImage"] as? String
         catalogImageUrl = dictionary["catalogImageUrl"] as? String
         catalogDetail = dictionary["catalogDetail"] as? String
+        backgroudColor = dictionary["backgroudColor"] as? String
+        catalogFrameDivider = dictionary["catalogFrameDivider"] as? CGFloat
         itemPrice = dictionary["itemPrice"] as? String
         
         if let variationDictionaries = dictionary["productVariations"] as? [[String: AnyObject]] {

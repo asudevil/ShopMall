@@ -5,7 +5,7 @@
   "detail": "We sell iPhones, iPads, Macs",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Apple-cover.jpg",
   "productNameFontSize": 20,
-  "headerField": 1
+  "headerField": 0
   },
  {
  "id": 4,
@@ -13,7 +13,7 @@
  "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
  "productNameFontSize": 20,
- "headerField": 0
+ "headerField": 1
  },
   {
   "id": 2,

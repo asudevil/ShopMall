@@ -60,7 +60,6 @@ class Shop: NSObject {
         if let productDictionaries = dictionary["products"] as? [[String: AnyObject]] {
             products = productDictionaries.map({return Product(dictionary: $0)})
         }
-        
         if let catalogNameAttributesDictionary = dictionary["catalogNameAttributes"] as? [String: AnyObject] {
             catalogNameAttributes = Attributes(dictionary: catalogNameAttributesDictionary)
         }
@@ -73,19 +72,15 @@ class Shop: NSObject {
         if let catalogContainer1AttributesDictionary = dictionary["catalogContainer1Attributes"] as? [String: AnyObject] {
             catalogContainer1Attributes = Attributes(dictionary: catalogContainer1AttributesDictionary)
         }
-        
         if let productCellNameAttributesDictionary = dictionary["productCellNameAttributes"] as? [String: AnyObject] {
             productCellNameAttributes = Attributes(dictionary: productCellNameAttributesDictionary)
         }
         if let itemPriceAttributesDictionary = dictionary["itemPriceAttributes"] as? [String: AnyObject] {
             itemPriceAttributes = Attributes(dictionary: itemPriceAttributesDictionary)
         }
-        
         if let productCellImageAttributesDictionary = dictionary["productCellImageAttributes"] as? [String: AnyObject] {
             productCellImageAttributes = Attributes(dictionary: productCellImageAttributesDictionary)
         }
-
-        
         if let itemDetailsImageAttributesDictionary = dictionary["itemDetailsImageAttributes"] as? [String: AnyObject] {
             itemDetailsImageAttributes = Attributes(dictionary: itemDetailsImageAttributesDictionary)
         }

@@ -22,7 +22,7 @@ class ShopCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     let imageView: UIImageView = {
        let image = UIImageView()
         image.image = UIImage(named: "YogaNinja_icon_400_240")

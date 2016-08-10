@@ -145,6 +145,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         return 5
     }
     
+    
     func setupNavBarWithUser(shop: Shop) {
         
         let title = shop.name

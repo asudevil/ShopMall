@@ -11,14 +11,17 @@ import UIKit
 class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var numberOfColumns = 1
+    var setBackgroundColor = "ffffff"
     
     var product: Product? {
         didSet {
             self.collectionView?.reloadData()
             if let navBarTitle = product?.name {
-              //  navigationItem.title = navBarTitle
                 if let storeLogoURL = product?.logoImage {
                     setupNavBarWithUser(navBarTitle, logoImageURL: storeLogoURL)
+                }
+                if let background = product?.backgroudColor {
+                    self.collectionView?.backgroundColor = UIColor.hexStringToUIColor(background)
                 }
             }
         }
@@ -32,7 +35,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         super.viewDidLoad()
         collectionView?.registerClass(ProductVariationCell.self, forCellWithReuseIdentifier: cellId)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.hexStringToUIColor(setBackgroundColor)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -57,20 +60,26 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         
         if let productVariation = product?.productVariations?[indexPath.row] {
             cell.nameLabel.text = productVariation.name
+            cell.itemPrice.text = productVariation.itemDetailPrice
             if let imgUrl = productVariation.imageUrl {
                 cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
             }
         }
-        if let productPrice = product?.itemPrice {
-            cell.itemPrice.text = productPrice
-        }        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
+        if let frameDivider = product?.catalogFrameDivider {
+            return CGSizeMake(view.frame.width/frameDivider, 220)
+        }
+        
         return CGSizeMake(view.frame.width, 220)
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 10, 0, 10)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

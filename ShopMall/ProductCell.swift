@@ -87,5 +87,6 @@ class ProductCell: BaseCustomizableCell {
         addSubview(container1)
         addSubview(container2)
         addSubview(container3)
+        backgroundColor = UIColor.whiteColor()
     }
 }
