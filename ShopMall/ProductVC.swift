@@ -3,14 +3,13 @@
 //  ShopMall
 //
 //  Created by admin on 8/2/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
 
 class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var numberOfColumns = 1
     var setBackgroundColor = "ffffff"
     
     var product: Product? {

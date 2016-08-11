@@ -36,6 +36,7 @@
                  "id": 1,
                  "name": "iPhone 6s Plus",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
+                 "catalogFrameDivider": 1.2,
                  "productVariations": [
                                        {
                                        "id": 1,

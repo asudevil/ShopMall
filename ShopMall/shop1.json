@@ -5,7 +5,6 @@
     "navBarColor": "f5820b",
     "cellColor": "DDE5E5",
     "tableCellHeight": 300,
-    "numberOfColumns": 2,
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
     "productNameFontSize": 20,
     "catalogImageAttributes": {
@@ -63,6 +62,7 @@
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
                  "itemPrice":"$299.95",
+                 "catalogFrameDivider": 1.2,
                  "productVariations": [
                                        {
                                        "id": 1,

@@ -2,8 +2,8 @@
 //  Shop.swift
 //  ShopMall
 //
-//  Created by Brian Voong on 7/21/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by admin on 7/21/16.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +18,6 @@ class Shop: NSObject {
     var cellColor: String?
     var tableCellHeight: CGFloat?
     var cellSpacing: CGFloat?
-    var numberOfColumns: Int?
     var cartImage: String?
     var logoImage: String?
     var products: [Product]?
@@ -26,7 +25,8 @@ class Shop: NSObject {
     var catalogTextColor: String?
     var catalogContainer1Color: String?
     var catalogContainer1Alpha: CGFloat?
-    var headerField: NSNumber?
+    var headerField: CGFloat?
+    var catalogHeaderContainerAttributes: Attributes?
     var catalogNameAttributes: Attributes?
     var catalogDetailAttributes: Attributes?
     var catalogImageAttributes: Attributes?
@@ -51,14 +51,16 @@ class Shop: NSObject {
         catalogContainer1Alpha = dictionary["catalogContainer1Alpha"] as? CGFloat
         tableCellHeight = dictionary["tableCellHeight"] as? CGFloat
         cellSpacing = dictionary["cellSpacing"] as? CGFloat
-        numberOfColumns = dictionary["numberOfColumns"] as? Int
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
-        headerField = dictionary["headerField"] as? NSNumber
+        headerField = dictionary["headerField"] as? CGFloat
         
         if let productDictionaries = dictionary["products"] as? [[String: AnyObject]] {
             products = productDictionaries.map({return Product(dictionary: $0)})
+        }
+        if let catalogHeaderContainerAttributesDictionary = dictionary["catalogHeaderContainerAttributes"] as? [String: AnyObject] {
+            catalogHeaderContainerAttributes = Attributes(dictionary: catalogHeaderContainerAttributesDictionary)
         }
         if let catalogNameAttributesDictionary = dictionary["catalogNameAttributes"] as? [String: AnyObject] {
             catalogNameAttributes = Attributes(dictionary: catalogNameAttributesDictionary)

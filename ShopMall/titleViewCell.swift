@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 7/29/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -46,7 +46,5 @@ class TitleViewCell: UIView {
         cartImage.widthAnchor.constraintEqualToConstant(25).active = true
         cartImage.heightAnchor.constraintEqualToConstant(25).active = true
         
-        
-       // addConstraintsWithFormat("V:|[v0]", views: titleLabel)
     }
 }

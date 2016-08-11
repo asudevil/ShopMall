@@ -2,8 +2,8 @@
 //  ProductVariationCell.swift
 //  ShopMall
 //
-//  Created by Brian Voong on 7/21/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by admin on 7/21/16.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit

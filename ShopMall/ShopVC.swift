@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 8/2/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var shop: Shop?
 
     var navBarColorSelected = "#dddddd"
-    var header = "0"
+    var header = CGFloat()
     var cartImageView = UIImageView()
     var cartImageURL = String()
     
@@ -126,15 +126,14 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //Header (Search or scrow bar or tab bar)
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if header == "0" {
-            return CGSizeMake(view.frame.width, 0)
-        }
-        return CGSizeMake(view.frame.width, 40)
+        return CGSizeMake(view.frame.width, header)
     }
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerId, forIndexPath: indexPath) as! Header
         
-      //  header.appCategory = featuredApps?.bannerCategory
+        if let attributes = shop?.catalogHeaderContainerAttributes {
+            header.setupConstraintsForView(header.headerContainerView, attributes: attributes)
+        }
         
         return header
     }

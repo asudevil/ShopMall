@@ -7,6 +7,12 @@
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image2.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft_log.jpg",
     "productNameFontSize": 14,
+    "catalogHeaderContainerAttributes": {
+        "centerXConstant": 0,
+        "centerYConstant": 0,
+        "width": 150,
+        "height": 40
+    },
     "catalogImageAttributes": {
         "rightAnchorConstant": 10,
         "centerYConstant": 0,
@@ -43,6 +49,7 @@
                  "name": "Microsoft Software Products",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-software-image.jpg",
                  "itemPrice":"$199.99",
+                 "catalogFrameDivider": 1.2,
                  "productVariations": [
                                        {
                                        "id": 1,

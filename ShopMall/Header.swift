@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 8/7/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -42,15 +42,9 @@ class Header: UICollectionViewCell {
         headerContainerView.addSubview(searchTextField)
         
         //need x, y, width, height constraints
-        headerContainerView.centerXAnchor.constraintEqualToAnchor(centerXAnchor).active = true
-        headerContainerView.centerYAnchor.constraintEqualToAnchor(centerYAnchor).active = true
-        headerContainerView.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
-        headerContainerView.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
-        
         searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 10).active = true
         searchTextField.topAnchor.constraintEqualToAnchor(headerContainerView.topAnchor, constant: 5).active = true
         searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -10).active = true
         searchTextField.bottomAnchor.constraintEqualToAnchor(headerContainerView.bottomAnchor, constant: -5).active = true
-
     }
 }

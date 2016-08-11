@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 7/22/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit

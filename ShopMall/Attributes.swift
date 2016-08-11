@@ -2,8 +2,8 @@
 //  Attributes.swift
 //  ShopMall
 //
-//  Created by Brian Voong on 7/21/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by admin on 7/21/16.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -21,6 +21,9 @@ class Attributes: NSObject {
     var width: NSNumber?
     var height: NSNumber?
     
+    var widthAnchor: String?
+    var heightAnchor: String?
+    
     init(dictionary: [String: AnyObject]) {
         super.init()
         
@@ -34,6 +37,9 @@ class Attributes: NSObject {
         
         width = dictionary["width"] as? NSNumber
         height = dictionary["height"] as? NSNumber
+        
+        widthAnchor = dictionary["width"] as? String
+        heightAnchor = dictionary["height"] as? String
     }
     
 }

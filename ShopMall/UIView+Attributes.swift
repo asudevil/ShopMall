@@ -2,8 +2,8 @@
 //  UIView+Attributes.swift
 //  ShopMall
 //
-//  Created by Brian Voong on 7/21/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by admin on 7/21/16.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -30,9 +30,18 @@ extension UIView {
         if let width = attributes.width?.CGFloatValue() {
             view.widthAnchor.constraintEqualToConstant(width).active = true
         }
-        
+        if let width = attributes.widthAnchor {
+            if width == "widthAnchor" {
+                view.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
+            }
+        }
         if let height = attributes.height?.CGFloatValue() {
             view.heightAnchor.constraintEqualToConstant(height).active = true
+        }
+        if let height = attributes.heightAnchor {
+            if height == "heightAnchor" {
+                view.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 7/22/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -66,7 +66,7 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         let layout = UICollectionViewFlowLayout()
         let shopController = ShopVC(collectionViewLayout: layout)
         shopController.shopId = shop?.id?.stringValue
-        if let headerOrNot = shop?.headerField?.stringValue {
+        if let headerOrNot = shop?.headerField {
             shopController.header = headerOrNot
         }
         navigationController?.pushViewController(shopController, animated: true)
