@@ -55,10 +55,8 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         if let appImageUrl = shop?.appImageUrl {
             cell.imageView.loadImageUsingCacheWithUrlString(appImageUrl)
         }
-        
         return cell
     }
-
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
@@ -66,16 +64,14 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         let layout = UICollectionViewFlowLayout()
         let shopController = ShopVC(collectionViewLayout: layout)
         shopController.shopId = shop?.id?.stringValue
-        if let headerOrNot = shop?.headerField {
-            shopController.header = headerOrNot
+        if let headerOrNot = shop?.headerSize {
+            shopController.headerHeight = headerOrNot
         }
         navigationController?.pushViewController(shopController, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
         return CGSizeMake(view.frame.width, 230)
-        
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

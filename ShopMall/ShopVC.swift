@@ -16,7 +16,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var shop: Shop?
 
     var navBarColorSelected = "#dddddd"
-    var header = CGFloat()
+    var headerHeight = CGFloat()
     var cartImageView = UIImageView()
     var cartImageURL = String()
     
@@ -126,15 +126,27 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //Header (Search or scrow bar or tab bar)
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(view.frame.width, header)
+        return CGSizeMake(view.frame.width, headerHeight)
     }
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerId, forIndexPath: indexPath) as! Header
-        
-        if let attributes = shop?.catalogHeaderContainerAttributes {
-            header.setupConstraintsForView(header.headerContainerView, attributes: attributes)
+        if !header.hasSetupConstraints {
+            
+            if let attributes = shop?.catalogHeaderContainerAttributes {
+                header.setupConstraintsForView(header.headerContainerView, attributes: attributes)
+            }
+            if let attributes = shop?.searchTextFieldAttributes {
+                header.headerContainerView.setupConstraintsForView(header.searchTextField, attributes: attributes)
+            }
+            if let attributes = shop?.headerImageAttributes {
+                header.headerContainerView.setupConstraintsForView(header.headerImageView, attributes: attributes)
+            }
+            
+            header.hasSetupConstraints = true
         }
-        
+        if let headerImageUrl = shop?.headerImageUrl {
+            header.headerImageView.loadImageUsingCacheWithUrlString(headerImageUrl)
+        }
         return header
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

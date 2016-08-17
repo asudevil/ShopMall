@@ -1,11 +1,19 @@
 [
  {
+ "id": 6,
+ "name": "Yoga Ninja",
+ "detail": "Your one stop shop for yoga apperal",
+ "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_shelf_image.jpg",
+ "productNameFontSize": 20,
+ "headerSize": 40
+ },
+ {
  "id": 4,
  "name": "Touch of Modern",
  "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
  "productNameFontSize": 20,
- "headerField": 40
+ "headerSize": 40
  },
  {
  "id": 5,
@@ -13,7 +21,7 @@
  "detail": "Shop Forever 21 for the latest trends and the best deals!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image.jpg",
  "productNameFontSize": 20,
- "headerField": 40
+ "headerSize": 140
  },
  {
  "id": 1,
@@ -21,7 +29,7 @@
  "detail": "We sell iPhones, iPads, Macs",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Apple-cover.jpg",
  "productNameFontSize": 20,
- "headerField": 0
+ "headerSize": 0
  },
   {
   "id": 2,
@@ -29,7 +37,7 @@
   "detail": "Who wants a Surface Book?",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-image.jpg",
   "productNameFontSize": 20,
-  "headerField": 60
+  "headerSize": 60
   },
   {
   "id": 3,

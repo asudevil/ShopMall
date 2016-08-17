@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Header: UICollectionViewCell {
+class Header: BaseCustomizableCell {
     
     let headerContainerView: UIView = {
         let view = UIView()
@@ -27,6 +27,14 @@ class Header: UICollectionViewCell {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    var headerImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .ScaleAspectFit
+        image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.backgroundColor = UIColor.blueColor()
+        return image
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,11 +48,12 @@ class Header: UICollectionViewCell {
     func setupViews() {
         addSubview(headerContainerView)
         headerContainerView.addSubview(searchTextField)
+        headerContainerView.addSubview(headerImageView)
         
         //need x, y, width, height constraints
-        searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 10).active = true
-        searchTextField.topAnchor.constraintEqualToAnchor(headerContainerView.topAnchor, constant: 5).active = true
-        searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -10).active = true
-        searchTextField.bottomAnchor.constraintEqualToAnchor(headerContainerView.bottomAnchor, constant: -5).active = true
+//        searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 10).active = true
+//        searchTextField.topAnchor.constraintEqualToAnchor(headerContainerView.topAnchor, constant: 5).active = true
+//        searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -10).active = true
+//        searchTextField.bottomAnchor.constraintEqualToAnchor(headerContainerView.bottomAnchor, constant: -5).active = true
     }
 }

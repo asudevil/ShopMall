@@ -17,6 +17,12 @@
         "width": "widthAnchor",
         "height": "heightAnchor"
     },
+    "searchTextFieldAttributes": {
+        "leftAnchorConstant": 10,
+        "topAnchorConstant": 5,
+        "width": 300,
+        "height": 50
+    },
     "catalogImageAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,

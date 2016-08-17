@@ -1,12 +1,12 @@
 {
     "id": 5,
-    "detail": "We sell clothes",
+    "detail": "Your one stop shop for yoga apperal",
     "navBarColor": "FFFFF3",
     "cellColor": "000000",
     "tableCellHeight": 250,
     "cellSpacing": 1,
     "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-basket.png",
-    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21_icon.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
     "headerImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-sale-image.jpg",
     "productNameFontSize": 22,
     "catalogTextColor": "000000",
@@ -87,9 +87,9 @@
     "products": [
                  {
                  "id": 1,
-                 "name": "Women",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-women.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21_icon.png",
+                 "name": "Women Yoga Ninja",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank.jpg",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
                  "catalogFrameDivider": 2.2,
                  "productVariations": [
@@ -132,9 +132,9 @@
                  },
                  {
                  "id": 2,
-                 "name": "Men",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-men.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21_icon.png",
+                 "name": "Men Yoga Ninja",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/train-your-mind-mens-tank.png",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
                  "catalogFrameDivider": 2.2,
                  "productVariations": [
@@ -163,9 +163,9 @@
                  },
                  {
                  "id": 3,
-                 "name": "Women Plus Size",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-plus.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21_icon.png",
+                 "name": "Kids Yoga Ninja",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoga-ninja-kids.png",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
                  "catalogFrameDivider": 2.2,
                  "productVariations": [

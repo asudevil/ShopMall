@@ -20,13 +20,16 @@ class Shop: NSObject {
     var cellSpacing: CGFloat?
     var cartImage: String?
     var logoImage: String?
+    var headerImageUrl: String?
     var products: [Product]?
     var productNameFontSize: NSNumber?
     var catalogTextColor: String?
     var catalogContainer1Color: String?
     var catalogContainer1Alpha: CGFloat?
-    var headerField: CGFloat?
+    var headerSize: CGFloat?
     var catalogHeaderContainerAttributes: Attributes?
+    var searchTextFieldAttributes: Attributes?
+    var headerImageAttributes: Attributes?
     var catalogNameAttributes: Attributes?
     var catalogDetailAttributes: Attributes?
     var catalogImageAttributes: Attributes?
@@ -53,14 +56,21 @@ class Shop: NSObject {
         cellSpacing = dictionary["cellSpacing"] as? CGFloat
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
+        headerImageUrl = dictionary["headerImageUrl"] as? String
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
-        headerField = dictionary["headerField"] as? CGFloat
+        headerSize = dictionary["headerSize"] as? CGFloat
         
         if let productDictionaries = dictionary["products"] as? [[String: AnyObject]] {
             products = productDictionaries.map({return Product(dictionary: $0)})
         }
         if let catalogHeaderContainerAttributesDictionary = dictionary["catalogHeaderContainerAttributes"] as? [String: AnyObject] {
             catalogHeaderContainerAttributes = Attributes(dictionary: catalogHeaderContainerAttributesDictionary)
+        }
+        if let searchTextFieldAttributesDictionary = dictionary["searchTextFieldAttributes"] as? [String: AnyObject] {
+            searchTextFieldAttributes = Attributes(dictionary: searchTextFieldAttributesDictionary)
+        }
+        if let headerImageAttributesDictionary = dictionary["headerImageAttributes"] as? [String: AnyObject] {
+            headerImageAttributes = Attributes(dictionary: headerImageAttributesDictionary)
         }
         if let catalogNameAttributesDictionary = dictionary["catalogNameAttributes"] as? [String: AnyObject] {
             catalogNameAttributes = Attributes(dictionary: catalogNameAttributesDictionary)
