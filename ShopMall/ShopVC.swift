@@ -7,9 +7,20 @@
 //
 
 import UIKit
+import Buy
 
 class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
 
+    //Shopify
+    let shopDomain: String = "yoganinja.myshopify.com"
+    let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    let appID:      String = "8"
+    private var client: BUYClient!
+    private var products: [BUYProduct]?
+    private var selectedShopId = ""
+    
+    
     private let cellId = "cellId"
     private let headerId = "headerId"
     
@@ -23,9 +34,17 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var shopId: String? {
         didSet {
             if let id = shopId {
+                if id == "6" {
+//                    client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+//                    selectedShopId = id
+                    
+                    selectedShopId = "6"
+                    
+                    print("Inside didSet")
+                }
+                
                 Service.sharedInstance.fetchShop(id, completion: { (shop) in
                     self.shop = shop
-                    
                     if let navBarColor = shop.navBarColor {
                         self.navBarColorSelected = navBarColor
                     }
@@ -38,6 +57,12 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if selectedShopId == "6" {
+            print("fetching shopify$$$$")
+            Service.sharedInstance.fetchShopifyProducts()
+        }
+        
         
         collectionView?.registerClass(ProductCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.registerClass(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
@@ -52,6 +77,11 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if selectedShopId == "6" {
+            print("yoga ninja products: \(products?.count)")
+            return products?.count ?? 0
+        }
+        
         return shop?.products?.count ?? 0
     }
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -1,5 +1,5 @@
 {
-    "id": 5,
+    "id": 6,
     "detail": "Your one stop shop for yoga apperal",
     "navBarColor": "FFFFF3",
     "cellColor": "000000",
@@ -21,8 +21,8 @@
     "searchTextFieldAttributes": {
         "leftAnchorConstant": 10,
         "topAnchorConstant": 5,
-        "width": 300,
-        "height": 50
+        "width": 350,
+        "height": 40
     },
     "headerImageAttributes": {
         "leftAnchorConstant": 20,
@@ -88,7 +88,7 @@
                  {
                  "id": 1,
                  "name": "Women Yoga Ninja",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank.jpg",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank2.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
                  "catalogFrameDivider": 2.2,

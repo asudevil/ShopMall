@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Buy
 
 class Service: NSObject {
+    
+    let shopDomain: String = "yoganinja.myshopify.com"
+    let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    let appID:      String = "8"
+    
+    
     
     static let sharedInstance = Service()
     
@@ -93,5 +100,23 @@ class Service: NSObject {
             }
             }.resume()
     }
+    
+    func fetchShopifyProducts() {
+        var client: BUYClient!
+        
+        
+        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appID)
+        
+        print("inside fetchShopifyProduct")
 
+        
+        client.getProductsPage(1, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
+            if (products != nil) && error == nil {
+                print("Inside getCollectionsPage \(products)")
+            }
+            else {
+                print("Error fetching collections: \(error!.userInfo)")
+            }
+        })
+    }
 }

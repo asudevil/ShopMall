@@ -29,7 +29,7 @@ class Header: BaseCustomizableCell {
     }()
     var headerImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .ScaleAspectFit
+        image.contentMode = .ScaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = UIColor.blueColor()

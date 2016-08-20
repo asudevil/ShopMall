@@ -21,14 +21,14 @@
     "searchTextFieldAttributes": {
         "leftAnchorConstant": 10,
         "topAnchorConstant": 5,
-        "width": 300,
-        "height": 50
+        "width": 350,
+        "height": 40
     },
     "headerImageAttributes": {
-        "leftAnchorConstant": 20,
-        "topAnchorConstant": 60,
+        "leftAnchorConstant": 30,
+        "topAnchorConstant": 50,
         "width": 300,
-        "height": 50
+        "height": 200
     },
     "catalogImageAttributes": {
         "centerXConstant": 0,

@@ -5,7 +5,7 @@
  "detail": "Your one stop shop for yoga apperal",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_shelf_image.jpg",
  "productNameFontSize": 20,
- "headerSize": 40
+ "headerSize": 50
  },
  {
  "id": 4,
@@ -13,7 +13,7 @@
  "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
  "productNameFontSize": 20,
- "headerSize": 40
+ "headerSize": 50
  },
  {
  "id": 5,
@@ -21,7 +21,7 @@
  "detail": "Shop Forever 21 for the latest trends and the best deals!",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image.jpg",
  "productNameFontSize": 20,
- "headerSize": 140
+ "headerSize": 200
  },
  {
  "id": 1,
@@ -37,7 +37,6 @@
   "detail": "Who wants a Surface Book?",
   "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-image.jpg",
   "productNameFontSize": 20,
-  "headerSize": 60
   },
   {
   "id": 3,

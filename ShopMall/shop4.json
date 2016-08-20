@@ -20,8 +20,8 @@
     "searchTextFieldAttributes": {
         "leftAnchorConstant": 10,
         "topAnchorConstant": 5,
-        "width": 300,
-        "height": 50
+        "width": 350,
+        "height": 40
     },
     "catalogImageAttributes": {
         "centerXConstant": 0,
