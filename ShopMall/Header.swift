@@ -51,9 +51,6 @@ class Header: BaseCustomizableCell {
         headerContainerView.addSubview(headerImageView)
         
         //need x, y, width, height constraints
-//        searchTextField.leftAnchor.constraintEqualToAnchor(headerContainerView.leftAnchor, constant: 10).active = true
-//        searchTextField.topAnchor.constraintEqualToAnchor(headerContainerView.topAnchor, constant: 5).active = true
-//        searchTextField.rightAnchor.constraintEqualToAnchor(headerContainerView.rightAnchor, constant: -10).active = true
-//        searchTextField.bottomAnchor.constraintEqualToAnchor(headerContainerView.bottomAnchor, constant: -5).active = true
+
     }
 }

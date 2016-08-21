@@ -13,11 +13,11 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
 
     //Shopify
-    let shopDomain: String = "yoganinja.myshopify.com"
-    let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    let appID:      String = "8"
+    private let shopDomain: String = "yoganinja.myshopify.com"
+    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    private let appID:      String = "8"
     private var client: BUYClient!
-    private var products: [BUYProduct]?
+    private var shopifyProducts: [BUYCollection]?
     private var selectedShopId = ""
     
     
@@ -35,12 +35,15 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         didSet {
             if let id = shopId {
                 if id == "6" {
-//                    client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
-//                    selectedShopId = id
                     
-                    selectedShopId = "6"
-                    
-                    print("Inside didSet")
+                    Service.sharedInstance.fetchShopifyCollections(1, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (products, error) in
+                        self.shopifyProducts = products
+                        self.collectionView?.reloadData()
+                        
+                        //handle error
+                        
+                    })
+                    selectedShopId = id
                 }
                 
                 Service.sharedInstance.fetchShop(id, completion: { (shop) in
@@ -57,13 +60,9 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if selectedShopId == "6" {
-            print("fetching shopify$$$$")
-            Service.sharedInstance.fetchShopifyProducts()
+        if let shop = self.shop {
+            setupNavBarWithUser(shop)
         }
-        
-        
         collectionView?.registerClass(ProductCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.registerClass(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
 
@@ -73,13 +72,14 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectedShopId == "6" {
-            print("yoga ninja products: \(products?.count)")
-            return products?.count ?? 0
+            print("Number of shopifyProducts: \(shopifyProducts?.count)")
+            return shopifyProducts?.count ?? 0
         }
         
         return shop?.products?.count ?? 0
@@ -106,30 +106,67 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             cell.hasSetupConstraints = true
         }
         
-        if let product = shop?.products?[indexPath.row] {
-            cell.nameLabel.text = product.name
-            if let nameFontSize = shop?.productNameFontSize {
-                cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
-            }
-            cell.nameLabel.numberOfLines = 0
+    // Shopify
+        if selectedShopId == "6" {
             
-            cell.bringSubviewToFront(cell.nameLabel)
-            
-            if let cellTextColor = shop?.catalogTextColor {
-                cell.nameLabel.textColor = UIColor.hexStringToUIColor(cellTextColor)
-            }
-            if let container1Color = shop?.catalogContainer1Color {
-                if let container1Alpha = shop?.catalogContainer1Alpha {
-                    cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color).colorWithAlphaComponent(container1Alpha)
-                }else {
-                    cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color)
+            if let product = shopifyProducts?[indexPath.row] {
+                cell.nameLabel.text = product.title
+                
+                print(product.title)
+                
+                if let nameFontSize = shop?.productNameFontSize {
+                    cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+                }
+                
+                //Need to add this numberOfLines to JSON
+                cell.nameLabel.numberOfLines = 0
+                
+                cell.bringSubviewToFront(cell.nameLabel)
+                
+                if let cellTextColor = shop?.catalogTextColor {
+                    cell.nameLabel.textColor = UIColor.hexStringToUIColor(cellTextColor)
+                }
+                if let container1Color = shop?.catalogContainer1Color {
+                    if let container1Alpha = shop?.catalogContainer1Alpha {
+                        cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color).colorWithAlphaComponent(container1Alpha)
+                    }else {
+                        cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color)
+                    }
+                }
+                if let catalogImageNSURL = product.image.sourceURL {
+                    cell.catalogImageView.loadImageUsingCacheWithNSURL(catalogImageNSURL)
                 }
             }
-            if let catalogImageURL = product.catalogImageUrl {
-                cell.catalogImageView.loadImageUsingCacheWithUrlString(catalogImageURL)
-            }
-            if let catalogDetail = product.catalogDetail {
-                cell.catalogDetail.text = catalogDetail
+        }
+    // End shopify
+        else {
+            if let product = shop?.products?[indexPath.row] {
+                cell.nameLabel.text = product.name
+                if let nameFontSize = shop?.productNameFontSize {
+                    cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+                }
+                
+                //Need to add this numberOfLines to JSON
+                cell.nameLabel.numberOfLines = 0
+                
+                cell.bringSubviewToFront(cell.nameLabel)
+                
+                if let cellTextColor = shop?.catalogTextColor {
+                    cell.nameLabel.textColor = UIColor.hexStringToUIColor(cellTextColor)
+                }
+                if let container1Color = shop?.catalogContainer1Color {
+                    if let container1Alpha = shop?.catalogContainer1Alpha {
+                        cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color).colorWithAlphaComponent(container1Alpha)
+                    }else {
+                        cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color)
+                    }
+                }
+                if let catalogImageURL = product.catalogImageUrl {
+                    cell.catalogImageView.loadImageUsingCacheWithUrlString(catalogImageURL)
+                }
+                if let catalogDetail = product.catalogDetail {
+                    cell.catalogDetail.text = catalogDetail
+                }
             }
         }
         return cell
@@ -188,7 +225,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     
     func setupNavBarWithUser(shop: Shop) {
-        
+                
         let title = shop.name
         let titleView = UIView()
         let titleLabel = UILabel()
@@ -206,29 +243,30 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         logoImage.clipsToBounds = true
         
         if let logoImageUrl = shop.logoImage {
-            logoImage.loadImageUsingCacheWithUrlString(logoImageUrl)
+            logoImage.loadImageUsingCacheWithUrlString(logoImageUrl, completion: { (image) in
+
+            })
         }
-        
+    
         logoImage.centerXAnchor.constraintEqualToAnchor(titleLabel.centerXAnchor).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
         logoImage.widthAnchor.constraintEqualToConstant(30).active = true
         logoImage.heightAnchor.constraintEqualToConstant(30).active = true
         
+        if let cartImageName = shop.cartImage {
+            
+            let cartButton = UIButton()
+            cartButton.setImage(UIImage(named: cartImageName), forState: .Normal)
+            cartButton.frame = CGRectMake(0, 0, 30, 30)
+            cartButton.addTarget(self, action: #selector(ShopVC.clickOnButton(_:)), forControlEvents: .TouchUpInside)
+            
+            let rightBarButton = UIBarButtonItem(customView: cartButton)
+            self.navigationItem.rightBarButtonItem = rightBarButton
+        }
         self.navigationItem.titleView = titleView
-        
-        let btnName = UIButton()
-        titleView.addSubview(btnName)
-        btnName.translatesAutoresizingMaskIntoConstraints = false
-        
-        // btnName.setImage(cartImageView.image, forState: .Normal)
-        
-        //??? How do I set this image to downloaded image from shops.json
-        let btnImage = UIImage(named: "default-cart")
-        btnName.setImage(btnImage, forState: .Normal)
-        btnName.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
-        btnName.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 150).active = true
-        btnName.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
-        btnName.widthAnchor.constraintEqualToConstant(30).active = true
-        btnName.heightAnchor.constraintEqualToConstant(30).active = true
+    }
+    
+    func clickOnButton(button: UIButton) {
+        print("Cart Button Clicked")
     }
 }

@@ -4,7 +4,7 @@
     "navBarColor": "FAF308",
     "cellColor": "0816A2",
     "tableCellHeight": 100,
-    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-basket.png",
+    "cartImage": "cart-basket.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy_logo.png",
     "productNameFontSize": 18,
     "catalogImageAttributes": {

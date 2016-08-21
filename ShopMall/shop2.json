@@ -4,7 +4,7 @@
     "navBarColor": "4791ff",
     "cellColor": "33CEFF",
     "tableCellHeight": 150,
-    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image2.png",
+    "cartImage": "cart-image2.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft_log.jpg",
     "productNameFontSize": 14,
     "catalogHeaderContainerAttributes": {

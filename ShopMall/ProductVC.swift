@@ -33,7 +33,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.registerClass(ProductVariationCell.self, forCellWithReuseIdentifier: cellId)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
         collectionView?.backgroundColor = UIColor.hexStringToUIColor(setBackgroundColor)
     }
     
@@ -115,22 +115,37 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         logoImage.widthAnchor.constraintEqualToConstant(30).active = true
         logoImage.heightAnchor.constraintEqualToConstant(30).active = true
         
-        self.navigationItem.titleView = titleView
-        
         let btnName = UIButton()
         titleView.addSubview(btnName)
         btnName.translatesAutoresizingMaskIntoConstraints = false
         
-        // btnName.setImage(cartImageView.image, forState: .Normal)
+////////////??? How do I set this image to downloaded image from shops.json///////
+//        let buttonImage = UIImageView()
+//        
+//        if let cartImageUrl = shop?.cartImage {
+//            
+//            buttonImage.loadImageUsingCacheWithUrlString(cartImageUrl, completion: { (image) in
+//                btnName.setImage(image, forState: .Normal)
+//                print("Inside btnImage completion")
+//            })
+//        }
+//////////////////////////////////////////////////////////////////////////////////
         
-        //??? How do I set this image to downloaded image from shops.json
-        let btnImage = UIImage(named: "default-cart")
-        btnName.setImage(btnImage, forState: .Normal)
-        btnName.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
-        btnName.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 150).active = true
-        btnName.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
-        btnName.widthAnchor.constraintEqualToConstant(30).active = true
-        btnName.heightAnchor.constraintEqualToConstant(30).active = true
+        if let cartImageName = shop?.cartImage {
+            
+            let cartButton = UIButton()
+            cartButton.setImage(UIImage(named: cartImageName), forState: .Normal)
+            cartButton.frame = CGRectMake(0, 0, 30, 30)
+            cartButton.addTarget(self, action: #selector(ShopVC.clickOnButton(_:)), forControlEvents: .TouchUpInside)
+            
+            let rightBarButton = UIBarButtonItem(customView: cartButton)
+            self.navigationItem.rightBarButtonItem = rightBarButton
+        }
+        self.navigationItem.titleView = titleView
+    }
+    
+    func clickOnButton(button: UIButton) {
+        print("Cart Button Clicked")
     }
 
 }

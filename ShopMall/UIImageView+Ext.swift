@@ -12,8 +12,8 @@ let imageCache = NSCache()
 
 extension UIImageView {
     
-    func loadImageUsingCacheWithUrlString(urlString: String) {
-        
+    func loadImageUsingCacheWithUrlString(urlString: String, completion: ((UIImage) -> ())? = nil) {
+
         self.image = nil
         
         //check cache for image first
@@ -37,6 +37,8 @@ extension UIImageView {
                 if let downloadedImage = UIImage(data: data!) {
                     imageCache.setObject(downloadedImage, forKey: urlString)
                     
+                    completion? (downloadedImage)
+                    
                     self.image = downloadedImage
                 }
             })
@@ -44,19 +46,18 @@ extension UIImageView {
         }).resume()
     }
     
-    func loadImageNOW(urlString: String) {
+    func loadImageUsingCacheWithNSURL(nsURLString: NSURL, completion: ((UIImage) -> ())? = nil) {
         
         self.image = nil
         
         //check cache for image first
-        if let cachedImage = imageCache.objectForKey(urlString) as? UIImage {
+        if let cachedImage = imageCache.objectForKey(nsURLString) as? UIImage {
             self.image = cachedImage
             return
         }
         
         //otherwise fire off a new download
-        let url = NSURL(string: urlString)
-        NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+        NSURLSession.sharedSession().dataTaskWithURL(nsURLString, completionHandler: { (data, response, error) in
             
             //download hit an error so lets return out
             if error != nil {
@@ -64,10 +65,12 @@ extension UIImageView {
                 return
             }
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            dispatch_async(dispatch_get_main_queue(), {
                 
                 if let downloadedImage = UIImage(data: data!) {
-                    imageCache.setObject(downloadedImage, forKey: urlString)
+                    imageCache.setObject(downloadedImage, forKey: nsURLString)
+                    
+                    completion? (downloadedImage)
                     
                     self.image = downloadedImage
                 }

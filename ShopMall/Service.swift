@@ -11,11 +11,7 @@ import Buy
 
 class Service: NSObject {
     
-    let shopDomain: String = "yoganinja.myshopify.com"
-    let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    let appID:      String = "8"
-    
-    
+    var products: [BUYProduct]?
     
     static let sharedInstance = Service()
     
@@ -101,18 +97,31 @@ class Service: NSObject {
             }.resume()
     }
     
-    func fetchShopifyProducts() {
+    func fetchShopifyProducts(pages: UInt, shopDomain: String, apiKey: String, appId: String, completion: ([BUYProduct]?, NSError?) -> ()) {
         var client: BUYClient!
         
         
-        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appID)
+        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
         
-        print("inside fetchShopifyProduct")
-
-        
-        client.getProductsPage(1, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
+        client.getProductsPage(pages, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
+            
             if (products != nil) && error == nil {
-                print("Inside getCollectionsPage \(products)")
+                completion (products, error)
+            }
+            else {
+                print("Error fetching collections: \(error!.userInfo)")
+            }
+        })
+    }
+    func fetchShopifyCollections(pages: UInt, shopDomain: String, apiKey: String, appId: String, completion: ([BUYCollection]?, NSError?) -> ()) {
+        var client: BUYClient!
+        
+        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
+        
+        client.getCollectionsPage(pages, completion: {( collections:[BUYCollection]?, page: UInt, reachedEnd: Bool, error: NSError?) -> Void in
+            
+            if (collections != nil) && error == nil {
+                completion (collections, error)
             }
             else {
                 print("Error fetching collections: \(error!.userInfo)")

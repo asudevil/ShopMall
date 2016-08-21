@@ -5,7 +5,7 @@
     "cellColor": "000000",
     "tableCellHeight": 300,
     "cellSpacing": 1,
-    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-image.png",
+    "cartImage": "cart-image.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_icon.jpg",
     "productNameFontSize": 16,
     "catalogTextColor": "FFFFFF",

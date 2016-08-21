@@ -5,7 +5,7 @@
     "cellColor": "000000",
     "tableCellHeight": 250,
     "cellSpacing": 1,
-    "cartImage": "https:\/\/s3.amazonaws.com\/spicysuya\/cart-basket.png",
+    "cartImage": "cart-basket.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
     "headerImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-sale-image.jpg",
     "productNameFontSize": 22,
@@ -37,15 +37,15 @@
         "height": 350
     },
     "catalogNameAttributes": {
-        "leftAnchorConstant": 30,
+        "leftAnchorConstant": 50,
         "centerYConstant": 30,
-        "width": 100,
+        "width": 180,
         "height": 100
     },
     "catalogContainer1Attributes": {
         "leftAnchorConstant": 20,
         "centerYConstant": 30,
-        "width": 130,
+        "width": 200,
         "height": 100
     },
     "productCellImageAttributes": {
@@ -87,7 +87,7 @@
     "products": [
                  {
                  "id": 1,
-                 "name": "Women Yoga Ninja",
+                 "name": "Women Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank2.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
@@ -132,7 +132,7 @@
                  },
                  {
                  "id": 2,
-                 "name": "Men Yoga Ninja",
+                 "name": "Men Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/train-your-mind-mens-tank.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
@@ -163,7 +163,7 @@
                  },
                  {
                  "id": 3,
-                 "name": "Kids Yoga Ninja",
+                 "name": "Kids Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoga-ninja-kids.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
