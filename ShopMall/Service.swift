@@ -128,4 +128,18 @@ class Service: NSObject {
             }
         })
     }
+    
+    func fetchShopifyProductsInCollection(pages: UInt, collectionId: NSNumber, shopDomain: String, apiKey: String, appId: String, completion: ([BUYProduct]?, NSError?) -> ())  {
+        var client: BUYClient!
+        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
+        client.getProductsPage(pages, inCollection: collectionId, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
+            
+            if (products != nil) && error == nil {
+                completion (products, error)
+            }
+            else {
+                print("Error fetching collections: \(error!.userInfo)")
+            }
+        })
+    }
 }

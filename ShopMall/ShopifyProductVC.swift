@@ -1,16 +1,18 @@
 //
-//  ProductVC.swift
+//  ShopifyProductVC.swift
 //  ShopMall
 //
-//  Created by admin on 8/2/16.
+//  Created by admin on 8/28/16.
 //  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
 import Buy
 
-class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+private let reuseIdentifier = "Cell"
 
+class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
     private let shopDomain: String = "yoganinja.myshopify.com"
     private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
     private let appID:      String = "8"
@@ -21,6 +23,16 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
     var shop: Shop?
     let cellId = "cellId"
+    
+    init(collectionViewLayout: UICollectionViewLayout, collection: BUYCollection) {
+        super.init(collectionViewLayout: collectionViewLayout)
+        
+        self.shopifyCollectionId = collection.identifier
+        
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var product: Product? {
         didSet {
@@ -45,7 +57,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             
         }
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +66,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return product?.productVariations?.count ?? 0
+        return shopifyProducts?.count ?? 0
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -78,21 +90,20 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             if let productVariation = shopifyProducts?[indexPath.row] {
                 cell.nameLabel.text = productVariation.title
                 cell.itemPrice.text = String(productVariation.variantsArray().first?.price)
-                print("Inside shopifyProducts")
-
+                if let imgUrl = productVariation.imagesArray().first?.sourceURL {
+                    cell.catalogImageView.loadImageUsingCacheWithNSURL(imgUrl)
+                }
             }
         }
-            
- 
-        print("Inside productVC cellForItemAtIndexPath")
         
-        if let productVariation = product?.productVariations?[indexPath.row] {
-            cell.nameLabel.text = productVariation.name
-            cell.itemPrice.text = productVariation.itemDetailPrice
-            if let imgUrl = productVariation.imageUrl {
-                cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
-            }
-        }
+        
+//        if let productVariation = product?.productVariations?[indexPath.row] {
+//            cell.nameLabel.text = productVariation.name
+//            cell.itemPrice.text = productVariation.itemDetailPrice
+//            if let imgUrl = productVariation.imageUrl {
+//                cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
+//            }
+//        }
         return cell
     }
     
@@ -137,7 +148,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         logoImage.contentMode = .ScaleAspectFill
         logoImage.clipsToBounds = true
         
-        logoImage.loadImageUsingCacheWithUrlString(logoImageURL)        
+        logoImage.loadImageUsingCacheWithUrlString(logoImageURL)
         
         logoImage.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 70).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
@@ -148,17 +159,17 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         titleView.addSubview(btnName)
         btnName.translatesAutoresizingMaskIntoConstraints = false
         
-////////////??? How do I set this image to downloaded image from shops.json///////
-//        let buttonImage = UIImageView()
-//        
-//        if let cartImageUrl = shop?.cartImage {
-//            
-//            buttonImage.loadImageUsingCacheWithUrlString(cartImageUrl, completion: { (image) in
-//                btnName.setImage(image, forState: .Normal)
-//                print("Inside btnImage completion")
-//            })
-//        }
-//////////////////////////////////////////////////////////////////////////////////
+        ////////////??? How do I set this image to downloaded image from shops.json///////
+        //        let buttonImage = UIImageView()
+        //
+        //        if let cartImageUrl = shop?.cartImage {
+        //
+        //            buttonImage.loadImageUsingCacheWithUrlString(cartImageUrl, completion: { (image) in
+        //                btnName.setImage(image, forState: .Normal)
+        //                print("Inside btnImage completion")
+        //            })
+        //        }
+        //////////////////////////////////////////////////////////////////////////////////
         
         if let cartImageName = shop?.cartImage {
             
@@ -176,5 +187,5 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     func clickOnButton(button: UIButton) {
         print("Cart Button Clicked")
     }
-
+    
 }

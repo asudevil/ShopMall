@@ -17,9 +17,8 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
     private let appID:      String = "8"
     private var client: BUYClient!
-    private var shopifyProducts: [BUYCollection]?
+    private var shopifyCollections: [BUYCollection]?
     private var selectedShopId = ""
-    
     
     private let cellId = "cellId"
     private let headerId = "headerId"
@@ -36,8 +35,8 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             if let id = shopId {
                 if id == "6" {
                     
-                    Service.sharedInstance.fetchShopifyCollections(1, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (products, error) in
-                        self.shopifyProducts = products
+                    Service.sharedInstance.fetchShopifyCollections(1, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (collections, error) in
+                        self.shopifyCollections = collections
                         self.collectionView?.reloadData()
                         
                         //handle error
@@ -78,8 +77,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectedShopId == "6" {
-            print("Number of shopifyProducts: \(shopifyProducts?.count)")
-            return shopifyProducts?.count ?? 0
+            return shopifyCollections?.count ?? 0
         }
         
         return shop?.products?.count ?? 0
@@ -109,10 +107,10 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     // Shopify
         if selectedShopId == "6" {
             
-            if let product = shopifyProducts?[indexPath.row] {
-                cell.nameLabel.text = product.title
+            if let collection = shopifyCollections?[indexPath.row] {
+                cell.nameLabel.text = collection.title
                 
-                print(product.title)
+                print(collection.title)
                 
                 if let nameFontSize = shop?.productNameFontSize {
                     cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
@@ -133,7 +131,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
                         cell.container1.backgroundColor = UIColor.hexStringToUIColor(container1Color)
                     }
                 }
-                if let catalogImageNSURL = product.image.sourceURL {
+                if let catalogImageNSURL = collection.image.sourceURL {
                     cell.catalogImageView.loadImageUsingCacheWithNSURL(catalogImageNSURL)
                 }
             }
@@ -184,10 +182,28 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
         let product = shop?.products?[indexPath.row]
         let layout = UICollectionViewFlowLayout()
-        let productController = ProductVC(collectionViewLayout: layout)
-        productController.shop = shop
-        productController.product = product
-        navigationController?.pushViewController(productController, animated: true)
+        
+        //Shopify
+        if selectedShopId == "6" {
+            if let collection = shopifyCollections?[indexPath.row] {
+                let shopifyProductController = ShopifyProductVC(collectionViewLayout: layout, collection: collection)
+                shopifyProductController.shop = shop
+                shopifyProductController.product = product
+                navigationController?.pushViewController(shopifyProductController, animated: true)
+                print("Pushing shopifyProductController")
+            } else {
+                
+                //Need a pop up for error
+                
+                print("Need to handle error!!")
+            }
+        
+        }else {
+            let productController = ProductVC(collectionViewLayout: layout)
+            productController.shop = shop
+            productController.product = product
+            navigationController?.pushViewController(productController, animated: true)
+        }
     }
     
     
@@ -247,7 +263,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
             })
         }
-    
         logoImage.centerXAnchor.constraintEqualToAnchor(titleLabel.centerXAnchor).active = true
         logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
         logoImage.widthAnchor.constraintEqualToConstant(30).active = true
