@@ -13,6 +13,7 @@ class ProductCell: BaseCustomizableCell {
     var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
     var itemPrice: UILabel = {

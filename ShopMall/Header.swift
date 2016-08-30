@@ -12,7 +12,7 @@ class Header: BaseCustomizableCell {
     
     let headerContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.grayColor()
+    //    view.backgroundColor = UIColor.grayColor()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         return view
@@ -49,8 +49,5 @@ class Header: BaseCustomizableCell {
         addSubview(headerContainerView)
         headerContainerView.addSubview(searchTextField)
         headerContainerView.addSubview(headerImageView)
-        
-        //need x, y, width, height constraints
-
     }
 }

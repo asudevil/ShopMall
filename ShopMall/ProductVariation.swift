@@ -12,6 +12,7 @@ class ProductVariation: NSObject {
     var id: NSNumber?
     var name: String?
     var imageUrl: String?
+    var imageNSUrl: NSURL?
     var itemDetailPrice: String?
     var itemDescription: String?
     

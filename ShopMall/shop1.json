@@ -6,7 +6,7 @@
     "cellColor": "DDE5E5",
     "tableCellHeight": 300,
     "cartImage": "cart-image.png",
-    "productNameFontSize": 20,
+    "catalogNameFontSize": 20,
     "catalogImageAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,

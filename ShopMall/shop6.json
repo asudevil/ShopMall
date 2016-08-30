@@ -1,17 +1,18 @@
 {
     "id": 6,
     "detail": "Your one stop shop for yoga apperal",
-    "navBarColor": "FFFFF3",
-    "cellColor": "000000",
+    "navBarColor": "3b5998",
+    "cellColor": "ffffff",
+    "headerColor": "dfe3ee",
     "tableCellHeight": 250,
-    "cellSpacing": 1,
+    "cellSpacing": 10,
     "cartImage": "cart-basket.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
-    "headerImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-sale-image.jpg",
-    "productNameFontSize": 22,
+    "catalogNameFontSize": 22,
+    "productNameFontSize": 15,
     "catalogTextColor": "000000",
-    "catalogContainer1Color": "000000",
-    "catalogContainer1Alpha": 0.2,
+    "catalogContainer1Color": "ffffff",
+    "catalogContainer1Alpha": 0.7,
     "catalogHeaderContainerAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,
@@ -37,16 +38,16 @@
         "height": 350
     },
     "catalogNameAttributes": {
-        "leftAnchorConstant": 50,
-        "centerYConstant": 30,
+        "leftAnchorConstant": 60,
+        "bottomAnchorConstant": 5,
         "width": 180,
-        "height": 100
+        "height": 80
     },
     "catalogContainer1Attributes": {
         "leftAnchorConstant": 20,
-        "centerYConstant": 30,
+        "bottomAnchorConstant": 0,
         "width": 200,
-        "height": 100
+        "height": 80
     },
     "productCellImageAttributes": {
         "centerXConstant": 0,
@@ -56,15 +57,15 @@
     },
     "productCellNameAttributes": {
         "leftAnchorConstant": 10,
-        "bottomAnchorConstant": 30,
-        "width": 200,
-        "height": 40
+        "bottomAnchorConstant": 5,
+        "width": 160,
+        "height": 80
     },
     "itemPriceAttributes": {
         "leftAnchorConstant": 10,
         "bottomAnchorConstant": 0,
-        "width": 200,
-        "height": 50
+        "width": 150,
+        "height": 30
     },
     "itemDetailsImageAttributes": {
         "centerXConstant": 0,
@@ -74,13 +75,13 @@
     },
     "itemDescriptionAttributes": {
         "centerXConstant": 0,
-        "centerYConstant": 50,
+        "bottomAnchorConstant": 80,
         "width": 250,
         "height": 100
     },
     "itemDetailPriceAttributes": {
         "rightAnchorConstant": 100,
-        "bottomAnchorConstant": 160,
+        "bottomAnchorConstant": 50,
         "width": 200,
         "height": 50
     },

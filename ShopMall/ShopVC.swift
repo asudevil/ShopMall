@@ -109,10 +109,8 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             
             if let collection = shopifyCollections?[indexPath.row] {
                 cell.nameLabel.text = collection.title
-                
-                print(collection.title)
-                
-                if let nameFontSize = shop?.productNameFontSize {
+                                
+                if let nameFontSize = shop?.catalogNameFontSize {
                     cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
                 }
                 
@@ -140,7 +138,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         else {
             if let product = shop?.products?[indexPath.row] {
                 cell.nameLabel.text = product.name
-                if let nameFontSize = shop?.productNameFontSize {
+                if let nameFontSize = shop?.catalogNameFontSize {
                     cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
                 }
                 
@@ -190,7 +188,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
                 shopifyProductController.shop = shop
                 shopifyProductController.product = product
                 navigationController?.pushViewController(shopifyProductController, animated: true)
-                print("Pushing shopifyProductController")
             } else {
                 
                 //Need a pop up for error
@@ -207,7 +204,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     }
     
     
-    //Header (Search or scrow bar or tab bar)
+    //Header (Search, scrow or tab bar or advertisement)
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSizeMake(view.frame.width, headerHeight)
     }
@@ -230,12 +227,19 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         if let headerImageUrl = shop?.headerImageUrl {
             header.headerImageView.loadImageUsingCacheWithUrlString(headerImageUrl)
         }
+        
+        if let headerColor = shop?.headerColor {
+            header.backgroundColor = UIColor.hexStringToUIColor(headerColor)
+        }
+        
         return header
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         if let cellSpacing = shop?.cellSpacing {
             return cellSpacing
         }
+        print("Inside cellSpacing")
+
         return 5
     }
     

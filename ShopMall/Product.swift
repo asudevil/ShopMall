@@ -35,5 +35,4 @@ class Product: NSObject {
             productVariations = variationDictionaries.map({return ProductVariation(dictionary: $0)})
         }
     }
-    
 }

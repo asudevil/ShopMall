@@ -49,7 +49,7 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         
         let shop = shops?[indexPath.row]
         cell.nameLabel.text = shop?.name
-        if let nameFontSize = shop?.productNameFontSize {
+        if let nameFontSize = shop?.storeNameFontSize {
             cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
         }
         if let appImageUrl = shop?.appImageUrl {

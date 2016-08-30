@@ -6,7 +6,7 @@
     "tableCellHeight": 150,
     "cartImage": "cart-image2.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft_log.jpg",
-    "productNameFontSize": 14,
+    "catalogNameFontSize": 14,
     "catalogHeaderContainerAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,

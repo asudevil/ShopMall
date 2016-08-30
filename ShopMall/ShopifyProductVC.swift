@@ -46,9 +46,7 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
                 }
             }
             if let shopifyCollectionIdentifier = shopifyCollectionId {
-                
-                print("Running shopifyCollectionIdentifier")
-                
+        
                 Service.sharedInstance.fetchShopifyProductsInCollection(1, collectionId: shopifyCollectionIdentifier, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (products, error) in
                     self.shopifyProducts = products
                     self.collectionView?.reloadData()
@@ -88,22 +86,19 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         if shopifyCollectionId != nil {
             
             if let productVariation = shopifyProducts?[indexPath.row] {
-                cell.nameLabel.text = productVariation.title
-                cell.itemPrice.text = String(productVariation.variantsArray().first?.price)
+                cell.nameLabel.text = productVariation.title                
+                if let nameFontSize = shop?.productNameFontSize {
+                    cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+                }
+                
+                if let price = productVariation.variantsArray().first?.price {
+                    cell.itemPrice.text = "$\(price).00"
+                }
                 if let imgUrl = productVariation.imagesArray().first?.sourceURL {
                     cell.catalogImageView.loadImageUsingCacheWithNSURL(imgUrl)
                 }
             }
         }
-        
-        
-//        if let productVariation = product?.productVariations?[indexPath.row] {
-//            cell.nameLabel.text = productVariation.name
-//            cell.itemPrice.text = productVariation.itemDetailPrice
-//            if let imgUrl = productVariation.imageUrl {
-//                cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
-//            }
-//        }
         return cell
     }
     
@@ -122,12 +117,15 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let productVariationController = ProductVariationController()
-        productVariationController.shop = shop
-        let productVariation = product?.productVariations?[indexPath.row]
-        productVariationController.productVariation = productVariation
+        if let shopifyProductVariation = shopifyProducts?[indexPath.row] {
+            
+            let productVariationController = ShopifyProductVariationVC(selectedProduct: shopifyProductVariation)
+            productVariationController.shop = shop
+  //          let productVariation = product?.productVariations?[indexPath.row]
+    
+  //      productVariationController.productVariation = productVariation
         navigationController?.pushViewController(productVariationController, animated: true)
+        }
     }
     
     func setupNavBarWithUser(shopName: String, logoImageURL: String) {

@@ -16,12 +16,15 @@ class Shop: NSObject {
     var appImageUrl: String?
     var navBarColor: String?
     var cellColor: String?
+    var headerColor: String?
     var tableCellHeight: CGFloat?
     var cellSpacing: CGFloat?
     var cartImage: String?
     var logoImage: String?
     var headerImageUrl: String?
     var products: [Product]?
+    var storeNameFontSize: NSNumber?
+    var catalogNameFontSize: NSNumber?
     var productNameFontSize: NSNumber?
     var catalogTextColor: String?
     var catalogContainer1Color: String?
@@ -49,6 +52,7 @@ class Shop: NSObject {
         appImageUrl = dictionary["appImageUrl"] as? String
         navBarColor = dictionary["navBarColor"] as? String
         cellColor = dictionary["cellColor"] as? String
+        headerColor = dictionary["headerColor"] as? String
         catalogTextColor = dictionary["catalogTextColor"] as? String
         catalogContainer1Color = dictionary["catalogContainer1Color"] as? String
         catalogContainer1Alpha = dictionary["catalogContainer1Alpha"] as? CGFloat
@@ -57,6 +61,8 @@ class Shop: NSObject {
         cartImage = dictionary["cartImage"] as? String
         logoImage = dictionary["logoImage"] as? String
         headerImageUrl = dictionary["headerImageUrl"] as? String
+        storeNameFontSize = dictionary["storeNameFontSize"] as? NSNumber
+        catalogNameFontSize = dictionary["catalogNameFontSize"] as? NSNumber
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
         headerSize = dictionary["headerSize"] as? CGFloat
         

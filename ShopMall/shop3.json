@@ -6,7 +6,7 @@
     "tableCellHeight": 100,
     "cartImage": "cart-basket.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy_logo.png",
-    "productNameFontSize": 18,
+    "catalogNameFontSize": 18,
     "catalogImageAttributes": {
         "leftAnchorConstant": 20,
         "centerYConstant": 0,

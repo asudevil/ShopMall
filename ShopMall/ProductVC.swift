@@ -10,14 +10,9 @@ import UIKit
 import Buy
 
 class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    private let shopDomain: String = "yoganinja.myshopify.com"
-    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    private let appID:      String = "8"
     
     var setBackgroundColor = "ffffff"
     var shopifyCollectionId: NSNumber?
-    var shopifyProducts: [BUYProduct]?
     
     var shop: Shop?
     let cellId = "cellId"
@@ -33,16 +28,6 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
                     self.collectionView?.backgroundColor = UIColor.hexStringToUIColor(background)
                 }
             }
-            if let shopifyCollectionIdentifier = shopifyCollectionId {
-                
-                print("Running shopifyCollectionIdentifier")
-                
-                Service.sharedInstance.fetchShopifyProductsInCollection(1, collectionId: shopifyCollectionIdentifier, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (products, error) in
-                    self.shopifyProducts = products
-                    self.collectionView?.reloadData()
-                })
-            }
-            
         }
     }
 
@@ -73,21 +58,13 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             cell.hasSetupConstraints = true
         }
         
-        if shopifyCollectionId != nil {
-            
-            if let productVariation = shopifyProducts?[indexPath.row] {
-                cell.nameLabel.text = productVariation.title
-                cell.itemPrice.text = String(productVariation.variantsArray().first?.price)
-                print("Inside shopifyProducts")
-
-            }
-        }
-            
- 
-        print("Inside productVC cellForItemAtIndexPath")
-        
         if let productVariation = product?.productVariations?[indexPath.row] {
             cell.nameLabel.text = productVariation.name
+            
+            if let nameFontSize = shop?.productNameFontSize {
+                cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+            }
+            
             cell.itemPrice.text = productVariation.itemDetailPrice
             if let imgUrl = productVariation.imageUrl {
                 cell.catalogImageView.loadImageUsingCacheWithUrlString(imgUrl)
