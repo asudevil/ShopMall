@@ -142,4 +142,10 @@ class Service: NSObject {
             }
         })
     }
+    
+    func addToCart (button: UIButton) {
+        print("Clicked on addToCart")
+    }
+    
+    
 }

@@ -142,7 +142,7 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             let cartButton = UIButton()
             cartButton.setImage(UIImage(named: cartImageName), forState: .Normal)
             cartButton.frame = CGRectMake(0, 0, 30, 30)
-            cartButton.addTarget(self, action: #selector(ShopVC.clickOnButton(_:)), forControlEvents: .TouchUpInside)
+            cartButton.addTarget(self, action: #selector(ShopVC.clickOnCart(_:)), forControlEvents: .TouchUpInside)
             
             let rightBarButton = UIBarButtonItem(customView: cartButton)
             self.navigationItem.rightBarButtonItem = rightBarButton
@@ -150,8 +150,12 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         self.navigationItem.titleView = titleView
     }
     
-    func clickOnButton(button: UIButton) {
+    func clickOnCart(button: UIButton) {
         print("Cart Button Clicked")
+        let layout = UICollectionViewFlowLayout()
+        let cartViewController = CartVC(collectionViewLayout: layout)
+        cartViewController.shop = shop
+        navigationController?.pushViewController(cartViewController, animated: true)
     }
 
 }

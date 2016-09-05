@@ -28,6 +28,7 @@ class Shop: NSObject {
     var productNameFontSize: NSNumber?
     var catalogTextColor: String?
     var catalogContainer1Color: String?
+    var addItemButtonColor: String?
     var catalogContainer1Alpha: CGFloat?
     var headerSize: CGFloat?
     var catalogHeaderContainerAttributes: Attributes?
@@ -43,6 +44,12 @@ class Shop: NSObject {
     var itemDetailsImageAttributes: Attributes?
     var itemDescriptionAttributes: Attributes?
     var itemDetailPriceAttributes: Attributes?
+    var addItemButtonAttributes: Attributes?
+    var cartItemNameAttributes: Attributes?
+    var cartItemImageAttributes: Attributes?
+    var cartItemPriceAttributes: Attributes?
+    var cartItemSizeAttributes: Attributes?
+    var cartItemQtyAttributes: Attributes?
     
     init(dictionary: [String: AnyObject]) {
         super.init()
@@ -56,6 +63,7 @@ class Shop: NSObject {
         catalogTextColor = dictionary["catalogTextColor"] as? String
         catalogContainer1Color = dictionary["catalogContainer1Color"] as? String
         catalogContainer1Alpha = dictionary["catalogContainer1Alpha"] as? CGFloat
+        addItemButtonColor = dictionary["addItemButtonColor"] as? String
         tableCellHeight = dictionary["tableCellHeight"] as? CGFloat
         cellSpacing = dictionary["cellSpacing"] as? CGFloat
         cartImage = dictionary["cartImage"] as? String
@@ -107,6 +115,24 @@ class Shop: NSObject {
         }
         if let itemDetailPriceAttributesDictionary = dictionary["itemDetailPriceAttributes"] as? [String: AnyObject] {
             itemDetailPriceAttributes = Attributes(dictionary: itemDetailPriceAttributesDictionary)
+        }
+        if let addItemButtonAttributesDictionary = dictionary["addItemButtonAttributes"] as? [String: AnyObject] {
+            addItemButtonAttributes = Attributes(dictionary: addItemButtonAttributesDictionary)
+        }
+        if let cartItemNameAttributesDictionary = dictionary["cartItemNameAttributes"] as? [String: AnyObject] {
+            cartItemNameAttributes = Attributes(dictionary: cartItemNameAttributesDictionary)
+        }
+        if let cartItemImageAttributesDictionary = dictionary["cartItemImageAttributes"] as? [String: AnyObject] {
+            cartItemImageAttributes = Attributes(dictionary: cartItemImageAttributesDictionary)
+        }
+        if let cartItemPriceAttributesDictionary = dictionary["cartItemPriceAttributes"] as? [String: AnyObject] {
+            cartItemPriceAttributes = Attributes(dictionary: cartItemPriceAttributesDictionary)
+        }
+        if let cartItemSizeAttributesDictionary = dictionary["cartItemSizeAttributes"] as? [String: AnyObject] {
+            cartItemSizeAttributes = Attributes(dictionary: cartItemSizeAttributesDictionary)
+        }
+        if let cartItemQtyAttributesDictionary = dictionary["cartItemQtyAttributes"] as? [String: AnyObject] {
+            cartItemQtyAttributes = Attributes(dictionary: cartItemQtyAttributesDictionary)
         }
     }
     

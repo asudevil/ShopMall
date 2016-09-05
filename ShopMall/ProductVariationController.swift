@@ -28,6 +28,17 @@ class ProductVariationController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    var addItemButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add to Cart", forState: .Normal)
+        button.setTitleColor(UIColor.hexStringToUIColor("#8b9dc3"), forState: .Selected)
+        button.titleLabel?.font = UIFont.systemFontOfSize(CGFloat(20))
+        button.titleLabel?.textColor = UIColor.blackColor()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.hexStringToUIColor("000000")
+        return button
+    }()
+    
     var productVariation: ProductVariation? {
         didSet {
             if let productImageUrl = productVariation?.imageUrl {
@@ -52,10 +63,12 @@ class ProductVariationController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         view.layer.masksToBounds = true
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addToCart(_:)))
         view.addSubview(productImageView)
         view.addSubview(itemDetails)
         view.addSubview(itemDetailPriceLabel)
+        view.addSubview(addItemButton)
+        addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), forControlEvents: .TouchUpInside)
         if let attributes = shop?.itemDetailsImageAttributes {
             view.setupConstraintsForView(productImageView, attributes: attributes)
         }
@@ -65,5 +78,15 @@ class ProductVariationController: UIViewController {
         if let itemDetailPriceAttributes = shop?.itemDetailPriceAttributes {
             view.setupConstraintsForView(itemDetailPriceLabel, attributes: itemDetailPriceAttributes)
         }
+        if let addItemButtonAttributes = shop?.addItemButtonAttributes {
+            view.setupConstraintsForView(addItemButton, attributes: addItemButtonAttributes)
+        }
+        if let addItemButtonColor = shop?.addItemButtonColor {
+            addItemButton.backgroundColor = UIColor.hexStringToUIColor(addItemButtonColor)
+        }
     }
+    func addToCart (button: UIButton) {
+        print("Clicked on addToCart")
+    }
+
 }

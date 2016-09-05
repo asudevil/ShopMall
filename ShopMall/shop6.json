@@ -12,6 +12,7 @@
     "productNameFontSize": 15,
     "catalogTextColor": "000000",
     "catalogContainer1Color": "ffffff",
+    "addItemButtonColor": "3b5998",
     "catalogContainer1Alpha": 0.7,
     "catalogHeaderContainerAttributes": {
         "centerXConstant": 0,
@@ -84,6 +85,42 @@
         "bottomAnchorConstant": 50,
         "width": 200,
         "height": 50
+    },
+    "addItemButtonAttributes": {
+        "rightAnchorConstant": 100,
+        "bottomAnchorConstant": 10,
+        "width": 200,
+        "height": 50
+    },
+    "cartItemImageAttributes": {
+        "leftAnchorConstant": 10,
+        "topAnchorConstant": 30,
+        "width": 120,
+        "height": 150
+    },
+    "cartItemNameAttributes": {
+        "leftAnchorConstant": 140,
+        "topAnchorConstant": 30,
+        "width": 220,
+        "height": 20
+    },
+    "cartItemPriceAttributes": {
+        "leftAnchorConstant": 140,
+        "topAnchorConstant": 60,
+        "width": 220,
+        "height": 20
+    },
+    "cartItemSizeAttributes": {
+        "leftAnchorConstant": 140,
+        "topAnchorConstant": 90,
+        "width": 220,
+        "height": 20
+    },
+    "cartItemQtyAttributes": {
+        "leftAnchorConstant": 140,
+        "topAnchorConstant": 120,
+        "width": 220,
+        "height": 20
     },
     "products": [
                  {
