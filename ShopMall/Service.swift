@@ -78,7 +78,6 @@ class Service: NSObject {
         let urlString = "\(baseUrl)/shop\(id).json"
         let url = NSURL(string: urlString)!
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            
             if error != nil {
                 print(error)
                 return

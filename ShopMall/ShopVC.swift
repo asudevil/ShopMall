@@ -40,7 +40,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
                         self.collectionView?.reloadData()
                         
                         //handle error
-                        
                     })
                     selectedShopId = id
                 }
@@ -238,8 +237,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         if let cellSpacing = shop?.cellSpacing {
             return cellSpacing
         }
-        print("Inside cellSpacing")
-
         return 5
     }
     

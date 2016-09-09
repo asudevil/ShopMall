@@ -85,8 +85,20 @@ class ProductVariationController: UIViewController {
             addItemButton.backgroundColor = UIColor.hexStringToUIColor(addItemButtonColor)
         }
     }
+    lazy var optionsSelector: OptionsSelector = {
+        let launcher = OptionsSelector()
+        launcher.productVariantionVC = self
+        return launcher
+    }()
     func addToCart (button: UIButton) {
-        print("Clicked on addToCart")
+        optionsSelector.showSizeOptions()
+        
     }
-
+    func showShoppingCartWithSelection(size: SelectSize) {
+        print("Showing Cart with selected size Clicked")
+        let layout = UICollectionViewFlowLayout()
+        let cartViewController = CartVC(collectionViewLayout: layout)
+        cartViewController.shop = shop
+        navigationController?.pushViewController(cartViewController, animated: true)
+    }
 }

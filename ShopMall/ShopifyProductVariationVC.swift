@@ -111,49 +111,28 @@ class ShopifyProductVariationVC: UIViewController {
         if let addItemButtonColor = shop?.addItemButtonColor {
             addItemButton.backgroundColor = UIColor.hexStringToUIColor(addItemButtonColor)
         }
-        
-        
-        //        let dropDown = SizePicker()
-        //        dropDown
-        //        view.addSubview(dropDown)
-        //        dropDown.topAnchor.constraintEqualToAnchor(self.view.centerYAnchor, constant: 40).active = true
-        //        dropDown.leftAnchor.constraintEqualToAnchor(self.view.centerXAnchor, constant: 10).active = true
-        //        dropDown.widthAnchor.constraintEqualToConstant(200).active = true
-        //        dropDown.heightAnchor.constraintEqualToConstant(200).active = true
     }
+    
+    lazy var optionsSelector: OptionsSelector = {
+        let launcher = OptionsSelector()
+        launcher.shopifyProductVariationVC = self
+        return launcher
+    }()
 
     func addToCart (button: UIButton) {
-            if let variant = product?.variants.firstObject as? BUYProductVariant {
-                cart.setVariant(variant, withTotalQuantity: 2)
-                print(cart.lineItems)
-                print("Number of items: \(cart.lineItemsArray().count)")
-            }
+        optionsSelector.showSizeOptions()
+        
+        if let variant = product?.variants.firstObject as? BUYProductVariant {
+            cart.setVariant(variant, withTotalQuantity: 2)
+            print(cart.lineItems)
+            print("Number of items: \(cart.lineItemsArray().count)")
+        }
+    }
+    func showShoppingCartWithSelection(size: SelectSize) {
+        print("Showing Cart with selected size Clicked")
+        let layout = UICollectionViewFlowLayout()
+        let cartViewController = CartVC(collectionViewLayout: layout)
+        cartViewController.shop = shop
+        navigationController?.pushViewController(cartViewController, animated: true)
     }
 }
-
-//class SizePicker: UIPickerView {
-//    
-//    var nameLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "This is the tile of item"
-//        return label
-//    }()
-//    
-//    override init(frame: CGRect){
-//        super.init(frame: frame)
-//        setupViews()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    func setupViews() {
-//        self.addSubview(nameLabel)
-//        nameLabel.leftAnchor.constraintEqualToAnchor(leftAnchor, constant: 5).active = true
-//        nameLabel.topAnchor.constraintEqualToAnchor(topAnchor, constant: 5).active = true
-//        nameLabel.widthAnchor.constraintEqualToConstant(40).active = true
-//        nameLabel.heightAnchor.constraintEqualToConstant(20).active = true
-//    }
-//}
-
