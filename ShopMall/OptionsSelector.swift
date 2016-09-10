@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Buy
 
 class SelectSize: NSObject {
     let name: sizeName
@@ -40,6 +41,13 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
     let cellId = "cellId"
     let cellHeight: CGFloat = 50
     
+    var selectedProduct: BUYProduct!
+    var client: BUYClient!
+    var cart: BUYCart!
+    private let shopDomain: String = "yoganinja.myshopify.com"
+    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    private let appID:      String = "8"
+    
     var shopifyProductVariationVC: ShopifyProductVariationVC?
     var productVariantionVC: ProductVariationController?
     
@@ -49,7 +57,7 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
         return [SelectSize(name: .Small, imageName: "Small"), SelectSize(name: .Medium, imageName: "Medium"), SelectSize(name: .Large, imageName: "Large"), SelectSize(name: .ExtraLarge, imageName: "Extra Large"), cancelSelection]
     }()
     
-    func showSizeOptions () {
+    func showSizeOptions (product: BUYProduct) {
         
         if let window = UIApplication.sharedApplication().keyWindow {
             
@@ -68,6 +76,8 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
             blackView.frame = window.frame
             blackView.alpha = 0
             
+            selectedProduct = product
+            
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
                 self.blackView.alpha = 1
                 self.collectionView.frame = CGRectMake(0, y, self.collectionView.frame.width, self.collectionView.frame.height)
@@ -84,9 +94,43 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
             
         }) { (completed: Bool) in
             
+            switch size.name {
+              
+            case .Small:
+                if let variant = self.selectedProduct?.variants?.firstObject as? BUYProductVariant {
+                    self.cart.addVariant(variant)
+                } else {
+                    //Need alert for this
+                    print("Selected Size not availabe")
+                }
+            case .Medium:
+                if let variant = self.selectedProduct?.variants?[1] as? BUYProductVariant {
+                    self.cart.addVariant(variant)
+                } else {
+                }
+            case .Large:
+                if let variant = self.selectedProduct?.variants?[2] as? BUYProductVariant {
+                    self.cart.addVariant(variant)
+                } else {
+                }
+            case .ExtraLarge:
+                if let variant = self.selectedProduct?.variants?[3] as? BUYProductVariant {
+                    self.cart.addVariant(variant)
+                } else {
+                }
+            case .Cancel:
+                print("Cancelled")
+            }
+            
             if size.name != .Cancel {
-                self.shopifyProductVariationVC?.showShoppingCartWithSelection(size)
-                self.productVariantionVC?.showShoppingCartWithSelection(size)
+                    let lineItemsArray = self.cart.lineItemsArray()
+                    let firstLineItem = lineItemsArray.first
+                
+                    print("Number of items: \(self.cart.lineItemsArray().count)")
+                    print("line item quantity \(firstLineItem?.quantity)")
+                    
+                    self.shopifyProductVariationVC?.showShoppingCartWithSelection(size)
+                    self.productVariantionVC?.showShoppingCartWithSelection(size)
             }
         }
     }
@@ -119,6 +163,11 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
     
     override init() {
         super.init()
+        
+        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appID)
+        
+        cart = client.modelManager.insertCartWithJSONDictionary(nil)
+        print("setting insertCartWithJSONDictionary")
 
         collectionView.dataSource = self
         collectionView.delegate = self

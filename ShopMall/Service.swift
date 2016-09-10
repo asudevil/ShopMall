@@ -15,7 +15,7 @@ class Service: NSObject {
     
     static let sharedInstance = Service()
     
-    let useLocalJsonFiles = true
+    let useLocalJsonFiles = false
     
     let baseUrl = "https://s3.amazonaws.com/spicysuya"
     
@@ -145,6 +145,21 @@ class Service: NSObject {
     func addToCart (button: UIButton) {
         print("Clicked on addToCart")
     }
+    
+    func checkoutShopify (cart: BUYCart) {
+        var client: BUYClient!
+        var checkoutCart = client.modelManager.checkoutWithCart(cart)
+        // Sync the checkout with Shopify
+        client.createCheckout(checkoutCart) { (checkout, error) in
+            if error == nil {
+                checkoutCart = checkout!
+            }
+            else {
+                // Handle errors here
+            }
+        }
+    }
+
     
     
 }

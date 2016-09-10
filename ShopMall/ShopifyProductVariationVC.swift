@@ -11,14 +11,8 @@ import Buy
 
 class ShopifyProductVariationVC: UIViewController {
     
-    private let shopDomain: String = "yoganinja.myshopify.com"
-    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    private let appID:      String = "8"
     
     var product: BUYProduct?
-    var client: BUYClient!
-    var cart: BUYCart!
-    
     
     let cartDictionary = Dictionary<String, AnyObject>()
     
@@ -67,8 +61,6 @@ class ShopifyProductVariationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appID)
-        
         view.backgroundColor = UIColor.whiteColor()
         view.layer.masksToBounds = true
         
@@ -91,10 +83,7 @@ class ShopifyProductVariationVC: UIViewController {
         view.addSubview(itemDetailPriceLabel)
         view.addSubview(addItemButton)
         
-        cart = client.modelManager.insertCartWithJSONDictionary(cartDictionary)
-
         addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), forControlEvents: .TouchUpInside)
-        print(cart.lineItems.count)
 
         if let attributes = shop?.itemDetailsImageAttributes {
             view.setupConstraintsForView(productImageView, attributes: attributes)
@@ -118,18 +107,14 @@ class ShopifyProductVariationVC: UIViewController {
         launcher.shopifyProductVariationVC = self
         return launcher
     }()
-
+    
     func addToCart (button: UIButton) {
-        optionsSelector.showSizeOptions()
-        
-        if let variant = product?.variants.firstObject as? BUYProductVariant {
-            cart.setVariant(variant, withTotalQuantity: 2)
-            print(cart.lineItems)
-            print("Number of items: \(cart.lineItemsArray().count)")
+
+        if let selectedProduct = product {
+            optionsSelector.showSizeOptions(selectedProduct)
         }
     }
     func showShoppingCartWithSelection(size: SelectSize) {
-        print("Showing Cart with selected size Clicked")
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

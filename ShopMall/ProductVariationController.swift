@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Buy
 
 class ProductVariationController: UIViewController {
     
@@ -91,7 +92,11 @@ class ProductVariationController: UIViewController {
         return launcher
     }()
     func addToCart (button: UIButton) {
-        optionsSelector.showSizeOptions()
+        
+//Placeholder for shopify!!
+        let dummyProduct = BUYProduct()
+        
+        optionsSelector.showSizeOptions(dummyProduct)
         
     }
     func showShoppingCartWithSelection(size: SelectSize) {

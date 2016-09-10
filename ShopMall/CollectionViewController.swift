@@ -67,7 +67,18 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         if let headerOrNot = shop?.headerSize {
             shopController.headerHeight = headerOrNot
         }
-        navigationController?.pushViewController(shopController, animated: true)
+        
+        if let shopId = shop?.id?.stringValue {
+            Service.sharedInstance.fetchShop(shopId, completion: { (shop) in
+                if let navBarColor = shop.navBarColor {
+                    self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColor)
+                }
+                shopController.shop = shop
+                shopController.setupNavBarWithUser(shop)
+                shopController.collectionView?.reloadData()
+                self.navigationController?.pushViewController(shopController, animated: true)
+            })
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

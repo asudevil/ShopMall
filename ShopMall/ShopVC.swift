@@ -71,7 +71,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
+   //     navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
