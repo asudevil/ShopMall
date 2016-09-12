@@ -102,23 +102,23 @@
         "leftAnchorConstant": 140,
         "topAnchorConstant": 30,
         "width": 220,
-        "height": 20
+        "height": 50
     },
     "cartItemPriceAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 60,
+        "topAnchorConstant": 80,
         "width": 220,
         "height": 20
     },
     "cartItemSizeAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 90,
+        "topAnchorConstant": 110,
         "width": 220,
         "height": 20
     },
     "cartItemQtyAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 120,
+        "topAnchorConstant": 140,
         "width": 220,
         "height": 20
     },

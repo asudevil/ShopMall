@@ -14,7 +14,8 @@ class CartCell: BaseCustomizableCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "This is the tile of item"
-        
+        label.font = UIFont.boldSystemFontOfSize(CGFloat(16))
+        label.numberOfLines = 2
         return label
     }()
     var sizeLabel: UILabel = {
@@ -61,6 +62,5 @@ class CartCell: BaseCustomizableCell {
         self.addSubview(itemImageView)
         
         self.backgroundColor = UIColor.whiteColor()
-        itemImageView.backgroundColor = UIColor.greenColor()
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 import Buy
 
 class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
 
     //Shopify
     private let shopDomain: String = "yoganinja.myshopify.com"

@@ -10,12 +10,10 @@ import UIKit
 import Buy
 
 class Service: NSObject {
-    
-    var products: [BUYProduct]?
-    
+        
     static let sharedInstance = Service()
     
-    let useLocalJsonFiles = false
+    let useLocalJsonFiles = true
     
     let baseUrl = "https://s3.amazonaws.com/spicysuya"
     
@@ -59,7 +57,6 @@ class Service: NSObject {
                     dispatch_async(dispatch_get_main_queue(), { 
                         completion(shops)
                     })
-                    
                 }
             } catch let jsonError {
                 print(jsonError)

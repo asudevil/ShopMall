@@ -3,7 +3,7 @@
 //  ShopMall
 //
 //  Created by admin on 8/28/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Copyright © 2016 CodeWithFelix. All rights reserved.
 //
 
 import UIKit
@@ -13,8 +13,6 @@ class ShopifyProductVariationVC: UIViewController {
     
     
     var product: BUYProduct?
-    
-    let cartDictionary = Dictionary<String, AnyObject>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

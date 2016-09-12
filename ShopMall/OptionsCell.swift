@@ -38,8 +38,8 @@ class OptionsCell: UICollectionViewCell {
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blueColor()
         imageView.contentMode = .ScaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -59,7 +59,7 @@ class OptionsCell: UICollectionViewCell {
         
         addConstraintsWithFormat("H:|-40-[v0(40)]-30-[v1]|", views: iconImageView, nameLabel)
         addConstraintsWithFormat("V:|[v0]|", views: nameLabel)
-        addConstraintsWithFormat("V:[v0(30)]", views: iconImageView)
+        addConstraintsWithFormat("V:[v0(40)]", views: iconImageView)
         
         addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
         

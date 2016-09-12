@@ -30,7 +30,6 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
             }
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
