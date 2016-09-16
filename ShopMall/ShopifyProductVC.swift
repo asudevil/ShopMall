@@ -13,10 +13,6 @@ private let reuseIdentifier = "Cell"
 
 class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let shopDomain: String = "yoganinja.myshopify.com"
-    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    private let appID:      String = "8"
-    
     var setBackgroundColor = "ffffff"
     var shopifyCollectionId: NSNumber?
     var shopifyProducts: [BUYProduct]?
@@ -47,7 +43,7 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
             }
             if let shopifyCollectionIdentifier = shopifyCollectionId {
         
-                Service.sharedInstance.fetchShopifyProductsInCollection(1, collectionId: shopifyCollectionIdentifier, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (products, error) in
+                Service.sharedInstance.fetchShopifyProductsInCollection(1, collectionId: shopifyCollectionIdentifier, completion: { (products, error) in
                     self.shopifyProducts = products
                     self.collectionView?.reloadData()
                 })
@@ -180,7 +176,6 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     func clickOnCart(button: UIButton) {
-        print("Cart Button Clicked")
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

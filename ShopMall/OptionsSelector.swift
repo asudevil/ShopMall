@@ -149,9 +149,11 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
                     self.shopifyProductVariationVC?.showShoppingCartWithSelection(size)
                     self.productVariantionVC?.showShoppingCartWithSelection(size)
                 } else {
-                    print("Size not available")
-                    
-                    //Need an alert function to handle this
+                    let alertMessage = "The selected item type is not available.  Please select a different size"
+                    let alert = UIAlertController(title: "Item Unavailable", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.productVariantionVC?.presentViewController(alert, animated: true, completion: nil)
+                    self.shopifyProductVariationVC?.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         }

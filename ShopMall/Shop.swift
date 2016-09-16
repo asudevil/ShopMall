@@ -50,6 +50,7 @@ class Shop: NSObject {
     var cartItemPriceAttributes: Attributes?
     var cartItemSizeAttributes: Attributes?
     var cartItemQtyAttributes: Attributes?
+    var cartItemDeleteAttributes: Attributes?
     
     init(dictionary: [String: AnyObject]) {
         super.init()
@@ -133,6 +134,9 @@ class Shop: NSObject {
         }
         if let cartItemQtyAttributesDictionary = dictionary["cartItemQtyAttributes"] as? [String: AnyObject] {
             cartItemQtyAttributes = Attributes(dictionary: cartItemQtyAttributesDictionary)
+        }
+        if let cartItemDeleteAttributesDictionary = dictionary["cartItemDeleteAttributes"] as? [String: AnyObject] {
+            cartItemDeleteAttributes = Attributes(dictionary: cartItemDeleteAttributesDictionary)
         }
     }
     

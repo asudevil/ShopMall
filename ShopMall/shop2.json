@@ -85,6 +85,12 @@
         "width": 220,
         "height": 20
     },
+    "cartItemDeleteAttributes": {
+        "rightAnchorConstant": 40,
+        "topAnchorConstant": 120,
+        "width": 40,
+        "height": 30
+    },
     "products": [
                  {
                  "id": 1,

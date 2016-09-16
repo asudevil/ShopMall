@@ -44,6 +44,15 @@ class CartCell: BaseCustomizableCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    var deleteButton: UIButton = {
+       let button = UIButton(type: .System)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.redColor()
+        button.setTitle("x", forState: .Normal)
+        button.adjustsImageWhenHighlighted = true
+        button.tintColor = UIColor.whiteColor()
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,7 +69,10 @@ class CartCell: BaseCustomizableCell {
         self.addSubview(priceLabel)
         self.addSubview(qtyLabel)
         self.addSubview(itemImageView)
+        self.addSubview(deleteButton)
         
         self.backgroundColor = UIColor.whiteColor()
+        
+        
     }
 }

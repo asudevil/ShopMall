@@ -94,32 +94,38 @@
     },
     "cartItemImageAttributes": {
         "leftAnchorConstant": 10,
-        "topAnchorConstant": 30,
+        "topAnchorConstant": 10,
         "width": 120,
-        "height": 150
+        "height": 130
     },
     "cartItemNameAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 30,
+        "topAnchorConstant": 10,
         "width": 220,
         "height": 50
     },
     "cartItemPriceAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 80,
+        "topAnchorConstant": 60,
         "width": 220,
         "height": 20
     },
     "cartItemSizeAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 110,
+        "topAnchorConstant": 90,
         "width": 220,
         "height": 20
     },
     "cartItemQtyAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 140,
+        "topAnchorConstant": 120,
         "width": 220,
+        "height": 20
+    },
+    "cartItemDeleteAttributes": {
+        "rightAnchorConstant": 40,
+        "topAnchorConstant": 120,
+        "width": 20,
         "height": 20
     },
     "products": [

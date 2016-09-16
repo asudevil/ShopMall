@@ -12,9 +12,6 @@ import Buy
 class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     //Shopify
-    private let shopDomain: String = "yoganinja.myshopify.com"
-    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-    private let appID:      String = "8"
     private var client: BUYClient!
     private var shopifyCollections: [BUYCollection]?
     private var selectedShopId = ""
@@ -34,7 +31,7 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             if let id = shopId {
                 if id == "6" {
                     
-                    Service.sharedInstance.fetchShopifyCollections(1, shopDomain: shopDomain, apiKey: apiKey, appId: appID, completion: { (collections, error) in
+                    Service.sharedInstance.fetchShopifyCollections(1, completion: { (collections, error) in
                         self.shopifyCollections = collections
                         self.collectionView?.reloadData()
                         
@@ -42,7 +39,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
                     })
                     selectedShopId = id
                 }
-                
                 Service.sharedInstance.fetchShop(id, completion: { (shop) in
                     self.shop = shop
                     if let navBarColor = shop.navBarColor {
@@ -239,7 +235,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         return 5
     }
     
-    
     func setupNavBarWithUser(shop: Shop) {
                 
         let title = shop.name
@@ -282,7 +277,6 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     }
     
     func clickOnCart(button: UIButton) {
-        print("Cart Button Clicked")
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

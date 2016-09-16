@@ -150,7 +150,6 @@ class ProductVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     }
     
     func clickOnCart(button: UIButton) {
-        print("Cart Button Clicked")
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

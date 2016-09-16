@@ -10,7 +10,11 @@ import UIKit
 import Buy
 
 class Service: NSObject {
-        
+    
+    private let shopDomain: String = "yoganinja.myshopify.com"
+    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    private let appID:      String = "8"
+    
     static let sharedInstance = Service()
     
     let useLocalJsonFiles = true
@@ -93,11 +97,12 @@ class Service: NSObject {
             }.resume()
     }
     
-    func fetchShopifyProducts(pages: UInt, shopDomain: String, apiKey: String, appId: String, completion: ([BUYProduct]?, NSError?) -> ()) {
+    func fetchShopifyProducts(pages: UInt, completion: ([BUYProduct]?, NSError?) -> ()) {
         var client: BUYClient!
         
         
-        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+
         
         client.getProductsPage(pages, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
             
@@ -109,10 +114,10 @@ class Service: NSObject {
             }
         })
     }
-    func fetchShopifyCollections(pages: UInt, shopDomain: String, apiKey: String, appId: String, completion: ([BUYCollection]?, NSError?) -> ()) {
+    func fetchShopifyCollections(pages: UInt, completion: ([BUYCollection]?, NSError?) -> ()) {
         var client: BUYClient!
         
-        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
         
         client.getCollectionsPage(pages, completion: {( collections:[BUYCollection]?, page: UInt, reachedEnd: Bool, error: NSError?) -> Void in
             
@@ -125,9 +130,9 @@ class Service: NSObject {
         })
     }
     
-    func fetchShopifyProductsInCollection(pages: UInt, collectionId: NSNumber, shopDomain: String, apiKey: String, appId: String, completion: ([BUYProduct]?, NSError?) -> ())  {
+    func fetchShopifyProductsInCollection(pages: UInt, collectionId: NSNumber, completion: ([BUYProduct]?, NSError?) -> ())  {
         var client: BUYClient!
-        client = BUYClient(shopDomain: shopDomain, apiKey: apiKey, appId: appId)
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
         client.getProductsPage(pages, inCollection: collectionId, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
             
             if (products != nil) && error == nil {
@@ -145,11 +150,18 @@ class Service: NSObject {
     
     func checkoutShopify (cart: BUYCart) {
         var client: BUYClient!
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        
         var checkoutCart = client.modelManager.checkoutWithCart(cart)
         // Sync the checkout with Shopify
         client.createCheckout(checkoutCart) { (checkout, error) in
             if error == nil {
                 checkoutCart = checkout!
+                print("Inside Checkout Token is: \(checkout?.token)")
+                
+                // optionally, save the checkout.token token somewhere on disk
+                checkout?.token
+
             }
             else {
                 // Handle errors here
@@ -157,6 +169,15 @@ class Service: NSObject {
         }
     }
 
-    
+    func formatCurrency(string: String) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.locale = NSLocale(localeIdentifier: "en_US")
+        let numberFromField = (NSString(string: string).doubleValue)
+        if let returnString = formatter.stringFromNumber(numberFromField) {
+            return returnString
+        }
+        return "0"
+    }
     
 }
