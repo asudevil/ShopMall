@@ -15,6 +15,11 @@ class Service: NSObject {
     private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
     private let appID:      String = "8"
     
+    private var shop = BUYShop()
+    private var checkout = BUYCheckout()
+    
+    private var applePayHelper: BUYApplePayAuthorizationDelegate?
+    
     static let sharedInstance = Service()
     
     let useLocalJsonFiles = true
@@ -143,32 +148,6 @@ class Service: NSObject {
             }
         })
     }
-    
-    func addToCart (button: UIButton) {
-        print("Clicked on addToCart")
-    }
-    
-    func checkoutShopify (cart: BUYCart) {
-        var client: BUYClient!
-        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
-        
-        var checkoutCart = client.modelManager.checkoutWithCart(cart)
-        // Sync the checkout with Shopify
-        client.createCheckout(checkoutCart) { (checkout, error) in
-            if error == nil {
-                checkoutCart = checkout!
-                print("Inside Checkout Token is: \(checkout?.token)")
-                
-                // optionally, save the checkout.token token somewhere on disk
-                checkout?.token
-
-            }
-            else {
-                // Handle errors here
-            }
-        }
-    }
-
     func formatCurrency(string: String) -> String {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
@@ -180,4 +159,36 @@ class Service: NSObject {
         return "0"
     }
     
-}
+    func getShopInfo (completion: (BUYShop) -> ()) {
+        var client: BUYClient!
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        
+        client.getShop { (shop, error) in
+            if error == nil {
+                if let shop1 = shop {
+                    self.shop = shop1
+                    completion(shop1)
+
+                }
+            } else {
+                //Handle error
+            }
+        }
+    }
+    
+    func checkoutApplePay (cart: BUYCart, completion: (BUYCheckout) -> ()) {
+        var client: BUYClient!
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        let checkout1 = client.modelManager.checkoutWithCart(cart)
+        
+        client.createCheckout(checkout1) { (checkout, error) in
+            if checkout != nil {
+                completion(checkout!)
+            }
+        }
+    }
+    
+    func addToCart (button: UIButton) {
+        print("Clicked on addToCart")
+    }
+ }

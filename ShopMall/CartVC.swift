@@ -8,17 +8,27 @@
 
 import UIKit
 import Buy
+import PassKit
 
 private let reuseIdentifier = "Cell"
 
-class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PKPaymentAuthorizationViewControllerDelegate {
+    
+    private let shopDomain: String = "yoganinja.myshopify.com"
+    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+    private let appID:      String = "8"
+    private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
     
     var shop: Shop?
     
-    var shoppingCart: BUYCart?
+    var shopInfo: BUYShop!
+    var checkout: BUYCheckout!
+    var client: BUYClient!
+    var cart: BUYCart!
+
     
-    let cartSummary: TotalCell = {
-        let total = TotalCell()
+    let cartSummary: SummaryCell = {
+        let total = SummaryCell()
         total.translatesAutoresizingMaskIntoConstraints = false
         return total
     }()
@@ -38,6 +48,19 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             let cost = qty * price
             totalCost = totalCost + cost
         }
+        
+        Service.sharedInstance.getShopInfo({ (shopInfoOutput) in
+            self.shopInfo = shopInfoOutput
+        })
+        
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        
+        cart = CartModel.sharedInstance.cart
+        
+        Service.sharedInstance.checkoutApplePay(cart) { (checkoutOutput) in
+            self.checkout = checkoutOutput
+        }
+                
         setupSubTotal()
         let subTotalString = Service.sharedInstance.formatCurrency("\(totalCost)")
         cartSummary.subTotalLabel.text = "Subtotal: \(subTotalString)"
@@ -98,20 +121,14 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private func setupSubTotal() {
         view.addSubview(cartSummary)
+        cartSummary.applePayButton.addTarget(self, action: #selector(CartVC.applePayButton(_:)), forControlEvents: .TouchUpInside)
+        
         
         cartSummary.checkoutButton.addTarget(self, action: #selector(CartVC.checkOut(_:)), forControlEvents: .TouchUpInside)
-        
         cartSummary.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         cartSummary.heightAnchor.constraintEqualToConstant(100).active = true
         cartSummary.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
         cartSummary.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
-    }
-    
-    func checkOut(button: UIButton) {
-        
-        print("Performing checkout")
-        let cart = CartModel.sharedInstance.cart
-        Service.sharedInstance.checkoutShopify(cart)
     }
     func deleteButton (button: UIButton) {
         let alertMessage = "Are you sure you want to delete item from cart?"
@@ -121,14 +138,62 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         }
         let deleteItem = UIAlertAction(title: "Delete Item", style: .Default) { (action) in
             
-///  NEED TO UPDATE THIS TO ONLY DELETE SELECTED ITEM!!
+            ///  NEED TO UPDATE THIS TO ONLY DELETE SELECTED ITEM!!
             CartModel.sharedInstance.cart.clearCart()
+            self.cart = CartModel.sharedInstance.cart
             
             self.collectionView?.reloadData()
         }
         alert.addAction(cancelAction)
         alert.addAction(deleteItem)
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+////////////////////////////////////////////////
+    
+    func applePayButton(button: UIButton) {
         
+        if self.cart.lineItems.count > 0 {
+            
+            let request = self.paymentRequest()
+            let paymentController = PKPaymentAuthorizationViewController(paymentRequest: request)
+            paymentController.delegate = self
+            self.presentViewController(paymentController, animated: true, completion: nil)
+            
+            print(checkout.lineItems.firstObject?.title)
+        }
+        else {
+            let alertMsg = "There are no items in the cart. \nPlease add items to the cart"
+            let alert = UIAlertController(title: "Empty Cart", message: alertMsg, preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func paymentRequest() -> PKPaymentRequest {
+        let paymentRequest = PKPaymentRequest()
+        paymentRequest.merchantIdentifier = self.merchantId
+        paymentRequest.supportedNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard]
+        paymentRequest.merchantCapabilities = .Capability3DS
+        paymentRequest.countryCode = "US"
+        paymentRequest.currencyCode = "USD"
+        paymentRequest.paymentSummaryItems = self.checkout.buy_summaryItemsWithShopName(self.shopInfo!.name)
+        
+        return paymentRequest
+    }
+    
+    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: (PKPaymentAuthorizationStatus) -> Void) {
+        completion(.Success)
+        CartModel.sharedInstance.cart.clearCart()
+        collectionView?.reloadData()
+    }
+    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func checkOut(button: UIButton) {
+        
+        print("Performing checkout")
     }
 }

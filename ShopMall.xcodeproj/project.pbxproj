@@ -17,7 +17,7 @@
 		84613D8F1D7FE09E00628EB7 /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84613D8E1D7FE09E00628EB7 /* OptionsCell.swift */; };
 		846595DE1D84DC88001BD56F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846595DD1D84DC88001BD56F /* Size.swift */; };
 		846595E21D84F878001BD56F /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846595E11D84F878001BD56F /* CartModel.swift */; };
-		846595E51D8657D5001BD56F /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846595E41D8657D5001BD56F /* TotalCell.swift */; };
+		846595E51D8657D5001BD56F /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846595E41D8657D5001BD56F /* SummaryCell.swift */; };
 		846DC5AF1D7693E10049BA2F /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DC5AE1D7693E10049BA2F /* CartVC.swift */; };
 		846DC5B11D7695DA0049BA2F /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DC5B01D7695DA0049BA2F /* CartCell.swift */; };
 		849C3FDD1D4C2B7B00B1BCB5 /* titleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */; };
@@ -62,10 +62,11 @@
 		84613D8E1D7FE09E00628EB7 /* OptionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
 		846595DD1D84DC88001BD56F /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		846595E11D84F878001BD56F /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
-		846595E41D8657D5001BD56F /* TotalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
+		846595E41D8657D5001BD56F /* SummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		846DC5AE1D7693E10049BA2F /* CartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		846DC5B01D7695DA0049BA2F /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = titleViewCell.swift; sourceTree = "<group>"; };
+		84CAF4BA1D8D1F0A009B0A1D /* ShopMall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShopMall.entitlements; sourceTree = "<group>"; };
 		84CB1C0D1D5182D700EFC83F /* ProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		84CB1C0F1D518D2500EFC83F /* ShopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopVC.swift; sourceTree = "<group>"; };
 		84E78CA91D73569C0033142A /* ShopifyProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopifyProductVC.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		C789C8B51D41BC8100CC713D /* ShopMall */ = {
 			isa = PBXGroup;
 			children = (
+				84CAF4BA1D8D1F0A009B0A1D /* ShopMall.entitlements */,
 				C789C8DD1D41D61800CC713D /* View */,
 				C789C8D21D41C68E00CC713D /* Extension */,
 				C789C8CE1D41C40600CC713D /* Controller */,
@@ -232,7 +234,7 @@
 				84F24E181D57FCC20070EA88 /* Header.swift */,
 				846DC5B01D7695DA0049BA2F /* CartCell.swift */,
 				84613D8E1D7FE09E00628EB7 /* OptionsCell.swift */,
-				846595E41D8657D5001BD56F /* TotalCell.swift */,
+				846595E41D8657D5001BD56F /* SummaryCell.swift */,
 				849C3FDC1D4C2B7B00B1BCB5 /* titleViewCell.swift */,
 			);
 			name = View;
@@ -273,6 +275,12 @@
 				TargetAttributes = {
 					C789C8B21D41BC8100CC713D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = SSASSJL7V9;
+						SystemCapabilities = {
+							com.apple.OMC = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -368,7 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F24E191D57FCC20070EA88 /* Header.swift in Sources */,
-				846595E51D8657D5001BD56F /* TotalCell.swift in Sources */,
+				846595E51D8657D5001BD56F /* SummaryCell.swift in Sources */,
 				84132D281D4341FC00D4376D /* ShopCell.swift in Sources */,
 				C789C8DF1D41D62300CC713D /* ProductCell.swift in Sources */,
 				846595E21D84F878001BD56F /* CartModel.swift in Sources */,
@@ -511,6 +519,7 @@
 			baseConfigurationReference = 28A2C7A428A147025C80ED97 /* Pods-ShopMall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShopMall/ShopMall.entitlements;
 				INFOPLIST_FILE = ShopMall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewithfelix.ShopMall;
@@ -523,6 +532,7 @@
 			baseConfigurationReference = 22531DBC7D98E15051E2A8D4 /* Pods-ShopMall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShopMall/ShopMall.entitlements;
 				INFOPLIST_FILE = ShopMall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewithfelix.ShopMall;

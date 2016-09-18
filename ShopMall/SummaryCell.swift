@@ -1,5 +1,5 @@
 //
-//  TotalCell.swift
+//  SummaryCell.swift
 //  ShopMall
 //
 //  Created by admin on 9/11/16.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PassKit
 
-class TotalCell: BaseCustomizableCell {
+class SummaryCell: BaseCustomizableCell {
     
     var subTotalLabel: UILabel = {
         let label = UILabel()
@@ -26,10 +27,20 @@ class TotalCell: BaseCustomizableCell {
         button.tintColor = UIColor.whiteColor()
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 20)
         button.backgroundColor = UIColor.hexStringToUIColor("#f9b905")
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 5
         return button
-        
     }()
+    let applePayButton: PKPaymentButton = {
+       var appleButton = PKPaymentButton()
+        if PKPaymentAuthorizationViewController.canMakePayments() {
+            appleButton = PKPaymentButton(type: .Buy, style: .Black)
+        } else {
+            appleButton = PKPaymentButton(type: .SetUp, style: .Black)
+        }
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        return appleButton
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,14 +54,20 @@ class TotalCell: BaseCustomizableCell {
     func setupViews() {
         backgroundColor = UIColor.hexStringToUIColor("#dfe3ee")
         addSubview(subTotalLabel)
+        addSubview(applePayButton)
         addSubview(checkoutButton)
         subTotalLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
         subTotalLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 10).active = true
         
+        applePayButton.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor, constant: -10).active = true
+        applePayButton.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor, constant: -80).active = true
+        applePayButton.widthAnchor.constraintEqualToConstant(140).active = true
+        applePayButton.heightAnchor.constraintEqualToConstant(50).active = true
+        
         checkoutButton.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor, constant: -10).active = true
-        checkoutButton.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 20).active = true
-        checkoutButton.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -20).active = true
-        checkoutButton.heightAnchor.constraintEqualToConstant(40).active = true
+        checkoutButton.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor, constant: 80).active = true
+        checkoutButton.widthAnchor.constraintEqualToConstant(140).active = true
+        checkoutButton.heightAnchor.constraintEqualToConstant(50).active = true
         
     }
 }
