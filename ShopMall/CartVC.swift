@@ -159,8 +159,6 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
             let paymentController = PKPaymentAuthorizationViewController(paymentRequest: request)
             paymentController.delegate = self
             self.presentViewController(paymentController, animated: true, completion: nil)
-            
-            print(checkout.lineItems.firstObject?.title)
         }
         else {
             let alertMsg = "There are no items in the cart. \nPlease add items to the cart"
@@ -178,6 +176,17 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
         paymentRequest.merchantCapabilities = .Capability3DS
         paymentRequest.countryCode = "US"
         paymentRequest.currencyCode = "USD"
+        
+        let freeShipping = PKShippingMethod(label: "Free shipping", amount: NSDecimalNumber(double: 0.0))
+        freeShipping.identifier = "freeShipping"
+        freeShipping.detail = "Usually ships in 5-12 days"
+        
+        let expressShipping = PKShippingMethod(label: "Express shipping", amount: NSDecimalNumber(double: 7.99))
+        expressShipping.identifier = "expressShipping"
+        expressShipping.detail = "Usually ships in 2-3 days"
+        
+        paymentRequest.shippingMethods = [freeShipping, expressShipping]
+        
         paymentRequest.paymentSummaryItems = self.checkout.buy_summaryItemsWithShopName(self.shopInfo!.name)
         
         return paymentRequest
@@ -194,6 +203,10 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
 
     func checkOut(button: UIButton) {
         
-        print("Performing checkout")
+        let alertMsg = "This payment option is currently unavailable.  Please use Apple Pay"
+        let alert = UIAlertController(title: "Payment Option Unavailable", message: alertMsg, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        alert.addAction(ok)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

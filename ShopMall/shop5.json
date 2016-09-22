@@ -218,21 +218,21 @@
                                        "name": "Ultramodern furniture",
                                        "itemDescription": "Amazing looking furniture.  More description goes right over here",
                                        "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture1.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image3.jpg"
                                        },
                                        {
                                        "id": 2,
                                        "name": "Couch",
                                        "itemDescription": "Comfortable couch for the modern lifestyle.  Very good deal!",
                                        "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture2.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image4.jpg"
                                        },
                                        {
                                        "id": 3,
                                        "name": "Slick Furniture",
                                        "itemDescription": "Slick looking wooden furniture",
                                        "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture3.jpg"
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image5.jpg"
                                        }
                                        ]
                  }
