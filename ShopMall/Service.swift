@@ -18,8 +18,6 @@ class Service: NSObject {
     private var shop = BUYShop()
     private var checkout = BUYCheckout()
     
-    private var applePayHelper: BUYApplePayAuthorizationDelegate?
-    
     static let sharedInstance = Service()
     
     let useLocalJsonFiles = true
@@ -182,8 +180,10 @@ class Service: NSObject {
         let checkout1 = client.modelManager.checkoutWithCart(cart)
         
         client.createCheckout(checkout1) { (checkout, error) in
-            if checkout != nil {
+            if error == nil && checkout != nil {
                 completion(checkout!)
+            } else {
+                print("Error performing checkout")
             }
         }
     }
