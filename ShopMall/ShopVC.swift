@@ -69,6 +69,12 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
    //     navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        imageCache.removeAllObjects()
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if selectedShopId == "6" {
             return shopifyCollections?.count ?? 0

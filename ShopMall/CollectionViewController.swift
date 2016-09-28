@@ -36,6 +36,12 @@ class MallCollectionViewController: UICollectionViewController, UICollectionView
         navigationController?.navigationBar.barTintColor = navBarColor
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        imageCache.removeAllObjects()
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }

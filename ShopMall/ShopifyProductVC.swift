@@ -59,6 +59,12 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         collectionView?.backgroundColor = UIColor.hexStringToUIColor(setBackgroundColor)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        imageCache.removeAllObjects()
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shopifyProducts?.count ?? 0
     }

@@ -12,13 +12,15 @@ import PassKit
 
 private let reuseIdentifier = "Cell"
 
-class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PKPaymentAuthorizationViewControllerDelegate, BUYPaymentProviderDelegate {
+class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BUYPaymentProviderDelegate {
     
     private let shopDomain: String = "yoganinja.myshopify.com"
     private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
     private let appID:      String = "8"
     private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
     private var applePayHelper: BUYApplePayAuthorizationDelegate?
+    private var applePayProvider: BUYApplePayPaymentProvider?
+
     
     var shop: Shop?
     
@@ -124,7 +126,6 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
         view.addSubview(cartSummary)
         cartSummary.applePayButton.addTarget(self, action: #selector(CartVC.applePayButton(_:)), forControlEvents: .TouchUpInside)
         
-        
         cartSummary.checkoutButton.addTarget(self, action: #selector(CartVC.checkOut(_:)), forControlEvents: .TouchUpInside)
         cartSummary.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         cartSummary.heightAnchor.constraintEqualToConstant(100).active = true
@@ -156,15 +157,12 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
         
         if self.cart.lineItems.count > 0 {
             
-            let applePayProvider = BUYApplePayPaymentProvider(client: self.client, merchantID: self.merchantId)
-            applePayProvider.delegate = self
-            print(checkout.token)
-            applePayProvider.startCheckout(checkout)
-            
-//            let request = self.paymentRequest()
-//            let paymentController = PKPaymentAuthorizationViewController(paymentRequest: request)
-//            paymentController.delegate = self
-//            self.presentViewController(paymentController, animated: true, completion: nil)
+            applePayProvider = BUYApplePayPaymentProvider(client: self.client, merchantID: self.merchantId)
+            applePayProvider!.delegate = self
+            let paymentNetworks = [PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa]
+            if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(paymentNetworks) {
+                applePayProvider?.startCheckout(checkout)
+            }
         }
         else {
             let alertMsg = "There are no items in the cart. \nPlease add items to the cart"
@@ -175,54 +173,6 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
         }
     }
     
-    func paymentRequest() -> PKPaymentRequest {
-        let paymentRequest = PKPaymentRequest()
-        paymentRequest.merchantIdentifier = self.merchantId
-        paymentRequest.supportedNetworks = [PKPaymentNetworkVisa, PKPaymentNetworkMasterCard]
-        paymentRequest.merchantCapabilities = .Capability3DS
-        paymentRequest.countryCode = self.shopInfo.country
-        paymentRequest.currencyCode = self.shopInfo.currency
-
-        paymentRequest.paymentSummaryItems = self.checkout.buy_summaryItemsWithShopName(self.shopInfo!.name)
-        
-        if let checkoutToken = checkout?.token {
-            print("Token: \(checkoutToken)")
-            
-            self.client.getCompletionStatusOfCheckoutWithToken(checkoutToken, completion: { (status, error) in
-                print("Checkout Status: \(status)")
-                print("Error : \(error)")
-
-            })
-            
-            self.client.getShippingRatesForCheckoutWithToken(checkoutToken, completion: { (buyShippingRateArray, buyStatus, error) in
-
-                if buyShippingRateArray?.count > 0 {
-                    if let firstShippingRate = buyShippingRateArray?.first?.title {
-                        if let firstShippingPrice = buyShippingRateArray?.first?.price {
-                            
-                            let shipping = PKShippingMethod(label: firstShippingRate, amount: firstShippingPrice)
-                            shipping.identifier = firstShippingRate
-                            shipping.detail = buyShippingRateArray?.first?.description
-                            
-                            paymentRequest.shippingMethods?.append(shipping)
-
-                        }
-                    }
-                }
-            })
-        }
-        
-        let freeShipping = PKShippingMethod(label: "Free shipping", amount: NSDecimalNumber(double: 0.0))
-        freeShipping.identifier = "freeShipping"
-        freeShipping.detail = "Usually ships in 5-12 days"
-        
-        paymentRequest.shippingMethods?.append(freeShipping)
-
-        return paymentRequest
-    }
-    
-    
-    
     func paymentProvider(provider: BUYPaymentProvider, wantsControllerPresented controller: UIViewController) {
         self.presentViewController(controller, animated: true, completion: nil)
     }
@@ -231,26 +181,19 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, PK
     }
     func paymentProvider(provider: BUYPaymentProvider, didCompleteCheckout checkout: BUYCheckout, withStatus status: BUYStatus) {
         if status == .Complete {
-            // Now the checkout is complete and you can discard it, and clean up
-            self.checkout = nil
             print("Checkout Complete!")
+            CartModel.sharedInstance.cart.clearCart()
+            collectionView?.reloadData()
+            if let continueShoppingVC = self.navigationController?.viewControllers[2] {
+                navigationController?.popToViewController(continueShoppingVC, animated: true)
+            }
         }
         else {
             // status will be 'BUYStatusFailed'; handle error
-            print("CHeckout Failed!")
+            print("CHeckout Cancelled or Failed!")
         }
     }
     
-    
-    func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: (PKPaymentAuthorizationStatus) -> Void) {
-        completion(.Success)
-        CartModel.sharedInstance.cart.clearCart()
-        collectionView?.reloadData()
-    }
-    func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
-    }
-        
     func checkOut(button: UIButton) {
         
         let alertMsg = "This payment option is currently unavailable.  Please use Apple Pay"
