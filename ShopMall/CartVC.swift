@@ -42,15 +42,6 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         self.collectionView!.registerClass(CartCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.navigationItem.title = "Shopping Cart"
         collectionView?.backgroundColor = UIColor.grayColor()
-        let cartItems = CartModel.sharedInstance.cart.lineItemsArray()
-        var totalCost = 0.00
-        
-        for item in cartItems {
-            let qty = Double(item.quantity)
-            let price = Double(item.linePrice)
-            let cost = qty * price
-            totalCost = totalCost + cost
-        }
         
         Service.sharedInstance.getShopInfo({ (shopInfoOutput) in
             self.shopInfo = shopInfoOutput
@@ -60,13 +51,11 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         
         cart = CartModel.sharedInstance.cart
         
+        calculateTotalCost()
+        
         Service.sharedInstance.checkoutApplePay(cart) { (checkoutOutput) in
             self.checkout = checkoutOutput
         }
-        
-        setupSubTotal()
-        let subTotalString = Service.sharedInstance.formatCurrency("\(totalCost)")
-        cartSummary.subTotalLabel.text = "Subtotal: \(subTotalString)"
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -104,13 +93,14 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         let productVariation = CartModel.sharedInstance.cart.lineItemsArray()[indexPath.row]
         cell.nameLabel.text  = productVariation.variant.product.title
         cell.sizeLabel.text  = "Size:     \(productVariation.variant.title)"
-        cell.priceLabel.text = "Price:   $\(productVariation.linePrice.stringValue).00"
+        cell.priceLabel.text = "Price:   $\(productVariation.variant.price.doubleValue)0"
         cell.qtyLabel.text   = "QTY:     \(productVariation.quantity.stringValue)"
+        
         
         if let imgUrl = productVariation.variant.product.imagesArray().first?.sourceURL {
             cell.itemImageView.loadImageUsingCacheWithNSURL(imgUrl)
         }
-        
+        cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(CartVC.deleteButton(_:)), forControlEvents: .TouchUpInside)
         
         return cell
@@ -132,6 +122,24 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         cartSummary.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
         cartSummary.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
     }
+    
+    private func calculateTotalCost () {
+        
+        let cartItems = CartModel.sharedInstance.cart.lineItemsArray()
+        var totalCost = 0.00
+        
+        for item in cartItems {
+            let qty = Double(item.quantity)
+            let price = Double(item.variant.price)
+            let cost = qty * price
+            totalCost = totalCost + cost
+        }
+        
+        setupSubTotal()
+        let subTotalString = Service.sharedInstance.formatCurrency("\(totalCost)")
+        cartSummary.subTotalLabel.text = "Subtotal: \(subTotalString)"
+    }
+    
     func deleteButton (button: UIButton) {
         let alertMessage = "Are you sure you want to delete item from cart?"
         
@@ -141,8 +149,18 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         let deleteItem = UIAlertAction(title: "Delete Item", style: .Default) { (action) in
             
             ///  NEED TO UPDATE THIS TO ONLY DELETE SELECTED ITEM!!
-            CartModel.sharedInstance.cart.clearCart()
+            
+            var deleteVariant = BUYProductVariant()
+            deleteVariant = CartModel.sharedInstance.cart.lineItemsArray()[button.tag].variant
+            
+            CartModel.sharedInstance.cart.removeVariant(deleteVariant)
             self.cart = CartModel.sharedInstance.cart
+            
+            self.calculateTotalCost()
+            
+            Service.sharedInstance.checkoutApplePay(self.cart) { (checkoutOutput) in
+                self.checkout = checkoutOutput
+            }
             
             self.collectionView?.reloadData()
         }
@@ -155,7 +173,7 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
     
     func applePayButton(button: UIButton) {
         
-        if self.cart.lineItems.count > 0 {
+        if self.cart.lineItems.count > 0 && checkout != nil{
             
             applePayProvider = BUYApplePayPaymentProvider(client: self.client, merchantID: self.merchantId)
             applePayProvider!.delegate = self
@@ -190,7 +208,7 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
         else {
             // status will be 'BUYStatusFailed'; handle error
-            print("CHeckout Cancelled or Failed!")
+            print("Checkout Cancelled or Failed!")
         }
     }
     
