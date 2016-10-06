@@ -108,11 +108,11 @@ class ShopifyProductVariationVC: UIViewController {
     
     func addToCart (button: UIButton) {
 
-        if let selectedProduct = product {
-            optionsSelector.showSizeOptions(selectedProduct)
+        if let clickedProduct = product {
+            optionsSelector.showOptions(clickedProduct)
         }
     }
-    func showShoppingCartWithSelection(size: SelectSize) {
+    func showShoppingCartWithSelection() {
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

@@ -60,13 +60,10 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         collectionView?.registerClass(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
 
         collectionView?.backgroundColor = UIColor.whiteColor()
-
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-   //     navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(navBarColorSelected)
     }
     
     override func didReceiveMemoryWarning() {

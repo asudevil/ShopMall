@@ -14,21 +14,26 @@ private let reuseIdentifier = "Cell"
 
 class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BUYPaymentProviderDelegate {
     
-    private let shopDomain: String = "yoganinja.myshopify.com"
-    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+//    private let shopDomain: String = "yoganinja.myshopify.com"
+//    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
+//    private let appID:      String = "8"
+//    private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
+    
+    //for-me-and-baby.myshopify.com
+    private let shopDomain: String = "for-me-and-baby.myshopify.com"
+    private let apiKey:     String = "9cf1b349e83d14053c29a4cb3e30e499"
     private let appID:      String = "8"
     private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
+    
     private var applePayHelper: BUYApplePayAuthorizationDelegate?
     private var applePayProvider: BUYApplePayPaymentProvider?
 
-    
     var shop: Shop?
     
     var shopInfo: BUYShop!
     var checkout: BUYCheckout!
     var client: BUYClient!
     var cart: BUYCart!
-    
     
     let cartSummary: SummaryCell = {
         let total = SummaryCell()
@@ -92,10 +97,9 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
         let productVariation = CartModel.sharedInstance.cart.lineItemsArray()[indexPath.row]
         cell.nameLabel.text  = productVariation.variant.product.title
-        cell.sizeLabel.text  = "Size:     \(productVariation.variant.title)"
+        cell.sizeLabel.text  = "Option:     \(productVariation.variant.title)"
         cell.priceLabel.text = "Price:   $\(productVariation.variant.price.doubleValue)0"
         cell.qtyLabel.text   = "QTY:     \(productVariation.quantity.stringValue)"
-        
         
         if let imgUrl = productVariation.variant.product.imagesArray().first?.sourceURL {
             cell.itemImageView.loadImageUsingCacheWithNSURL(imgUrl)

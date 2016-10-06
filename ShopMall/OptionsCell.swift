@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Buy
 
 class OptionsCell: UICollectionViewCell {
     
@@ -18,14 +19,9 @@ class OptionsCell: UICollectionViewCell {
         }
     }
     
-    var options: SelectSize? {
+    var options: BUYProductVariant? {
         didSet {
-            nameLabel.text = options?.name.rawValue
-            
-            if let imageName = options?.imageName {
-                iconImageView.image = UIImage(named: imageName)?.imageWithRenderingMode(.AlwaysTemplate)
-                iconImageView.tintColor = UIColor.darkGrayColor()
-            }
+            nameLabel.text = options?.title
         }
     }
     

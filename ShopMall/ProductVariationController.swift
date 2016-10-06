@@ -96,11 +96,10 @@ class ProductVariationController: UIViewController {
 //Placeholder for shopify!!
         let dummyProduct = BUYProduct()
         
-        optionsSelector.showSizeOptions(dummyProduct)
-        
+        optionsSelector.showOptions(dummyProduct)
     }
-    func showShoppingCartWithSelection(size: SelectSize) {
-        print("Showing Cart with selected size Clicked")
+    func showShoppingCartWithSelection() {
+        print("Showing Cart with selected option Clicked")
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop
