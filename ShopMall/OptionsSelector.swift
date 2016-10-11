@@ -128,54 +128,8 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.productVariantionVC?.presentViewController(alert, animated: true, completion: nil)
                 self.shopifyProductVariationVC?.presentViewController(alert, animated: true, completion: nil)
+                }
             }
-            }
-            
-//            switch size.name {
-//            case .Small:
-//                if let variant = self.selectedProduct?.variants?.firstObject as? BUYProductVariant {
-//                    self.cart.addVariant(variant)
-//                    sizeAvailable = true
-//                } else {
-//                    sizeAvailable = false
-//                }
-//            case .Medium:
-//                if let variant = self.selectedProduct?.variants?[1] as? BUYProductVariant {
-//                    self.cart.addVariant(variant)
-//                    sizeAvailable = true
-//                } else {
-//                    sizeAvailable = false
-//                }
-//            case .Large:
-//                if let variant = self.selectedProduct?.variants?[2] as? BUYProductVariant {
-//                    self.cart.addVariant(variant)
-//                    sizeAvailable = true
-//                } else {
-//                    sizeAvailable = false
-//                }
-//            case .ExtraLarge:
-//                if let variant = self.selectedProduct?.variants?[3] as? BUYProductVariant {
-//                    self.cart.addVariant(variant)
-//                    sizeAvailable = true
-//                } else {
-//                    sizeAvailable = false
-//                }
-//            case .Cancel:
-//                print("Cancelled")
-//            }
-//            
-//            if size.name != .Cancel {
-//                if sizeAvailable {
-//                    CartModel.sharedInstance.cart = self.cart
-//                    self.shopifyProductVariationVC?.showShoppingCartWithSelection(size)
-//                } else {
-//                    let alertMessage = "The selected item type is not available.  Please select a different size"
-//                    let alert = UIAlertController(title: "Item Unavailable", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-//                    self.shopifyProductVariationVC?.presentViewController(alert, animated: true, completion: nil)
-//                }
-//            }
-
         }
     }
 }

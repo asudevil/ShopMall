@@ -1,5 +1,5 @@
 //
-//  Service.swift
+//  Ser.swift
 //  ShopMall
 //
 //  Created by admin on 7/21/16.
@@ -22,7 +22,6 @@ class Service: NSObject {
     
     private var shop = BUYShop()
     private var checkout = BUYCheckout()
-    
     static let sharedInstance = Service()
     
     let useLocalJsonFiles = true
@@ -108,10 +107,8 @@ class Service: NSObject {
     func fetchShopifyProducts(pages: UInt, completion: ([BUYProduct]?, NSError?) -> ()) {
         var client: BUYClient!
         
-        
         client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
 
-        
         client.getProductsPage(pages, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: NSError?)  -> Void in
             
             if (products != nil) && error == nil {
@@ -171,7 +168,6 @@ class Service: NSObject {
                 if let shop1 = shop {
                     self.shop = shop1
                     completion(shop1)
-
                 }
             } else {
                 //Handle error
@@ -189,8 +185,17 @@ class Service: NSObject {
                 completion(checkout!)
             } else {
                 print("Error performing checkout")
+                print(error)
             }
         }
+    }
+    
+    func getClient () -> BUYClient {
+        
+        var client: BUYClient!
+        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        
+        return client
     }
     
     func addToCart (button: UIButton) {

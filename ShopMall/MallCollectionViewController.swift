@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  MallCollectionViewController.swift
 //  ShopMall
 //
 //  Created by admin on 7/22/16.

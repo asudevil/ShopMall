@@ -13,16 +13,7 @@ import PassKit
 private let reuseIdentifier = "Cell"
 
 class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BUYPaymentProviderDelegate {
-    
-//    private let shopDomain: String = "yoganinja.myshopify.com"
-//    private let apiKey:     String = "706f85f7989134d8225e2ec4da7335b8"
-//    private let appID:      String = "8"
-//    private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
-    
-    //for-me-and-baby.myshopify.com
-    private let shopDomain: String = "for-me-and-baby.myshopify.com"
-    private let apiKey:     String = "9cf1b349e83d14053c29a4cb3e30e499"
-    private let appID:      String = "8"
+
     private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
     
     private var applePayHelper: BUYApplePayAuthorizationDelegate?
@@ -52,7 +43,7 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
             self.shopInfo = shopInfoOutput
         })
         
-        client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
+        client = Service.sharedInstance.getClient()
         
         cart = CartModel.sharedInstance.cart
         
