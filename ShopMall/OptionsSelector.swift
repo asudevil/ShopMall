@@ -16,7 +16,7 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.whiteColor()
+        cv.backgroundColor = UIColor.white
         return cv
     }()
     
@@ -36,18 +36,18 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.registerClass(OptionsCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(OptionsCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         
         return selectedProduct.variantsArray().count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! OptionsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OptionsCell
         
         let setting = selectedProduct.variantsArray()[indexPath.item]
         cell.options = setting
@@ -59,26 +59,26 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(collectionView.frame.width, cellHeight)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: cellHeight)
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let clickedOption = selectedProduct.variantsArray()[indexPath.item].title
         print(clickedOption)
         handleDismiss(indexPath.item)
     }
     
-    func showOptions (product: BUYProduct) {
+    func showOptions (_ product: BUYProduct) {
         
-        if let window = UIApplication.sharedApplication().keyWindow {
+        if let window = UIApplication.shared.keyWindow {
             
             let height: CGFloat = CGFloat(product.variantsArray().count) * cellHeight
             let y = window.frame.height - height
-            collectionView.frame = CGRectMake(0, window.frame.height, window.frame.width, height)
-            collectionView.backgroundColor = UIColor.grayColor()
+            collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+            collectionView.backgroundColor = UIColor.gray
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
             blackView.frame = window.frame
@@ -91,18 +91,18 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
             
             print(selectedProduct.optionsArray().first?.name)
             
-            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.blackView.alpha = 1
-                self.collectionView.frame = CGRectMake(0, y, self.collectionView.frame.width, self.collectionView.frame.height)
+                self.collectionView.frame = CGRect(x: 0, y: y, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
                 }, completion: nil)
         }
     }
-    func handleDismiss(selectedOption: Int) {
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
+    func handleDismiss(_ selectedOption: Int) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
             
-            if let window = UIApplication.sharedApplication().keyWindow {
-                self.collectionView.frame = CGRectMake(0, window.frame.height, self.collectionView.frame.width, self.collectionView.frame.height)
+            if let window = UIApplication.shared.keyWindow {
+                self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }
             
         }) { (completed: Bool) in
@@ -112,7 +112,7 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
             if selectedOption <= self.selectedProduct.variantsArray().count {
             
             if let variant = self.selectedProduct?.variants?[selectedOption] as? BUYProductVariant {
-                self.cart.addVariant(variant)
+                self.cart.add(variant)
                 CartModel.sharedInstance.cart = self.cart
                 optionAvailable = true
             } else {
@@ -124,10 +124,10 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
                 self.productVariantionVC?.showShoppingCartWithSelection()
             } else {
                 let alertMessage = "The selected item type is not available.  Please select a different option"
-                let alert = UIAlertController(title: "Item Unavailable", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.productVariantionVC?.presentViewController(alert, animated: true, completion: nil)
-                self.shopifyProductVariationVC?.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Item Unavailable", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.productVariantionVC?.present(alert, animated: true, completion: nil)
+                self.shopifyProductVariationVC?.present(alert, animated: true, completion: nil)
                 }
             }
         }

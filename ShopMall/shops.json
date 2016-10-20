@@ -1,48 +1,28 @@
 [
  {
- "id": 6,
+ "id": 1,
  "name": "Yoga Ninja",
  "detail": "Your one stop shop for yoga apperal",
  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_shelf_image.jpg",
  "storeNameFontSize": 20,
+ "shopAPIInfoDictionary": {
+    "shopDomain": "yoganinja.myshopify.com",
+    "apiKey": "706f85f7989134d8225e2ec4da7335b8",
+    "appID": "8",
+ },
  "headerSize": 0
  },
  {
- "id": 4,
- "name": "Touch of Modern",
- "detail": "Find Everything from Elite Fashion to Cutting-Edge Electronics. Shop Now & Save!",
- "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/touchOfModern_image.jpg",
+ "id": 2,
+ "name": "For Me and Baby",
+ "detail": "Your one stop shop for you and your baby",
+ "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/For-Me-and-Baby_cover.JPG",
  "storeNameFontSize": 20,
- "headerSize": 50
+ "shopAPIInfoDictionary": {
+ "shopDomain": "for-me-and-baby.myshopify.com",
+ "apiKey": "9cf1b349e83d14053c29a4cb3e30e499",
+ "appID": "8",
  },
- {
- "id": 5,
- "name": "FOREVER 21",
- "detail": "Shop Forever 21 for the latest trends and the best deals!",
- "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image.jpg",
- "storeNameFontSize": 20,
- "headerSize": 200
- },
- {
- "id": 1,
- "name": "Apple Store 1",
- "detail": "We sell iPhones, iPads, Macs",
- "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/Apple-cover.jpg",
- "storeNameFontSize": 20,
  "headerSize": 0
- },
-  {
-  "id": 2,
-  "name": "Microsoft",
-  "detail": "Who wants a Surface Book?",
-  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/microsoft-image.jpg",
-  "storeNameFontSize": 20,
-  },
-  {
-  "id": 3,
-  "name": "Best Buys",
-  "detail": "Electrones, TVs, Music we got em",
-  "appImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/bestbuy-image.jpg",
-  "storeNameFontSize": 20,
-  }
+ }
 ]

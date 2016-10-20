@@ -55,7 +55,7 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.registerClass(ProductVariationCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ProductVariationCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.hexStringToUIColor(setBackgroundColor)
     }
     
@@ -65,12 +65,12 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         imageCache.removeAllObjects()
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shopifyProducts?.count ?? 0
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ProductVariationCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ProductVariationCell
         
         if !cell.hasSetupConstraints {
             if let attributes = shop?.productCellNameAttributes {
@@ -90,7 +90,7 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
             if let productVariation = shopifyProducts?[indexPath.row] {
                 cell.nameLabel.text = productVariation.title                
                 if let nameFontSize = shop?.productNameFontSize {
-                    cell.nameLabel.font = UIFont.systemFontOfSize(CGFloat(nameFontSize.floatValue))
+                    cell.nameLabel.font = UIFont.systemFont(ofSize: CGFloat(nameFontSize.floatValue))
                 }
                 
                 if let price = productVariation.variantsArray().first?.price {
@@ -104,20 +104,20 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let frameDivider = product?.catalogFrameDivider {
-            return CGSizeMake(view.frame.width/frameDivider, 220)
+            return CGSize(width: view.frame.width/frameDivider, height: 220)
         }
-        return CGSizeMake(view.frame.width, 220)
+        return CGSize(width: view.frame.width, height: 220)
         
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 10, 0, 10)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let shopifyProductVariation = shopifyProducts?[indexPath.row] {
             
             let productVariationController = ShopifyProductVariationVC(selectedProduct: shopifyProductVariation)
@@ -127,30 +127,30 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         }
     }
     
-    func setupNavBarWithUser(shopName: String, logoImageURL: String) {
+    func setupNavBarWithUser(_ shopName: String, logoImageURL: String) {
         
         let title = shopName
         let titleView = UIView()
         let titleLabel = UILabel()
         titleView.addSubview(titleLabel)
         titleLabel.text = title
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraintEqualToAnchor(titleView.centerXAnchor).active = true
-        titleLabel.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
+        titleLabel.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
         
         let logoImage = UIImageView()
         titleView.addSubview(logoImage)
         logoImage.translatesAutoresizingMaskIntoConstraints = false
-        logoImage.contentMode = .ScaleAspectFill
+        logoImage.contentMode = .scaleAspectFill
         logoImage.clipsToBounds = true
         
         logoImage.loadImageUsingCacheWithUrlString(logoImageURL)
         
-        logoImage.rightAnchor.constraintEqualToAnchor(titleLabel.rightAnchor, constant: 70).active = true
-        logoImage.centerYAnchor.constraintEqualToAnchor(titleView.centerYAnchor).active = true
-        logoImage.widthAnchor.constraintEqualToConstant(30).active = true
-        logoImage.heightAnchor.constraintEqualToConstant(30).active = true
+        logoImage.rightAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 70).isActive = true
+        logoImage.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        logoImage.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        logoImage.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         let btnName = UIButton()
         titleView.addSubview(btnName)
@@ -171,9 +171,9 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         if let cartImageName = shop?.cartImage {
             
             let cartButton = UIButton()
-            cartButton.setImage(UIImage(named: cartImageName), forState: .Normal)
-            cartButton.frame = CGRectMake(0, 0, 30, 30)
-            cartButton.addTarget(self, action: #selector(ShopVC.clickOnCart(_:)), forControlEvents: .TouchUpInside)
+            cartButton.setImage(UIImage(named: cartImageName), for: UIControlState())
+            cartButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            cartButton.addTarget(self, action: #selector(ShopVC.clickOnCart(_:)), for: .touchUpInside)
             
             let rightBarButton = UIBarButtonItem(customView: cartButton)
             self.navigationItem.rightBarButtonItem = rightBarButton
@@ -181,7 +181,7 @@ class ShopifyProductVC: UICollectionViewController, UICollectionViewDelegateFlow
         self.navigationItem.titleView = titleView
     }
     
-    func clickOnCart(button: UIButton) {
+    func clickOnCart(_ button: UIButton) {
         let layout = UICollectionViewFlowLayout()
         let cartViewController = CartVC(collectionViewLayout: layout)
         cartViewController.shop = shop

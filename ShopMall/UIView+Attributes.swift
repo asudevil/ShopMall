@@ -10,37 +10,37 @@ import UIKit
 
 extension UIView {
     
-    func setupConstraintsForView(view: UIView, attributes: Attributes) {
+    func setupConstraintsForView(_ view: UIView, attributes: Attributes) {
         if let centerXConstant = attributes.centerXConstant?.CGFloatValue() {
-            view.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor, constant: centerXConstant).active = true
+            view.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: centerXConstant).isActive = true
         } else if let leftAnchorConstant = attributes.leftAnchorConstant?.CGFloatValue() {
-            view.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: leftAnchorConstant).active = true
+            view.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftAnchorConstant).isActive = true
         } else if let rightAnchorConstant = attributes.rightAnchorConstant?.CGFloatValue() {
-            view.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -rightAnchorConstant).active = true
+            view.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -rightAnchorConstant).isActive = true
         }
         
         if let centerYConstant = attributes.centerYConstant?.CGFloatValue() {
-            view.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor, constant: centerYConstant).active = true
+            view.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: centerYConstant).isActive = true
         } else if let topAnchorConstant = attributes.topAnchorConstant?.CGFloatValue() {
-            view.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: topAnchorConstant).active = true
+            view.topAnchor.constraint(equalTo: self.topAnchor, constant: topAnchorConstant).isActive = true
         } else if let bottomAnchorConstant = attributes.bottomAnchorConstant?.CGFloatValue() {
-            view.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor, constant: -bottomAnchorConstant).active = true
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -bottomAnchorConstant).isActive = true
         }
         
         if let width = attributes.width?.CGFloatValue() {
-            view.widthAnchor.constraintEqualToConstant(width).active = true
+            view.widthAnchor.constraint(equalToConstant: width).isActive = true
         }
         if let width = attributes.widthAnchor {
             if width == "widthAnchor" {
-                view.widthAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
+                view.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
             }
         }
         if let height = attributes.height?.CGFloatValue() {
-            view.heightAnchor.constraintEqualToConstant(height).active = true
+            view.heightAnchor.constraint(equalToConstant: height).isActive = true
         }
         if let height = attributes.heightAnchor {
             if height == "heightAnchor" {
-                view.heightAnchor.constraintEqualToAnchor(self.heightAnchor).active = true
+                view.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
             }
         }
     }

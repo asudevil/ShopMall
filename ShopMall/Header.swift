@@ -21,18 +21,18 @@ class Header: BaseCustomizableCell {
     let searchTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Search"
-        textField.textAlignment = .Center
-        textField.backgroundColor = UIColor.whiteColor()
+        textField.textAlignment = .center
+        textField.backgroundColor = UIColor.white
         textField.layer.cornerRadius = 5
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     var headerImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .ScaleAspectFill
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = UIColor.blueColor()
+        image.backgroundColor = UIColor.blue
         return image
     }()
     

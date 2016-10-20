@@ -13,7 +13,7 @@ class TitleViewCell: UIView {
     var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Testing Testing"
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,7 +21,7 @@ class TitleViewCell: UIView {
     var cartImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "default-cart")
-        image.contentMode = .ScaleAspectFill
+        image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -38,13 +38,13 @@ class TitleViewCell: UIView {
     func setupViews() {
         addSubview(titleLabel)
         addSubview(cartImage)
-        titleLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        titleLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
+        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
-        cartImage.centerXAnchor.constraintEqualToAnchor(self.rightAnchor, constant: 180).active = true
-        cartImage.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        cartImage.widthAnchor.constraintEqualToConstant(25).active = true
-        cartImage.heightAnchor.constraintEqualToConstant(25).active = true
+        cartImage.centerXAnchor.constraint(equalTo: self.rightAnchor, constant: 180).isActive = true
+        cartImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        cartImage.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        cartImage.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
     }
 }

@@ -24,6 +24,7 @@ class Shop: NSObject {
     var headerImageUrl: String?
     var products: [Product]?
     var storeNameFontSize: NSNumber?
+    var shopAPIInfoDictionary: [String: AnyObject]?
     var catalogNameFontSize: NSNumber?
     var productNameFontSize: NSNumber?
     var catalogTextColor: String?
@@ -71,6 +72,7 @@ class Shop: NSObject {
         logoImage = dictionary["logoImage"] as? String
         headerImageUrl = dictionary["headerImageUrl"] as? String
         storeNameFontSize = dictionary["storeNameFontSize"] as? NSNumber
+        shopAPIInfoDictionary = dictionary["shopAPIInfoDictionary"] as? [String: AnyObject]
         catalogNameFontSize = dictionary["catalogNameFontSize"] as? NSNumber
         productNameFontSize = dictionary["productNameFontSize"] as? NSNumber
         headerSize = dictionary["headerSize"] as? CGFloat

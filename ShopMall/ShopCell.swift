@@ -26,7 +26,7 @@ class ShopCell: UICollectionViewCell {
     let imageView: UIImageView = {
        let image = UIImageView()
         image.image = UIImage(named: "YogaNinja_icon_400_240")
-        image.contentMode = .ScaleAspectFit
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -46,9 +46,9 @@ class ShopCell: UICollectionViewCell {
         addSubview(dividerLineView)
         addSubview(imageView)
         
-        imageView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        nameLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        dividerLineView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
+        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        nameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dividerLineView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         addConstraintsWithFormat("V:|[v0(180)]-10-[v1(20)]", views: imageView, nameLabel)
         addConstraintsWithFormat("H:|[v0]|", views: dividerLineView)

@@ -11,11 +11,11 @@ import Buy
 
 class OptionsCell: UICollectionViewCell {
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            backgroundColor = highlighted ? UIColor.darkGrayColor() : UIColor.whiteColor()
-            nameLabel.textColor = highlighted ? UIColor.whiteColor() : UIColor.blackColor()
-            iconImageView.tintColor = highlighted ? UIColor.whiteColor() : UIColor.darkGrayColor()
+            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            iconImageView.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
         }
     }
     
@@ -28,13 +28,13 @@ class OptionsCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Default"
-        label.font = UIFont.systemFontOfSize(24)
+        label.font = UIFont.systemFont(ofSize: 24)
         return label
     }()
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -57,8 +57,8 @@ class OptionsCell: UICollectionViewCell {
         addConstraintsWithFormat("V:|[v0]|", views: nameLabel)
         addConstraintsWithFormat("V:[v0(40)]", views: iconImageView)
         
-        addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
     }
 }

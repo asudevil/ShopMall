@@ -1,41 +1,72 @@
 {
-    "id": 1,
-    "name": "Apple",
-    "detail": "We sell iPhones, iPads, Macs",
-    "navBarColor": "f5820b",
-    "cellColor": "DDE5E5",
-    "tableCellHeight": 300,
-    "cartImage": "cart-image.png",
-    "catalogNameFontSize": 20,
-    "catalogImageAttributes": {
+    "id": 2,
+    "detail": "Your one stop shop for yoga apperal",
+    "navBarColor": "3b5998",
+    "cellColor": "ffffff",
+    "headerColor": "dfe3ee",
+    "tableCellHeight": 250,
+    "cellSpacing": 10,
+    "cartImage": "cart-image2.png",
+    "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
+    "catalogNameFontSize": 22,
+    "productNameFontSize": 15,
+    "catalogTextColor": "000000",
+    "catalogContainer1Color": "ffffff",
+    "addItemButtonColor": "3b5998",
+    "catalogContainer1Alpha": 0.7,
+    "catalogHeaderContainerAttributes": {
         "centerXConstant": 0,
         "centerYConstant": 0,
-        "width": 400,
-        "height": 250
+        "width": "widthAnchor",
+        "height": "heightAnchor"
+    },
+    "searchTextFieldAttributes": {
+        "leftAnchorConstant": 10,
+        "topAnchorConstant": 5,
+        "width": 350,
+        "height": 40
+    },
+    "headerImageAttributes": {
+        "leftAnchorConstant": 20,
+        "topAnchorConstant": 60,
+        "width": 300,
+        "height": 50
+    },
+    "catalogImageAttributes": {
+        "centerXConstant": 0,
+        "topAnchorConstant": 0,
+        "width": 450,
+        "height": 350
     },
     "catalogNameAttributes": {
-        "centerXConstant": 0,
-        "centerYConstant": 120,
-        "width": 200,
-        "height": 50
+        "leftAnchorConstant": 60,
+        "bottomAnchorConstant": 5,
+        "width": 180,
+        "height": 80
     },
-    "productCellImageAttributes": {
-        "rightAnchorConstant": 50,
-        "bottomAnchorConstant": 60,
-        "width": 300,
-        "height": 120
-    },
-    "productCellNameAttributes": {
-        "rightAnchorConstant": 100,
-        "bottomAnchorConstant": 20,
-        "width": 200,
-        "height": 50
-    },
-    "itemPriceAttributes": {
-        "rightAnchorConstant": 100,
+    "catalogContainer1Attributes": {
+        "leftAnchorConstant": 20,
         "bottomAnchorConstant": 0,
         "width": 200,
-        "height": 50
+        "height": 80
+    },
+    "productCellImageAttributes": {
+        "centerXConstant": 0,
+        "topAnchorConstant": 5,
+        "width": 150,
+        "height": 150
+    },
+    "productCellNameAttributes": {
+        "leftAnchorConstant": 10,
+        "bottomAnchorConstant": 5,
+        "width": 160,
+        "height": 80
+    },
+    "itemPriceAttributes": {
+        "leftAnchorConstant": 10,
+        "bottomAnchorConstant": 0,
+        "width": 150,
+        "height": 30
     },
     "itemDetailsImageAttributes": {
         "centerXConstant": 0,
@@ -45,13 +76,13 @@
     },
     "itemDescriptionAttributes": {
         "centerXConstant": 0,
-        "centerYConstant": 50,
+        "bottomAnchorConstant": 80,
         "width": 250,
         "height": 100
     },
     "itemDetailPriceAttributes": {
         "rightAnchorConstant": 100,
-        "bottomAnchorConstant": 160,
+        "bottomAnchorConstant": 50,
         "width": 200,
         "height": 50
     },
@@ -63,15 +94,15 @@
     },
     "cartItemImageAttributes": {
         "leftAnchorConstant": 10,
-        "topAnchorConstant": 30,
+        "topAnchorConstant": 10,
         "width": 120,
-        "height": 150
+        "height": 130
     },
     "cartItemNameAttributes": {
         "leftAnchorConstant": 140,
-        "topAnchorConstant": 30,
+        "topAnchorConstant": 10,
         "width": 220,
-        "height": 20
+        "height": 50
     },
     "cartItemPriceAttributes": {
         "leftAnchorConstant": 140,
@@ -94,77 +125,114 @@
     "cartItemDeleteAttributes": {
         "rightAnchorConstant": 40,
         "topAnchorConstant": 120,
-        "width": 40,
-        "height": 30
+        "width": 20,
+        "height": 20
     },
     "products": [
                  {
                  "id": 1,
-                 "name": "iPhones",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone-catalog.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
-                 "itemPrice":"$299.95",
-                 "catalogFrameDivider": 1.2,
+                 "name": "Women Yoga",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank2.png",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
                                        "id": 1,
-                                       "name": "iPhone Rose Gold 32GB",
-                                       "itemDescription": "Here's your new iPhone 6s. Handy Features. Easy To Use · Attractive Design. Long Battery Life",
-                                       "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_rose.jpg"
+                                       "name": "Summer Dress",
+                                       "itemDescription": "Summer Dress for the summer picnic or other events",
+                                       "itemDetailPrice": "199.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image1.jpg"
                                        },
                                        {
                                        "id": 2,
-                                       "name": "iPhone White 128GB",
-                                       "itemDescription": "Unlocked cell phones are compatible with GSM carriers like",
-                                       "itemDetailPrice": "499.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iphone_white.jpg"
+                                       "name": "Beautiful Top and Shorts",
+                                       "itemDescription": "Beautiful for any event",
+                                       "itemDetailPrice": "139.49",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "Work Clothes",
+                                       "itemDescription": "casual wear attention to detail.",
+                                       "itemDetailPrice": "39.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image3.jpg"
+                                       },
+                                       {
+                                       "id": 4,
+                                       "name": "Vintage Wear",
+                                       "itemDescription": "The ultimate fun dress to show off to friends",
+                                       "itemDetailPrice": "59.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image4.jpg"
+                                       },
+                                       {
+                                       "id": 5,
+                                       "name": "Beautiful White Dress",
+                                       "itemDescription": "Beautiful white dress for any event",
+                                       "itemDetailPrice": "99.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-image5.jpg"
                                        }
                                        ]
                  },
                  {
                  "id": 2,
-                 "name": "iPads",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad-catalog.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
-                 "itemPrice":"$399.95",
+                 "name": "Men Yoga",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/train-your-mind-mens-tank.png",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
                                        "id": 1,
-                                       "name": "iPad 32GB WIFI Model",
-                                       "itemDescription": "Amazing looking Ipad with a whoping 32GB.   Long Battery Life",
-                                       "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
+                                       "name": "OM/ONE Levitating Speaker",
+                                       "itemDescription": "OM/ONE Levitating Speaker // Jet Black.  Very loud!",
+                                       "itemDetailPrice": "299.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-men1.jpg"
                                        },
                                        {
-                                       "id": 1,
-                                       "name": "iPad 32GB LTE Verizon",
-                                       "itemDescription": "A white Ipad with 32GB  LTE Verizon.   Long Battery Life.  Very good deal!",
-                                       "itemDetailPrice": "399.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/ipad_white.jpg"
+                                       "id": 2,
+                                       "name": "Sound of modern wooden speaker",
+                                       "itemDescription": "I have no idea what this is.  Looks like an speaker to me.",
+                                       "itemDetailPrice": "499.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-men2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "Bass Boosting Speaker",
+                                       "itemDescription": "Wireless Bass Boosting LED 2.1 Speaker + Sub-Woofer Control.",
+                                       "itemDetailPrice": "499.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/forever21-men3.jpg"
                                        }
                                        ]
                  },
                  {
                  "id": 3,
-                 "name": "iWatch",
-                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch-catalog.jpg",
-                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/apple_logo.png",
-                 "itemPrice":"$499.99",
+                 "name": "Kids Yoga",
+                 "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoga-ninja-kids.png",
+                 "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
+                 "backgroudColor": "f4f4f4",
+                 "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
                                        "id": 1,
-                                       "name": "iWatch!",
-                                       "itemDescription": "Very beautiful iWatch custom made for you",
-                                       "itemDetailPrice": "499.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch1.png"
+                                       "name": "Ultramodern furniture",
+                                       "itemDescription": "Amazing looking furniture.  More description goes right over here",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture1.jpg"
                                        },
                                        {
-                                       "id": 1,
-                                       "name": "What time is it??",
-                                       "itemDescription": "I have no idea what this is.  Looks like an iWatch to me.",
-                                       "itemDetailPrice": "499.95",
-                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/iwatch2.jpg"
+                                       "id": 2,
+                                       "name": "Couch",
+                                       "itemDescription": "Comfortable couch for the modern lifestyle.  Very good deal!",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture2.jpg"
+                                       },
+                                       {
+                                       "id": 3,
+                                       "name": "Slick Furniture",
+                                       "itemDescription": "Slick looking wooden furniture",
+                                       "itemDetailPrice": "399.95",
+                                       "imageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/furniture3.jpg"
                                        }
                                        ]
                  }

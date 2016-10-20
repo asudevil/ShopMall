@@ -14,7 +14,7 @@ class ShopifyProductVariationVC: UIViewController {
     
     var product: BUYProduct?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +28,7 @@ class ShopifyProductVariationVC: UIViewController {
 
     let productImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -46,9 +46,9 @@ class ShopifyProductVariationVC: UIViewController {
     }()
     var addItemButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add to Cart", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(CGFloat(20))
-        button.titleLabel?.textColor = UIColor.blackColor()
+        button.setTitle("Add to Cart", for: UIControlState())
+        button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(20))
+        button.titleLabel?.textColor = UIColor.black
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.hexStringToUIColor("000000")
         return button
@@ -59,7 +59,7 @@ class ShopifyProductVariationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         view.layer.masksToBounds = true
         
         if let navBarTitle = product?.title {
@@ -71,17 +71,17 @@ class ShopifyProductVariationVC: UIViewController {
         if let itemPrice = product?.variantsArray().first?.price {
             itemDetailPriceLabel.text = "$\(itemPrice).00"
         }
-        if let productImageNSURL = product?.images.firstObject?.sourceURL {
+        if let productImageNSURL = product?.imagesArray().first?.sourceURL {
             productImageView.loadImageUsingCacheWithNSURL(productImageNSURL)
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addToCart(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addToCart(_:)))
         view.addSubview(productImageView)
         view.addSubview(itemDetails)
         view.addSubview(itemDetailPriceLabel)
         view.addSubview(addItemButton)
         
-        addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), forControlEvents: .TouchUpInside)
+        addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), for: .touchUpInside)
 
         if let attributes = shop?.itemDetailsImageAttributes {
             view.setupConstraintsForView(productImageView, attributes: attributes)
@@ -106,7 +106,7 @@ class ShopifyProductVariationVC: UIViewController {
         return launcher
     }()
     
-    func addToCart (button: UIButton) {
+    func addToCart (_ button: UIButton) {
 
         if let clickedProduct = product {
             optionsSelector.showOptions(clickedProduct)

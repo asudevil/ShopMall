@@ -14,7 +14,7 @@ class CartCell: BaseCustomizableCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "This is the tile of item"
-        label.font = UIFont.boldSystemFontOfSize(CGFloat(16))
+        label.font = UIFont.boldSystemFont(ofSize: CGFloat(16))
         label.numberOfLines = 2
         return label
     }()
@@ -39,18 +39,18 @@ class CartCell: BaseCustomizableCell {
 
     var itemImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .ScaleAspectFit
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     var deleteButton: UIButton = {
-       let button = UIButton(type: .System)
+       let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.redColor()
-        button.setTitle("x", forState: .Normal)
+        button.backgroundColor = UIColor.red
+        button.setTitle("x", for: UIControlState())
         button.adjustsImageWhenHighlighted = true
-        button.tintColor = UIColor.whiteColor()
+        button.tintColor = UIColor.white
         return button
     }()
     
@@ -71,7 +71,7 @@ class CartCell: BaseCustomizableCell {
         self.addSubview(itemImageView)
         self.addSubview(deleteButton)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         
     }

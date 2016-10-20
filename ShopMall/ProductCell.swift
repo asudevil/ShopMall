@@ -24,15 +24,15 @@ class ProductCell: BaseCustomizableCell {
     
     var catalogImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .ScaleAspectFit
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     var catalogDetail: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.whiteColor()
-        label.font = UIFont.systemFontOfSize(CGFloat(12))
+        label.textColor = UIColor.white
+        label.font = UIFont.systemFont(ofSize: CGFloat(12))
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,21 +47,21 @@ class ProductCell: BaseCustomizableCell {
     //generic containers that can be used to contain random things where needed
     let container1: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.red
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         return view
     }()
     let container2: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.red
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         return view
     }()
     let container3: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.red
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
         return view
@@ -82,12 +82,12 @@ class ProductCell: BaseCustomizableCell {
         addSubview(dividerLineView)
         addSubview(itemPrice)
         addSubview(catalogDetail)
-        self.bringSubviewToFront(catalogDetail)
+        self.bringSubview(toFront: catalogDetail)
         
         //generic containers that can be used to contain random things where needed
         addSubview(container1)
         addSubview(container2)
         addSubview(container3)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
     }
 }

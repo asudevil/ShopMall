@@ -14,10 +14,10 @@ private let reuseIdentifier = "Cell"
 
 class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BUYPaymentProviderDelegate {
 
-    private let merchantId: String = "merchant.com.codewithfelix.ShopMall"
+    fileprivate let merchantId: String = "merchant.com.codewithfelix.ShopMall"
     
-    private var applePayHelper: BUYApplePayAuthorizationDelegate?
-    private var applePayProvider: BUYApplePayPaymentProvider?
+    fileprivate var applePayHelper: BUYApplePayAuthorizationDelegate?
+    fileprivate var applePayProvider: BUYApplePayPaymentProvider?
 
     var shop: Shop?
     
@@ -35,9 +35,9 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView!.registerClass(CartCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(CartCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.navigationItem.title = "Shopping Cart"
-        collectionView?.backgroundColor = UIColor.grayColor()
+        collectionView?.backgroundColor = UIColor.gray
         
         Service.sharedInstance.getShopInfo({ (shopInfoOutput) in
             self.shopInfo = shopInfoOutput
@@ -54,16 +54,16 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CartModel.sharedInstance.cart.lineItemsArray().count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CartCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CartCell
         
         if !cell.hasSetupConstraints {
             if let attributes = shop?.cartItemImageAttributes {
@@ -88,7 +88,9 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
         let productVariation = CartModel.sharedInstance.cart.lineItemsArray()[indexPath.row]
         cell.nameLabel.text  = productVariation.variant.product.title
-        cell.sizeLabel.text  = "Option:     \(productVariation.variant.title)"
+        if let selectedOption = productVariation.variant.title {
+            cell.sizeLabel.text  = "Option:     \(selectedOption)"
+        }
         cell.priceLabel.text = "Price:   $\(productVariation.variant.price.doubleValue)0"
         cell.qtyLabel.text   = "QTY:     \(productVariation.quantity.stringValue)"
         
@@ -96,29 +98,29 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
             cell.itemImageView.loadImageUsingCacheWithNSURL(imgUrl)
         }
         cell.deleteButton.tag = indexPath.row
-        cell.deleteButton.addTarget(self, action: #selector(CartVC.deleteButton(_:)), forControlEvents: .TouchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(CartVC.deleteButton(_:)), for: .touchUpInside)
         
         return cell
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 170)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 170)
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(1)
     }
     
-    private func setupSubTotal() {
+    fileprivate func setupSubTotal() {
         view.addSubview(cartSummary)
-        cartSummary.applePayButton.addTarget(self, action: #selector(CartVC.applePayButton(_:)), forControlEvents: .TouchUpInside)
+        cartSummary.applePayButton.addTarget(self, action: #selector(CartVC.applePayButton(_:)), for: .touchUpInside)
         
-        cartSummary.checkoutButton.addTarget(self, action: #selector(CartVC.checkOut(_:)), forControlEvents: .TouchUpInside)
-        cartSummary.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
-        cartSummary.heightAnchor.constraintEqualToConstant(100).active = true
-        cartSummary.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
-        cartSummary.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        cartSummary.checkoutButton.addTarget(self, action: #selector(CartVC.checkOut(_:)), for: .touchUpInside)
+        cartSummary.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        cartSummary.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        cartSummary.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        cartSummary.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
-    private func calculateTotalCost () {
+    fileprivate func calculateTotalCost () {
         
         let cartItems = CartModel.sharedInstance.cart.lineItemsArray()
         var totalCost = 0.00
@@ -135,20 +137,20 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         cartSummary.subTotalLabel.text = "Subtotal: \(subTotalString)"
     }
     
-    func deleteButton (button: UIButton) {
+    func deleteButton (_ button: UIButton) {
         let alertMessage = "Are you sure you want to delete item from cart?"
         
-        let alert = UIAlertController(title: "Delete Item", message: alertMessage, preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let alert = UIAlertController(title: "Delete Item", message: alertMessage, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
         }
-        let deleteItem = UIAlertAction(title: "Delete Item", style: .Default) { (action) in
+        let deleteItem = UIAlertAction(title: "Delete Item", style: .default) { (action) in
             
             ///  NEED TO UPDATE THIS TO ONLY DELETE SELECTED ITEM!!
             
             var deleteVariant = BUYProductVariant()
             deleteVariant = CartModel.sharedInstance.cart.lineItemsArray()[button.tag].variant
             
-            CartModel.sharedInstance.cart.removeVariant(deleteVariant)
+            CartModel.sharedInstance.cart.remove(deleteVariant)
             self.cart = CartModel.sharedInstance.cart
             
             self.calculateTotalCost()
@@ -161,41 +163,41 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
         alert.addAction(cancelAction)
         alert.addAction(deleteItem)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     ////////////////////////////////////////////////
     
-    func applePayButton(button: UIButton) {
+    func applePayButton(_ button: UIButton) {
         
         if self.cart.lineItems.count > 0 && checkout != nil{
             
             applePayProvider = BUYApplePayPaymentProvider(client: self.client, merchantID: self.merchantId)
             applePayProvider!.delegate = self
-            let paymentNetworks = [PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa]
-            if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(paymentNetworks) {
-                applePayProvider?.startCheckout(checkout)
+            let paymentNetworks = [PKPaymentNetwork.amex, PKPaymentNetwork.masterCard, PKPaymentNetwork.visa]
+            if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
+                applePayProvider?.start(checkout)
             }
         }
         else {
             let alertMsg = "There are no items in the cart. \nPlease add items to the cart"
-            let alert = UIAlertController(title: "Empty Cart", message: alertMsg, preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+            let alert = UIAlertController(title: "Empty Cart", message: alertMsg, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(ok)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func paymentProvider(provider: BUYPaymentProvider, wantsControllerPresented controller: UIViewController) {
-        self.presentViewController(controller, animated: true, completion: nil)
+    func paymentProvider(_ provider: BUYPaymentProvider, wantsControllerPresented controller: UIViewController) {
+        self.present(controller, animated: true, completion: nil)
     }
-    func paymentProviderWantsControllerDismissed(provider: BUYPaymentProvider) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func paymentProviderWantsControllerDismissed(_ provider: BUYPaymentProvider) {
+        self.dismiss(animated: true, completion: nil)
     }
-    func paymentProvider(provider: BUYPaymentProvider, didCompleteCheckout checkout: BUYCheckout, withStatus status: BUYStatus) {
-        if status == .Complete {
+    func paymentProvider(_ provider: BUYPaymentProvider, didComplete checkout: BUYCheckout, with status: BUYStatus) {
+        if status == .complete {
             print("Checkout Complete!")
-            CartModel.sharedInstance.cart.clearCart()
+            CartModel.sharedInstance.cart.clear()
             collectionView?.reloadData()
             if let continueShoppingVC = self.navigationController?.viewControllers[2] {
                 navigationController?.popToViewController(continueShoppingVC, animated: true)
@@ -207,12 +209,12 @@ class CartVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, BU
         }
     }
     
-    func checkOut(button: UIButton) {
+    func checkOut(_ button: UIButton) {
         
         let alertMsg = "This payment option is currently unavailable.  Please use Apple Pay"
-        let alert = UIAlertController(title: "Payment Option Unavailable", message: alertMsg, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        let alert = UIAlertController(title: "Payment Option Unavailable", message: alertMsg, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }

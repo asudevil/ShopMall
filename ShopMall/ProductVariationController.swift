@@ -13,7 +13,7 @@ class ProductVariationController: UIViewController {
     
     let productImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -31,10 +31,10 @@ class ProductVariationController: UIViewController {
     }()
     var addItemButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add to Cart", forState: .Normal)
-        button.setTitleColor(UIColor.hexStringToUIColor("#8b9dc3"), forState: .Selected)
-        button.titleLabel?.font = UIFont.systemFontOfSize(CGFloat(20))
-        button.titleLabel?.textColor = UIColor.blackColor()
+        button.setTitle("Add to Cart", for: UIControlState())
+        button.setTitleColor(UIColor.hexStringToUIColor("#8b9dc3"), for: .selected)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(20))
+        button.titleLabel?.textColor = UIColor.black
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.hexStringToUIColor("000000")
         return button
@@ -61,15 +61,15 @@ class ProductVariationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         view.layer.masksToBounds = true
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(self.addToCart(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addToCart(_:)))
         view.addSubview(productImageView)
         view.addSubview(itemDetails)
         view.addSubview(itemDetailPriceLabel)
         view.addSubview(addItemButton)
-        addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), forControlEvents: .TouchUpInside)
+        addItemButton.addTarget(self, action: #selector(self.addToCart(_:)), for: .touchUpInside)
         if let attributes = shop?.itemDetailsImageAttributes {
             view.setupConstraintsForView(productImageView, attributes: attributes)
         }
@@ -91,7 +91,7 @@ class ProductVariationController: UIViewController {
         launcher.productVariantionVC = self
         return launcher
     }()
-    func addToCart (button: UIButton) {
+    func addToCart (_ button: UIButton) {
         
 //Placeholder for shopify!!
         let dummyProduct = BUYProduct()
