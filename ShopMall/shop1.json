@@ -1,7 +1,7 @@
 {
-    "id": 2,
+    "id": 1,
     "detail": "Your one stop shop for yoga apperal",
-    "navBarColor": "3b5998",
+    "navBarColor": "c45858",
     "cellColor": "ffffff",
     "headerColor": "dfe3ee",
     "tableCellHeight": 250,
@@ -9,7 +9,7 @@
     "cartImage": "cart-image2.png",
     "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
     "catalogNameFontSize": 22,
-    "productNameFontSize": 15,
+    "productNameFontSize": 14,
     "catalogTextColor": "000000",
     "catalogContainer1Color": "ffffff",
     "addItemButtonColor": "3b5998",
@@ -134,8 +134,8 @@
                  "name": "Women Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank2.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
-                 "backgroudColor": "f4f4f4",
-                 "catalogFrameDivider": 2.2,
+                 "backgroudColor": "FFFFFF",
+                 "catalogFrameDivider": 2.4,
                  "productVariations": [
                                        {
                                        "id": 1,
@@ -179,7 +179,7 @@
                  "name": "Men Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/train-your-mind-mens-tank.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
-                 "backgroudColor": "f4f4f4",
+                 "backgroudColor": "FFFFFF",
                  "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {
@@ -210,7 +210,7 @@
                  "name": "Kids Yoga",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/yoga-ninja-kids.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
-                 "backgroudColor": "f4f4f4",
+                 "backgroudColor": "FFFFFF",
                  "catalogFrameDivider": 2.2,
                  "productVariations": [
                                        {

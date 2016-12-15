@@ -25,12 +25,27 @@ class ShopVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var headerHeight = CGFloat()
     var cartImageView = UIImageView()
     var cartImageURL = String()
+    var activityIndicator = UIActivityIndicatorView()
     
     var shopId: String? {
         didSet {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            
+           // activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+
+            view.addSubview(activityIndicator)
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            
+            activityIndicator.startAnimating()
+            
             Service.sharedInstance.fetchShopifyCollections(1, completion: { (collections, error) in
                 self.shopifyCollections = collections
                 self.collectionView?.reloadData()
+                
+                self.activityIndicator.stopAnimating()
                 
                 //handle error
             })

@@ -24,7 +24,7 @@ class Service: NSObject {
     fileprivate var checkout = BUYCheckout()
     static let sharedInstance = Service()
     
-    let useLocalJsonFiles = true
+    let useLocalJsonFiles = false
     
     let baseUrl = "https://s3.amazonaws.com/spicysuya"
     
@@ -70,7 +70,7 @@ class Service: NSObject {
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             
             if error != nil {
-                print(error)
+                print(error ?? "")
                 return
             }
             
@@ -100,7 +100,7 @@ class Service: NSObject {
         let url = URL(string: urlString)!
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if error != nil {
-                print(error)
+                print(error ?? "")
                 return
             }
             
@@ -147,6 +147,7 @@ class Service: NSObject {
         })
     }
     func fetchShopifyProductsInCollection(_ pages: UInt, collectionId: NSNumber, completion: @escaping ([BUYProduct]?, Error?) -> ())  {
+        
         var client: BUYClient!
         client = BUYClient(shopDomain: self.shopDomain, apiKey: self.apiKey, appId: self.appID)
         client.getProductsPage(pages, inCollection: collectionId, completion: {(products: [BUYProduct]?, page: UInt, reachedEnd: Bool, error: Error?)  -> Void in
@@ -196,7 +197,7 @@ class Service: NSObject {
                 completion(checkout!)
             } else {
                 print("Error performing checkout")
-                print(error)
+                print(error ?? "")
             }
         }
     }

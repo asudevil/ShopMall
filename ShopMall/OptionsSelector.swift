@@ -40,22 +40,18 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
         return selectedProduct.variantsArray().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OptionsCell
-        
         let setting = selectedProduct.variantsArray()[indexPath.item]
         cell.options = setting
         
         if let imgUrl = selectedProduct.imagesArray().first?.sourceURL {
             cell.iconImageView.loadImageUsingCacheWithNSURL(imgUrl)
         }
-        
         return cell
     }
     
@@ -67,7 +63,7 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let clickedOption = selectedProduct.variantsArray()[indexPath.item].title
-        print(clickedOption)
+        print(clickedOption ?? "")
         handleDismiss(indexPath.item)
     }
     
@@ -89,12 +85,12 @@ class OptionsSelector: NSObject, UICollectionViewDataSource, UICollectionViewDel
             
             selectedProduct = product
             
-            print(selectedProduct.optionsArray().first?.name)
+            print(selectedProduct.optionsArray().first?.name ?? "")
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.blackView.alpha = 1
                 self.collectionView.frame = CGRect(x: 0, y: y, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
-                }, completion: nil)
+            }, completion: nil)
         }
     }
     func handleDismiss(_ selectedOption: Int) {

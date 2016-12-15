@@ -1,7 +1,7 @@
 {
-    "id": 1,
+    "id": 2,
     "detail": "Your one stop shop for you and your baby",
-    "navBarColor": "3b5998",
+    "navBarColor": "c458c4",
     "cellColor": "ffffff",
     "headerColor": "dfe3ee",
     "tableCellHeight": 250,
@@ -131,7 +131,7 @@
     "products": [
                  {
                  "id": 1,
-                 "name": "Women Yoga",
+                 "name": "For Baby!",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/whats-your-chakra-tank2.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
@@ -176,7 +176,7 @@
                  },
                  {
                  "id": 2,
-                 "name": "Men Yoga",
+                 "name": "For Me!",
                  "catalogImageUrl": "https:\/\/s3.amazonaws.com\/spicysuya\/train-your-mind-mens-tank.png",
                  "logoImage": "https:\/\/s3.amazonaws.com\/spicysuya\/yoganinja_logo.jpg",
                  "backgroudColor": "f4f4f4",
